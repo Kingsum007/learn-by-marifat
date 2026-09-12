@@ -1,0 +1,28 @@
+name: Quality
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.47.2'
+          channel: stable
+          cache: true
+      - run: flutter pub get
+      - run: dart format --output=none --set-exit-if-changed lib test integration_test
+      - run: python tool/build_project_guides.py
+      - run: python -m unittest discover -s projects/python -v
+      - run: dart run tool/export_foundations.dart
+      - run: dart run tool/translation_audit.dart
+      - run: python tool/build_translations.py
+      - run: flutter analyze
+      - run: flutter test --coverage
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: coverage
+          path: coverage/lcov.info

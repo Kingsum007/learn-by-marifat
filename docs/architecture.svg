@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="950" viewBox="0 0 1200 950" role="img" aria-labelledby="title desc">
+  <title id="title">Learn By Marifat Team — software architecture</title>
+  <desc id="desc">Flutter views call a learning controller, which applies domain rules and uses three contracts implemented by bundled course, SQLite persistence, and isolate execution adapters. All core activity runs on the student's device without internet. Settings also exchange validated local backup files.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#497165"/></marker>
+    <style>
+      text {font-family: 'Segoe UI', Arial, sans-serif; fill:#152b34}
+      .label {font-size:14px; font-weight:700; letter-spacing:2px; fill:#196a55}
+      .heading {font-size:23px; font-weight:700}
+      .body {font-size:17px; fill:#38574e}
+      .edge {stroke:#497165; stroke-width:2; fill:none; marker-end:url(#arrow)}
+      .box {fill:#fff; stroke:#cbded3; stroke-width:1.5}
+    </style>
+  </defs>
+  <rect width="1200" height="950" fill="#f6f8f3"/>
+  <text x="60" y="48" class="label">SOFTWARE ARCHITECTURE · VERSION 1.1</text>
+  <text x="60" y="98" font-size="40" font-weight="800">Learn By Marifat Team</text>
+  <text x="60" y="128" class="body">Offline programming education for Afghan computer science students</text>
+  <rect x="60" y="160" width="1080" height="115" rx="18" fill="#152b34"/>
+  <text x="86" y="193" style="fill:#b3d8c8;font-size:14px;font-weight:700;letter-spacing:2px">PRESENTATION · FLUTTER</text>
+  <text x="86" y="227" style="fill:white;font-size:24px;font-weight:700">Courses · Lesson plans · Projects · Code lab · Portfolio · Settings</text>
+  <text x="86" y="254" style="fill:#c1d1ca;font-size:17px">Render state, collect input, display feedback, and select local backup files</text>
+  <path d="M325,275 V320" class="edge"/>
+  <rect x="60" y="320" width="530" height="130" rx="18" class="box"/>
+  <text x="86" y="350" class="label">APPLICATION</text>
+  <text x="86" y="382" class="heading">LearningController</text>
+  <text x="86" y="410" class="body">Commands · grading coordination · immutable state</text>
+  <text x="86" y="434" class="body">Serialized commits; publish only after save succeeds</text>
+  <path d="M590,385 H620" class="edge"/>
+  <rect x="620" y="320" width="520" height="130" rx="18" class="box"/>
+  <text x="646" y="350" class="label">DOMAIN</text>
+  <text x="646" y="382" class="heading">Learning models and policies</text>
+  <text x="646" y="410" class="body">Lesson · Exercise · LearnerState · GradeExercise</text>
+  <text x="646" y="434" class="body">Validation and invariants; no widgets or native plugins</text>
+  <path d="M325,450 V480 H225 V515" class="edge"/>
+  <path d="M325,480 H600 V515" class="edge"/>
+  <path d="M600,480 H975 V515" class="edge"/>
+  <rect x="60" y="515" width="330" height="133" rx="18" class="box"/>
+  <text x="84" y="546" class="label">COURSE CONTRACT</text>
+  <text x="84" y="579" class="heading">Bundled curriculum adapters</text>
+  <text x="84" y="609" class="body">15 courses · 180 plans · 45 projects</text>
+  <text x="84" y="634" class="body">Plus 21 Python practice exercises</text>
+  <rect x="435" y="515" width="330" height="133" rx="18" class="box"/>
+  <text x="459" y="546" class="label">PROGRESS CONTRACT</text>
+  <text x="459" y="579" class="heading">SQLite repository</text>
+  <text x="459" y="609" class="body">Transactional load and save</text>
+  <text x="459" y="634" class="body">Versioned learner aggregate</text>
+  <rect x="810" y="515" width="330" height="133" rx="18" class="box"/>
+  <text x="834" y="546" class="label">CODE RUNNER CONTRACT</text>
+  <text x="834" y="579" class="heading">IsolateCodeRunner</text>
+  <text x="834" y="609" class="body">Separate execution worker</text>
+  <text x="834" y="634" class="body">Bounded lifetime and resources</text>
+  <path d="M225,648 V685" class="edge"/>
+  <path d="M600,648 V685" class="edge"/>
+  <path d="M975,648 V685" class="edge"/>
+  <rect x="60" y="685" width="330" height="94" rx="16" fill="#dcebe3"/>
+  <text x="84" y="719" class="heading">Packaged content</text>
+  <text x="84" y="750" class="body">Available from the first launch</text>
+  <rect x="435" y="685" width="330" height="94" rx="16" fill="#dcebe3"/>
+  <text x="459" y="719" class="heading">Device-local database</text>
+  <text x="459" y="750" class="body">Progress · drafts · portfolio</text>
+  <rect x="810" y="685" width="330" height="94" rx="16" fill="#dcebe3"/>
+  <text x="834" y="719" class="heading">Python teaching VM</text>
+  <text x="834" y="750" class="body">Lexer → parser → interpreter</text>
+  <rect x="60" y="813" width="1080" height="77" rx="16" fill="#f5dfbb"/>
+  <text x="84" y="844" font-size="19" font-weight="700">All core components run on the student’s device. No server or account is required.</text>
+  <text x="84" y="873" class="body">Settings use native file selection for validated JSON backups. The runtime is a Python subset, not CPython.</text>
+  <text x="60" y="924" font-size="13" fill="#38574e">Marifat Team · Detailed dependency rules, sequences, deployment, and decision records: docs/ARCHITECTURE.md</text>
+</svg>
