@@ -6,7 +6,7 @@ Reviewed 11 September 2026. This is a focused curriculum design reference check,
 
 “BLUM” is interpreted as the revised Bloom cognitive taxonomy: Remember, Understand, Apply, Analyze, Evaluate, Create. Learning objectives, activities, and evidence should target the same cognitive process. A verb label alone does not establish the level: a Create task must require an original artifact, and an Evaluate task must require criteria and a justified judgment. See [Iowa State CELT: Bloom’s Taxonomy](https://celt.iastate.edu/prepare-and-teach/design-your-course/blooms-taxonomy/).
 
-Each course revisits lower-level knowledge while progressing toward independent design and review. The twelve sessions are a planning framework, not a promise of professional mastery after fifteen hours. Guided sessions total 15 hours; projects add an estimated 42 hours. Remediation, tool familiarization, and further practice require additional time. “Zero to Hero” is a pathway title, not an assessed credential.
+Each course revisits lower-level knowledge while progressing toward independent design and review. The thirty-two sessions are a planning framework, not a promise of professional mastery after forty hours. Projects add an estimated 42 hours. Remediation, tool familiarization, and further practice require additional time. “Zero to Hero” is a pathway title, not an assessed credential.
 
 Evidence types include annotated traces, working source with acceptance results, root-cause reports, design comparisons, and original capstones. The app stores reflections and provisional self-ratings. A teacher or peer should inspect external source and tests before recognizing mastery. Plan coverage tests verify structural alignment, not pedagogical validity.
 

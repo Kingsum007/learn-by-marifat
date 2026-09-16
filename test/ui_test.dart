@@ -13,6 +13,9 @@ import 'support.dart';
 
 void main() {
   setUpAll(() async {
+    await (FontLoader(
+      'LearnMono',
+    )..addFont(rootBundle.load('assets/fonts/noto-sans-mono.ttf'))).load();
     final font = FontLoader('LearnSans')
       ..addFont(rootBundle.load('assets/fonts/roboto-regular.ttf'))
       ..addFont(rootBundle.load('assets/fonts/roboto-bold.ttf'))

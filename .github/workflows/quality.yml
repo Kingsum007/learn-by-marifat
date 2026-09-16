@@ -15,6 +15,10 @@ jobs:
       - run: flutter pub get
       - run: dart format --output=none --set-exit-if-changed lib test integration_test
       - run: python tool/build_project_guides.py
+      - run: python tool/detailed_foundations.py
+      - run: python tool/build_curriculum.py
+      - run: python tool/build_module_guides.py
+      - run: python tool/test_database_content.py
       - run: python -m unittest discover -s projects/python -v
       - run: dart run tool/export_foundations.dart
       - run: dart run tool/translation_audit.dart

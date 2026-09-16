@@ -1,3 +1,5 @@
+import 'topic_lock.dart';
+import 'reward_feedback.dart';
 import 'localized_text.dart';
 
 import 'package:flutter/material.dart';
@@ -5,6 +7,7 @@ import 'package:flutter/material.dart';
 import '../application/learning_controller.dart';
 import '../domain/assessment.dart';
 import '../domain/course.dart';
+import '../data/detailed_foundations.dart';
 import 'code_workbench.dart';
 import 'theme.dart';
 
@@ -32,8 +35,19 @@ class _LessonScreenState extends State<LessonScreen> {
   Widget build(BuildContext context) => ListenableBuilder(
     listenable: widget.controller,
     builder: (context, _) {
+      if (!widget.controller.lessonUnlocked(widget.lesson)) {
+        return TopicGate(
+          controller: widget.controller,
+          allowed: () => false,
+          child: const SizedBox(),
+        );
+      }
       final lesson = widget.lesson;
       final controller = widget.controller;
+      final guide =
+          (detailedFoundations[lesson.id]
+                  as Map<String, dynamic>?)?[controller.state.language]
+              as List<dynamic>?;
       final complete = controller.solvedIn(lesson) == lesson.exercises.length;
       final labels = [
         'Understand the idea',
@@ -123,7 +137,7 @@ class _LessonScreenState extends State<LessonScreen> {
                     child: Padding(
                       padding: const EdgeInsets.all(24),
                       child: LText(
-                        lesson.concept,
+                        guide?[0] as String? ?? lesson.concept,
                         protectInlineCode: true,
                         style: const TextStyle(height: 1.9, fontSize: 17),
                       ),
@@ -143,12 +157,40 @@ class _LessonScreenState extends State<LessonScreen> {
                       textDirection: TextDirection.ltr,
                       style: const TextStyle(
                         color: Colors.white,
-                        fontFamily: 'monospace',
+                        fontFamily: 'LearnMono',
                         height: 1.8,
                       ),
                     ),
                   ),
                   const SizedBox(height: 20),
+                  if (guide != null) ...[
+                    LText(
+                      guide[1] as String,
+                      protectInlineCode: true,
+                      style: const TextStyle(height: 1.9, fontSize: 17),
+                    ),
+                    const SizedBox(height: 16),
+                    const LText('Output'),
+                    Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.all(16),
+                      margin: const EdgeInsets.symmetric(vertical: 12),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Theme.of(context).colorScheme.outline,
+                        ),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: SelectableText(
+                        foundationOutputs[lesson.id] as String,
+                        textDirection: TextDirection.ltr,
+                        style: const TextStyle(
+                          fontFamily: 'LearnMono',
+                          height: 1.7,
+                        ),
+                      ),
+                    ),
+                  ],
                   LText(
                     lesson.takeaway,
                     protectInlineCode: true,
@@ -156,6 +198,14 @@ class _LessonScreenState extends State<LessonScreen> {
                   ),
                 ],
                 if (step == 2) ...[
+                  if (guide != null) ...[
+                    LText(
+                      guide[2] as String,
+                      protectInlineCode: true,
+                      style: const TextStyle(height: 1.9, fontSize: 17),
+                    ),
+                    const SizedBox(height: 20),
+                  ],
                   LText(
                     complete ? 'You finished this lesson. Well done.' : 'Try one activity at a time. You can always use a hint.',
                     style: const TextStyle(height: 1.8),
@@ -233,6 +283,7 @@ class _ExerciseScreenState extends State<ExerciseScreen> {
   late List<String> blocks;
   bool busy = false;
   Assessment? feedback;
+  int earned = 0;
   @override
   void initState() {
     super.initState();
@@ -240,13 +291,20 @@ class _ExerciseScreenState extends State<ExerciseScreen> {
   }
 
   Future<void> check() async {
-    setState(() => busy = true);
+    final prior = widget.controller.rewards.xp;
+    setState(() {
+      busy = true;
+      earned = 0;
+    });
     await safely(context, () async {
       final result = widget.exercise.kind == ExerciseKind.choice
           ? await widget.controller.submitChoice(widget.exercise, choice!)
           : await widget.controller.submitOrder(widget.exercise, blocks);
       if (mounted) {
-        setState(() => feedback = result);
+        setState(() {
+          feedback = result;
+          earned = widget.controller.rewards.xp - prior;
+        });
       }
     });
     if (mounted) {
@@ -255,135 +313,150 @@ class _ExerciseScreenState extends State<ExerciseScreen> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-    appBar: AppBar(title: const LText('Practice')),
-    body: Center(
-      child: ConstrainedBox(
-        constraints: const BoxConstraints(maxWidth: 800),
-        child: ListView(
-          padding: const EdgeInsets.all(24),
-          children: [
-            PageHeading(
-              'Learn by doing',
-              widget.exercise.kind == ExerciseKind.code
-                  ? 'Your turn to code.'
-                  : 'A small challenge.',
-              widget.exercise.prompt,
-            ),
-            if (widget.exercise.kind == ExerciseKind.code)
-              CodeWorkbench(
-                controller: widget.controller,
-                exercise: widget.exercise,
-              )
-            else ...[
-              if (widget.exercise.kind == ExerciseKind.choice)
-                ...widget.exercise.options.asMap().entries.map(
-                  (entry) => Padding(
-                    padding: const EdgeInsets.only(bottom: 12),
-                    child: Semantics(
-                      selected: choice == entry.key,
-                      child: OutlinedButton(
-                        onPressed: busy
-                            ? null
-                            : () => setState(() {
-                                choice = entry.key;
-                                feedback = null;
-                              }),
-                        style: OutlinedButton.styleFrom(
-                          backgroundColor: choice == entry.key
-                              ? Theme.of(context).colorScheme.primaryContainer
-                              : null,
+  Widget build(BuildContext context) => TopicGate(
+    controller: widget.controller,
+    allowed: () => widget.controller.exerciseUnlocked(widget.exercise),
+    child: Scaffold(
+      appBar: AppBar(title: const LText('Practice')),
+      body: Center(
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 800),
+          child: ListView(
+            padding: const EdgeInsets.all(24),
+            children: [
+              PageHeading(
+                'Learn by doing',
+                widget.exercise.kind == ExerciseKind.code
+                    ? 'Your turn to code.'
+                    : 'A small challenge.',
+                widget.exercise.prompt,
+              ),
+              if (widget.exercise.kind == ExerciseKind.code)
+                CodeWorkbench(
+                  controller: widget.controller,
+                  exercise: widget.exercise,
+                )
+              else ...[
+                if (widget.exercise.kind == ExerciseKind.choice)
+                  ...widget.exercise.options.asMap().entries.map(
+                    (entry) => Padding(
+                      padding: const EdgeInsets.only(bottom: 12),
+                      child: Semantics(
+                        selected: choice == entry.key,
+                        child: OutlinedButton(
+                          onPressed: busy
+                              ? null
+                              : () => setState(() {
+                                  choice = entry.key;
+                                  feedback = null;
+                                }),
+                          style: OutlinedButton.styleFrom(
+                            backgroundColor: choice == entry.key
+                                ? Theme.of(context).colorScheme.primaryContainer
+                                : null,
+                          ),
+                          child: Align(
+                            alignment: Alignment.centerLeft,
+                            child: LText(
+                              '${String.fromCharCode(65 + entry.key)}.  ${entry.value}',
+                            ),
+                          ),
                         ),
-                        child: Align(
-                          alignment: Alignment.centerLeft,
-                          child: LText(
-                            '${String.fromCharCode(65 + entry.key)}.  ${entry.value}',
+                      ),
+                    ),
+                  )
+                else ...[
+                  const LText(
+                    'Move each line up or down. Keep the indentation shown.',
+                  ),
+                  const SizedBox(height: 12),
+                  ...blocks.asMap().entries.map(
+                    (entry) => Padding(
+                      padding: const EdgeInsets.only(bottom: 8),
+                      child: Card(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 12,
+                            vertical: 8,
+                          ),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  entry.value,
+                                  textDirection: TextDirection.ltr,
+                                  style: const TextStyle(
+                                    fontFamily: 'LearnMono',
+                                  ),
+                                ),
+                              ),
+                              IconButton(
+                                tooltip: tx(
+                                  context,
+                                  'Move line ${entry.key + 1} up',
+                                ),
+                                onPressed: busy || entry.key == 0
+                                    ? null
+                                    : () => setState(() {
+                                        final value = blocks.removeAt(
+                                          entry.key,
+                                        );
+                                        blocks.insert(entry.key - 1, value);
+                                        feedback = null;
+                                      }),
+                                icon: const Icon(Icons.arrow_upward, size: 20),
+                              ),
+                              IconButton(
+                                tooltip: tx(
+                                  context,
+                                  'Move line ${entry.key + 1} down',
+                                ),
+                                onPressed:
+                                    busy || entry.key == blocks.length - 1
+                                    ? null
+                                    : () => setState(() {
+                                        final value = blocks.removeAt(
+                                          entry.key,
+                                        );
+                                        blocks.insert(entry.key + 1, value);
+                                        feedback = null;
+                                      }),
+                                icon: const Icon(
+                                  Icons.arrow_downward,
+                                  size: 20,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ),
                     ),
                   ),
-                )
-              else ...[
-                const LText(
-                  'Move each line up or down. Keep the indentation shown.',
+                ],
+                const SizedBox(height: 16),
+                FilledButton(
+                  onPressed:
+                      busy ||
+                          (widget.exercise.kind == ExerciseKind.choice &&
+                              choice == null)
+                      ? null
+                      : check,
+                  child: LText(busy ? 'Saving…' : 'Check answer'),
                 ),
-                const SizedBox(height: 12),
-                ...blocks.asMap().entries.map(
-                  (entry) => Padding(
-                    padding: const EdgeInsets.only(bottom: 8),
-                    child: Card(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 12,
-                          vertical: 8,
-                        ),
-                        child: Row(
-                          children: [
-                            Expanded(
-                              child: Text(
-                                entry.value,
-                                textDirection: TextDirection.ltr,
-                                style: const TextStyle(fontFamily: 'monospace'),
-                              ),
-                            ),
-                            IconButton(
-                              tooltip: tx(
-                                context,
-                                'Move line ${entry.key + 1} up',
-                              ),
-                              onPressed: busy || entry.key == 0
-                                  ? null
-                                  : () => setState(() {
-                                      final value = blocks.removeAt(entry.key);
-                                      blocks.insert(entry.key - 1, value);
-                                      feedback = null;
-                                    }),
-                              icon: const Icon(Icons.arrow_upward, size: 20),
-                            ),
-                            IconButton(
-                              tooltip: tx(
-                                context,
-                                'Move line ${entry.key + 1} down',
-                              ),
-                              onPressed: busy || entry.key == blocks.length - 1
-                                  ? null
-                                  : () => setState(() {
-                                      final value = blocks.removeAt(entry.key);
-                                      blocks.insert(entry.key + 1, value);
-                                      feedback = null;
-                                    }),
-                              icon: const Icon(Icons.arrow_downward, size: 20),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+                if (feedback != null) ...[
+                  const SizedBox(height: 20),
+                  FeedbackPanel(feedback!),
+                  if (earned > 0) RewardFeedback(points: earned),
+                ],
               ],
-              const SizedBox(height: 16),
-              FilledButton(
-                onPressed:
-                    busy ||
-                        (widget.exercise.kind == ExerciseKind.choice &&
-                            choice == null)
-                    ? null
-                    : check,
-                child: LText(busy ? 'Saving…' : 'Check answer'),
+              const SizedBox(height: 24),
+              TextButton.icon(
+                onPressed: () => Navigator.of(context).pop(),
+                icon: const Icon(Icons.arrow_back),
+                label: const LText('Back to lesson'),
               ),
-              if (feedback != null) ...[
-                const SizedBox(height: 20),
-                FeedbackPanel(feedback!),
-              ],
             ],
-            const SizedBox(height: 24),
-            TextButton.icon(
-              onPressed: () => Navigator.of(context).pop(),
-              icon: const Icon(Icons.arrow_back),
-              label: const LText('Back to lesson'),
-            ),
-          ],
+          ),
         ),
       ),
     ),

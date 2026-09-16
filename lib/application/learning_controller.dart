@@ -1,3 +1,5 @@
+import '../domain/learning_rewards.dart';
+
 import 'package:flutter/foundation.dart';
 
 import '../domain/assessment.dart';
@@ -55,6 +57,10 @@ class LearningController extends ChangeNotifier {
   Future<void>? _pending;
   int restoredGeneration = 0;
   List<Lesson> get lessons => courses.lessons;
+  LearningRewards get rewards => LearningRewards(
+    state.solved,
+    lessons.map((l) => l.exercises.map((e) => e.id).toSet()).toList(),
+  );
   int get totalExercises =>
       lessons.fold(0, (n, lesson) => n + lesson.exercises.length);
   int solvedIn(Lesson lesson) =>
@@ -64,6 +70,70 @@ class LearningController extends ChangeNotifier {
     orElse: () => lessons.last,
   );
   double get completion => _state.solved.length / totalExercises;
+
+  bool lessonUnlocked(Lesson lesson) => lessons
+      .take(lessons.indexOf(lesson))
+      .every((l) => solvedIn(l) == l.exercises.length);
+  bool exerciseUnlocked(Exercise exercise) => lessons.any(
+    (l) => l.exercises.any((e) => e.id == exercise.id) && lessonUnlocked(l),
+  );
+  bool activityComplete(String id) {
+    final entry = state.portfolio[id];
+    return entry != null &&
+        entry.evidence.trim().isNotEmpty &&
+        entry.milestones.contains(0);
+  }
+
+  bool moduleComplete(StudyModule module) =>
+      module.plans.every((p) => activityComplete(p.id));
+  bool introComplete(StudyCourse course) =>
+      course.id == 'python' || state.completedIntros.contains(course.id);
+  bool courseComplete(StudyCourse course) =>
+      course.modules.every(moduleComplete) &&
+      (course.id != 'python' ||
+          lessons.every((l) => solvedIn(l) == l.exercises.length));
+  bool courseUnlocked(StudyCourse course) => course.prerequisites.every(
+    (id) => courseComplete(
+      curriculum.catalog.firstWhere((candidate) => candidate.id == id),
+    ),
+  );
+  bool moduleUnlocked(StudyCourse course, StudyModule module) =>
+      courseUnlocked(course) &&
+      introComplete(course) &&
+      (course.id != 'python' || courseComplete(course)) &&
+      course.modules.take(course.modules.indexOf(module)).every(moduleComplete);
+  Future<void> completeIntroduction(String courseId) => _commit(
+    (state) =>
+        state.copyWith(completedIntros: {...state.completedIntros, courseId}),
+  );
+  bool projectComplete(StudyProject project) {
+    final entry = state.portfolio[project.id];
+    return entry != null &&
+        entry.evidence.trim().isNotEmpty &&
+        List.generate(
+          project.milestones.length,
+          (i) => i,
+        ).every(entry.milestones.contains);
+  }
+
+  bool portfolioUnlocked(String id) {
+    for (final course in curriculum.catalog) {
+      for (final module in course.modules) {
+        final index = module.plans.indexWhere((p) => p.id == id);
+        if (index >= 0) {
+          return moduleUnlocked(course, module) &&
+              module.plans.take(index).every((p) => activityComplete(p.id));
+        }
+      }
+      final index = course.projects.indexWhere((p) => p.id == id);
+      if (index >= 0) {
+        return courseUnlocked(course) &&
+            courseComplete(course) &&
+            course.projects.take(index).every(projectComplete);
+      }
+    }
+    return false;
+  }
 
   Future<void> initialize() async {
     _state = await progress.load();
@@ -122,6 +192,9 @@ class LearningController extends ChangeNotifier {
     return _commit((s) => s.copyWith(drafts: {...s.drafts, id: source}));
   }
 
+  Future<void> selectLabLanguage(String language) =>
+      _commit((s) => s.copyWith(labLanguage: language));
+
   Future<void> toggleBookmark(String id) => _commit((s) {
     final bookmarks = {...s.bookmarks};
     if (!bookmarks.add(id)) {
@@ -141,6 +214,7 @@ class LearningController extends ChangeNotifier {
     portfolioIds: portfolioIds(curriculum),
     exerciseIds: lessons.expand((l) => l.exercises).map((e) => e.id).toSet(),
     lessonIds: lessons.map((l) => l.id).toSet(),
+    courseIds: curriculum.catalog.map((course) => course.id).toSet(),
   );
   Future<void> importBackup(String source) async {
     final validated = validateBackup(source);

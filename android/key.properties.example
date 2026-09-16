@@ -1,0 +1,5 @@
+# Copy this file to android/key.properties. Never commit the completed file.
+storePassword=REPLACE_WITH_A_STRONG_PRIVATE_PASSWORD
+keyPassword=REPLACE_WITH_A_STRONG_PRIVATE_PASSWORD
+keyAlias=marifat-upload
+storeFile=REPLACE_WITH_ABSOLUTE_OR_ANDROID_RELATIVE_JKS_PATH

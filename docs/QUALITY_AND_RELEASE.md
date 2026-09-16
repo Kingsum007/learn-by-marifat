@@ -10,7 +10,8 @@ dart format --output=none --set-exit-if-changed lib test integration_test
 flutter analyze
 flutter test --coverage
 flutter test integration_test/startup_test.dart -d windows
-flutter build apk --release --no-tree-shake-icons
+flutter test --dart-define=STORE_BUILD=true test/store_release_test.dart
+tool/build_google_play.ps1
 ```
 
 The developer machine needs internet to obtain the toolchain, Gradle, and packages the first time. The installed application does not. Do not confuse a build-time dependency download with a student runtime requirement.
@@ -49,9 +50,7 @@ SQLite commits are atomic. Backups are unencrypted and intentionally user-readab
 
 ## Release signing
 
-The generated Android project uses a development key for local builds. That is sufficient for review installations, but not a production signing setup. Before public distribution, the owner must provision and retain a private release key and configure signing outside source control. Keep keystores/passwords out of the repository. Do not silently replace signing keys after users install the app.
-
-No app-store upload, publication, or external deployment is part of this implementation.
+Release builds do not fall back to a development key. Copy `android/key.properties.example` to the ignored `android/key.properties`, point it to the permanent owner-controlled upload key, and keep the keystore and passwords outside source control. `tool/build_google_play.ps1` then creates the signed App Bundle. `-AllowUnsigned` exists only for local validation and labels its output accordingly.
 
 ## Learning evaluation
 

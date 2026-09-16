@@ -1,3 +1,5 @@
+import 'topic_lock.dart';
+import 'reward_feedback.dart';
 import 'localized_text.dart';
 
 import 'package:flutter/material.dart';
@@ -6,6 +8,8 @@ import 'package:flutter/services.dart';
 import '../application/learning_controller.dart';
 import '../domain/assessment.dart';
 import '../domain/course.dart';
+import '../domain/lab_language.dart';
+import '../runtime/sql_practice.dart';
 import '../runtime/python_vm.dart';
 import 'theme.dart';
 
@@ -14,10 +18,12 @@ class CodeWorkbench extends StatefulWidget {
     super.key,
     required this.controller,
     this.exercise,
+    this.sqlRunner = runSqlPractice,
     this.initialCode = 'name = "Afghanistan"\nprint("Hello, " + name)\n\nfor n in range(1, 4):\n    print(n)',
   });
   final LearningController controller;
   final Exercise? exercise;
+  final Future<SqlPracticeResult> Function(String) sqlRunner;
   final String initialCode;
   @override
   State<CodeWorkbench> createState() => _CodeWorkbenchState();
@@ -28,15 +34,25 @@ class _CodeWorkbenchState extends State<CodeWorkbench> {
   bool busy = false, dirty = false;
   RunResult? result;
   Assessment? assessment;
-  String get id => widget.exercise?.id ?? 'playground';
+  int earned = 0;
+  late LabLanguage language;
+  String get id => widget.exercise?.id ?? language.draftId;
+  bool get canRun => language.execution != LabExecution.external;
   @override
   void initState() {
     super.initState();
+    language = labLanguages.firstWhere(
+      (l) =>
+          l.id ==
+          (widget.exercise == null
+              ? widget.controller.state.labLanguage
+              : 'python'),
+    );
     editor = TextEditingController(
       text:
           widget.controller.state.drafts[id] ??
           widget.exercise?.starter ??
-          widget.initialCode,
+          (language.id == 'python' ? widget.initialCode : language.starter),
     );
   }
 
@@ -63,9 +79,12 @@ class _CodeWorkbenchState extends State<CodeWorkbench> {
   }
 
   Future<void> run() async {
+    if (!canRun) return;
+    final prior = widget.controller.rewards.xp;
     setState(() {
       busy = true;
       assessment = null;
+      earned = 0;
       result = null;
     });
     try {
@@ -79,12 +98,25 @@ class _CodeWorkbenchState extends State<CodeWorkbench> {
             setState(() {
               result = evaluated.$1;
               assessment = evaluated.$2;
+              earned = widget.controller.rewards.xp - prior;
               dirty = false;
             });
           }
         } else {
           await widget.controller.saveDraft(id, editor.text);
-          final output = await widget.controller.runner.run(editor.text);
+          final RunResult output;
+          if (language.execution == LabExecution.sql) {
+            final sql = await widget.sqlRunner(editor.text);
+            output = RunResult(
+              [
+                sql.columns.join(' | '),
+                ...sql.rows.map((row) => row.join(' | ')),
+              ].where((line) => line.isNotEmpty).join('\n'),
+              error: sql.error,
+            );
+          } else {
+            output = await widget.controller.runner.run(editor.text);
+          }
           if (mounted) {
             setState(() {
               result = output;
@@ -100,16 +132,16 @@ class _CodeWorkbenchState extends State<CodeWorkbench> {
     }
   }
 
-  @override
-  Widget build(BuildContext context) => PopScope(
-    canPop: !dirty && !busy,
-    onPopInvokedWithResult: (didPop, value) async {
-      if (didPop || busy) return;
+  Future<void> changeLanguage(LabLanguage next) async {
+    if (busy || next == language) return;
+    if (dirty) {
       final choice = await showDialog<String>(
         context: context,
         builder: (context) => AlertDialog(
-          title: const LText('Save your changes?'),
-          content: const LText('Your code has changes that are not saved yet.'),
+          title: const LText('Save before switching language?'),
+          content: const LText(
+            'Each language has its own draft. Choose what to do with your current changes.',
+          ),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context, 'cancel'),
@@ -121,197 +153,326 @@ class _CodeWorkbenchState extends State<CodeWorkbench> {
             ),
             FilledButton(
               onPressed: () => Navigator.pop(context, 'save'),
-              child: const LText('Save and leave'),
+              child: const LText('Save and switch'),
             ),
           ],
         ),
       );
       if (!mounted || choice == null || choice == 'cancel') return;
-      if (choice == 'save') await save();
-      if (choice == 'discard' && mounted) setState(() => dirty = false);
-      if (mounted && !dirty) {
-        setState(() {});
-        WidgetsBinding.instance.addPostFrameCallback((_) {
-          if (mounted) Navigator.of(context).pop();
-        });
+      if (choice == 'save') {
+        await save();
+        if (!mounted || dirty) return;
       }
-    },
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Row(
-          children: [
-            const Icon(Icons.code, size: 20),
-            const SizedBox(width: 8),
-            const Expanded(
-              child: LText(
-                'main.py',
-                style: TextStyle(fontWeight: FontWeight.w700),
+    }
+    setState(() => busy = true);
+    try {
+      await safely(context, () async {
+        await widget.controller.selectLabLanguage(next.id);
+        if (!mounted) return;
+        setState(() {
+          language = next;
+          editor.text =
+              widget.controller.state.drafts[id] ??
+              (next.id == 'python' ? widget.initialCode : next.starter);
+          dirty = false;
+          result = null;
+          assessment = null;
+          earned = 0;
+        });
+      });
+    } finally {
+      if (mounted) setState(() => busy = false);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) => TopicGate(
+    controller: widget.controller,
+    allowed: () =>
+        widget.exercise == null ||
+        widget.controller.exerciseUnlocked(widget.exercise!),
+    child: PopScope(
+      canPop: !dirty && !busy,
+      onPopInvokedWithResult: (didPop, value) async {
+        if (didPop || busy) return;
+        final choice = await showDialog<String>(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: const LText('Save your changes?'),
+            content: const LText(
+              'Your code has changes that are not saved yet.',
+            ),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context, 'cancel'),
+                child: const LText('Keep editing'),
               ),
-            ),
-            LText(
-              dirty ? 'Unsaved changes' : 'Local draft',
-              style: const TextStyle(fontSize: 12),
-            ),
-          ],
-        ),
-        const SizedBox(height: 12),
-        Directionality(
-          textDirection: TextDirection.ltr,
-          child: TextField(
-            key: const Key('code-editor'),
-            controller: editor,
-            enabled: !busy,
-            minLines: 9,
-            maxLines: 20,
-            autocorrect: false,
-            enableSuggestions: false,
-            keyboardType: TextInputType.multiline,
-            textInputAction: TextInputAction.newline,
-            inputFormatters: [LengthLimitingTextInputFormatter(12000)],
-            style: const TextStyle(
-              fontFamily: 'monospace',
-              fontSize: 14,
-              height: 1.8,
-            ),
-            decoration: const InputDecoration(
-              label: LText('Python practice code'),
-              alignLabelWithHint: true,
-              helper: LText(
-                'Use four spaces for indentation. Save or run to keep your draft.',
+              TextButton(
+                onPressed: () => Navigator.pop(context, 'discard'),
+                child: const LText('Discard changes'),
               ),
-            ),
-            onChanged: (_) => setState(() {
-              dirty = true;
-              assessment = null;
-              result = null;
-            }),
+              FilledButton(
+                onPressed: () => Navigator.pop(context, 'save'),
+                child: const LText('Save and leave'),
+              ),
+            ],
           ),
-        ),
-        const SizedBox(height: 12),
-        Wrap(
-          spacing: 10,
-          runSpacing: 10,
-          children: [
-            FilledButton.icon(
-              key: const Key('run-code'),
-              onPressed: busy ? null : run,
-              icon: busy
-                  ? const SizedBox(
-                      width: 16,
-                      height: 16,
-                      child: CircularProgressIndicator(strokeWidth: 2),
-                    )
-                  : const Icon(Icons.play_arrow),
-              label: LText(
-                busy
-                    ? 'Running…'
-                    : widget.exercise == null
-                    ? 'Run code'
-                    : 'Run & check',
-              ),
-            ),
-            OutlinedButton.icon(
-              onPressed: busy ? null : save,
-              icon: const Icon(Icons.save_outlined),
-              label: const LText('Save draft'),
-            ),
-            TextButton(
-              onPressed: busy
+        );
+        if (!mounted || choice == null || choice == 'cancel') return;
+        if (choice == 'save') await save();
+        if (choice == 'discard' && mounted) setState(() => dirty = false);
+        if (mounted && !dirty) {
+          setState(() {});
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            if (mounted) Navigator.of(context).pop();
+          });
+        }
+      },
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          if (widget.exercise == null) ...[
+            const LText('Coding language'),
+            DropdownButton<LabLanguage>(
+              key: const Key('lab-language'),
+              value: language,
+              isExpanded: true,
+              items: [
+                for (final option in labLanguages)
+                  DropdownMenuItem(value: option, child: Text(option.label)),
+              ],
+              onChanged: busy
                   ? null
-                  : () {
-                      final selection = editor.selection;
-                      final start = selection.isValid
-                          ? selection.start
-                          : editor.text.length;
-                      final end = selection.isValid ? selection.end : start;
-                      if (editor.text.length + 4 > 12000) {
-                        return;
-                      }
-                      editor.value = TextEditingValue(
-                        text: editor.text.replaceRange(start, end, '    '),
-                        selection: TextSelection.collapsed(offset: start + 4),
-                      );
-                      setState(() => dirty = true);
+                  : (value) {
+                      if (value != null) changeLanguage(value);
                     },
-              child: const LText('+ 4 spaces'),
             ),
+            const SizedBox(height: 12),
+            LText(
+              canRun ? 'Write, save, and run offline.' : 'Write and save offline. Running this language requires the course tools on your computer.',
+            ),
+            const SizedBox(height: 16),
           ],
-        ),
-        const SizedBox(height: 20),
-        Container(
-          width: double.infinity,
-          padding: const EdgeInsets.all(20),
-          decoration: BoxDecoration(
-            color: ink,
-            borderRadius: BorderRadius.circular(16),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          Row(
             children: [
-              const LText(
-                'OUTPUT',
-                style: TextStyle(
-                  color: Color(0xFFA9C5BC),
-                  fontSize: 11,
-                  letterSpacing: 2,
+              const Icon(Icons.code, size: 20),
+              const SizedBox(width: 8),
+              Expanded(
+                child: Text(
+                  language.file,
+                  textDirection: TextDirection.ltr,
+                  textAlign: Directionality.of(context) == TextDirection.rtl
+                      ? TextAlign.right
+                      : TextAlign.left,
+                  style: const TextStyle(fontWeight: FontWeight.w700),
                 ),
               ),
-              const SizedBox(height: 12),
-              SelectableText(
-                result == null
-                    ? tx(context, 'Your output will appear here.')
-                    : result!.output.isEmpty
-                    ? tx(context, '(no output)')
-                    : result!.output.trimRight(),
-                textDirection: TextDirection.ltr,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontFamily: 'monospace',
-                  height: 1.7,
+              LText(
+                dirty ? 'Unsaved changes' : 'Local draft',
+                style: const TextStyle(fontSize: 12),
+              ),
+            ],
+          ),
+          const SizedBox(height: 12),
+          Directionality(
+            textDirection: TextDirection.ltr,
+            child: TextField(
+              key: const Key('code-editor'),
+              controller: editor,
+              enabled: !busy,
+              minLines: 9,
+              maxLines: 20,
+              autocorrect: false,
+              enableSuggestions: false,
+              keyboardType: TextInputType.multiline,
+              textInputAction: TextInputAction.newline,
+              inputFormatters: [LengthLimitingTextInputFormatter(12000)],
+              style: const TextStyle(
+                fontFamily: 'LearnMono',
+                fontSize: 14,
+                height: 1.8,
+              ),
+              decoration: InputDecoration(
+                label: LText(
+                  widget.exercise == null
+                      ? 'Your code'
+                      : 'Python practice code',
+                  textDirection: Directionality.of(context),
+                ),
+                alignLabelWithHint: true,
+                helper: LText(
+                  language.execution == LabExecution.python
+                      ? 'Use four spaces for indentation. Save or run to keep your draft.'
+                      : 'Save your draft on this device. Code keeps its original writing direction.',
+                  textDirection: Directionality.of(context),
                 ),
               ),
-              if (result?.error != null) ...[
-                const SizedBox(height: 12),
-                LText(
-                  result!.error!,
-                  style: const TextStyle(color: Color(0xFFFFBCAC)),
+              onChanged: (_) => setState(() {
+                dirty = true;
+                assessment = null;
+                result = null;
+              }),
+            ),
+          ),
+          const SizedBox(height: 12),
+          Wrap(
+            spacing: 10,
+            runSpacing: 10,
+            children: [
+              if (canRun)
+                FilledButton.icon(
+                  key: const Key('run-code'),
+                  onPressed: busy ? null : run,
+                  icon: busy
+                      ? const SizedBox(
+                          width: 16,
+                          height: 16,
+                          child: CircularProgressIndicator(strokeWidth: 2),
+                        )
+                      : const Icon(Icons.play_arrow),
+                  label: LText(
+                    busy
+                        ? 'Running…'
+                        : widget.exercise == null
+                        ? (language.execution == LabExecution.sql
+                              ? 'Run query'
+                              : 'Run code')
+                        : 'Run & check',
+                  ),
+                ),
+              OutlinedButton.icon(
+                onPressed: busy ? null : save,
+                icon: const Icon(Icons.save_outlined),
+                label: const LText('Save draft'),
+              ),
+              OutlinedButton.icon(
+                onPressed: busy
+                    ? null
+                    : () => safely(
+                        context,
+                        () =>
+                            Clipboard.setData(ClipboardData(text: editor.text)),
+                        success: 'Code copied.',
+                      ),
+                icon: const Icon(Icons.copy),
+                label: const LText('Copy code'),
+              ),
+              TextButton(
+                onPressed: busy
+                    ? null
+                    : () {
+                        final selection = editor.selection;
+                        final start = selection.isValid
+                            ? selection.start
+                            : editor.text.length;
+                        final end = selection.isValid ? selection.end : start;
+                        if (editor.text.length + 4 > 12000) {
+                          return;
+                        }
+                        editor.value = TextEditingValue(
+                          text: editor.text.replaceRange(start, end, '    '),
+                          selection: TextSelection.collapsed(offset: start + 4),
+                        );
+                        setState(() => dirty = true);
+                      },
+                child: const LText('+ 4 spaces'),
+              ),
+            ],
+          ),
+          const SizedBox(height: 20),
+          if (canRun)
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                color: ink,
+                borderRadius: BorderRadius.circular(16),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const LText(
+                    'OUTPUT',
+                    style: TextStyle(
+                      color: Color(0xFFA9C5BC),
+                      fontSize: 11,
+                      letterSpacing: 2,
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  SelectableText(
+                    result == null
+                        ? tx(context, 'Your output will appear here.')
+                        : result!.output.isEmpty
+                        ? tx(context, '(no output)')
+                        : result!.output.trimRight(),
+                    textDirection: TextDirection.ltr,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'LearnMono',
+                      height: 1.7,
+                    ),
+                  ),
+                  if (result?.error != null) ...[
+                    const SizedBox(height: 12),
+                    LText(
+                      result!.error!,
+                      style: const TextStyle(color: Color(0xFFFFBCAC)),
+                    ),
+                  ],
+                ],
+              ),
+            ),
+          if (assessment != null) ...[
+            const SizedBox(height: 16),
+            FeedbackPanel(assessment!),
+            if (earned > 0) RewardFeedback(points: earned),
+          ],
+          if (widget.exercise != null) ...[
+            const SizedBox(height: 10),
+            ExpansionTile(
+              title: const LText('Need a hint?'),
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: LText(widget.exercise!.hint),
                 ),
               ],
-            ],
-          ),
-        ),
-        if (assessment != null) ...[
-          const SizedBox(height: 16),
-          FeedbackPanel(assessment!),
-        ],
-        if (widget.exercise != null) ...[
-          const SizedBox(height: 10),
-          ExpansionTile(
-            title: const LText('Need a hint?'),
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(16),
-                child: LText(widget.exercise!.hint),
-              ),
-            ],
-          ),
-          ExpansionTile(
-            title: const LText('Expected output'),
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(16),
-                child: SelectableText(
-                  widget.exercise!.expected.trimRight(),
-                  style: const TextStyle(fontFamily: 'monospace'),
+            ),
+            ExpansionTile(
+              title: const LText('Expected output'),
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: SelectableText(
+                    widget.exercise!.expected.trimRight(),
+                    style: const TextStyle(fontFamily: 'LearnMono'),
+                  ),
                 ),
-              ),
-            ],
-          ),
+              ],
+            ),
+          ],
+          const SizedBox(height: 16),
+          if (language.execution == LabExecution.python) const LanguageGuide(),
+          if (language.execution == LabExecution.sql) ...[
+            const LText(
+              'This SQL runner reads fictional tables only. Use SELECT queries up to 2000 characters.',
+            ),
+            SelectableText(
+              sqlSchema,
+              textDirection: TextDirection.ltr,
+              style: const TextStyle(fontFamily: 'LearnMono'),
+            ),
+          ],
+          if (!canRun)
+            LText(
+              widget.controller.curriculum.catalog
+                  .firstWhere((c) => c.id == language.courseId)
+                  .tools,
+              protectInlineCode: true,
+            ),
         ],
-        const SizedBox(height: 16),
-        const LanguageGuide(),
-      ],
+      ),
     ),
   );
 }

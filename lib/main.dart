@@ -24,6 +24,9 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   LicenseRegistry.addLicense(() async* {
     yield LicenseEntryWithLineBreaks([
+      'Noto Sans Mono',
+    ], await rootBundle.loadString('assets/fonts/OFL-NotoSansMono.txt'));
+    yield LicenseEntryWithLineBreaks([
       'Roboto fonts',
     ], await rootBundle.loadString('assets/fonts/LICENSE.txt'));
     yield LicenseEntryWithLineBreaks([

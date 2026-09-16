@@ -66,6 +66,7 @@ void main() {
       addTearDown(controller.dispose);
       await controller.saveWorkspace('python-p1', {'main.py': 'print(99)'});
       final guide = projectGuides['python-p1']!;
+      await seedCourseProgress(controller, 'python');
       await tester.pumpWidget(
         MaterialApp(
           home: ProjectWorkspace(

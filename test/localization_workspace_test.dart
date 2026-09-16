@@ -21,6 +21,9 @@ import 'support.dart';
 
 void main() {
   setUpAll(() async {
+    await (FontLoader(
+      'LearnMono',
+    )..addFont(rootBundle.load('assets/fonts/noto-sans-mono.ttf'))).load();
     await (FontLoader('LearnSans')
           ..addFont(rootBundle.load('assets/fonts/roboto-regular.ttf'))
           ..addFont(rootBundle.load('assets/fonts/roboto-bold.ttf'))
@@ -116,6 +119,57 @@ void main() {
     }
   });
   for (final language in ['fa', 'ps']) {
+    testWidgets(
+      '$language dark mission map renders and opens a playable lesson',
+      (tester) async {
+        tester.view.physicalSize = const Size(1100, 1050);
+        tester.view.devicePixelRatio = 1;
+        addTearDown(tester.view.resetPhysicalSize);
+        addTearDown(tester.view.resetDevicePixelRatio);
+        final controller = model();
+        addTearDown(controller.dispose);
+        final exercise = controller.lessons.first.exercises.first;
+        await controller.submitChoice(exercise, exercise.answer);
+        await tester.pumpWidget(
+          RepaintBoundary(
+            key: const Key('mission-capture'),
+            child: MaterialApp(
+              debugShowCheckedModeBanner: false,
+              theme: learnTheme(true),
+              locale: Locale(language),
+              supportedLocales: const [
+                Locale('en'),
+                Locale('fa'),
+                Locale('ps'),
+              ],
+              localizationsDelegates: learningLocalizations,
+              home: CourseDetail(
+                controller: controller,
+                course: controller.curriculum.catalog.first,
+              ),
+            ),
+          ),
+        );
+        await tester.pumpAndSettle();
+        expect(tester.takeException(), isNull);
+        await expectLater(
+          find.byKey(const Key('mission-capture')),
+          matchesGoldenFile('../preview/mission-$language.png'),
+        );
+        final lesson = find.text(
+          translate(controller.lessons.first.title, language),
+        );
+        await tester.ensureVisible(lesson);
+        await tester.tap(lesson);
+        await tester.pumpAndSettle();
+        expect(
+          find.text(translate('Try the next activity', language)),
+          findsOneWidget,
+        );
+        expect(tester.takeException(), isNull);
+      },
+    );
+
     testWidgets('$language guided lesson phone layout', (tester) async {
       tester.view.physicalSize = const Size(390, 844);
       tester.view.devicePixelRatio = 1;
@@ -149,6 +203,7 @@ void main() {
       addTearDown(tester.view.resetPhysicalSize);
       addTearDown(tester.view.resetDevicePixelRatio);
       final controller = model();
+      await seedCourseProgress(controller, 'python');
       addTearDown(controller.dispose);
       await tester.pumpWidget(
         RepaintBoundary(
@@ -222,11 +277,19 @@ void main() {
         find.byKey(const Key('localized-capture')),
         matchesGoldenFile('../preview/overview-$language.png'),
       );
+      await tester.tap(find.text(translate('Courses', language)));
+      await tester.pumpAndSettle();
+      expect(tester.takeException(), isNull);
+      await expectLater(
+        find.byKey(const Key('localized-capture')),
+        matchesGoldenFile('../preview/curriculum-$language.png'),
+      );
     });
     testWidgets('$language workspace uses RTL chrome and LTR editable code', (
       tester,
     ) async {
       final controller = model();
+      await seedCourseProgress(controller, 'python');
       addTearDown(controller.dispose);
       final course = controller.curriculum.catalog.first;
       await tester.pumpWidget(

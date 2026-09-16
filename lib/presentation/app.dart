@@ -1,3 +1,5 @@
+import 'course_adventure.dart';
+import 'sql_practice_screen.dart';
 import 'localized_text.dart';
 
 import 'package:flutter/material.dart';
@@ -11,6 +13,7 @@ import 'code_workbench.dart';
 import 'lesson_screen.dart';
 import 'theme.dart';
 import 'curriculum_screen.dart';
+import 'about_support_screen.dart';
 
 class LearnApp extends StatelessWidget {
   const LearnApp({super.key, required this.controller});
@@ -75,11 +78,27 @@ class _HomeShellState extends State<HomeShell> {
                 leading: const Icon(Icons.terminal),
                 title: const LText('Code lab'),
                 subtitle: const LText(
-                  'Try small Python programs and see their output.',
+                  'Choose a language, write code, and keep a separate draft for each.',
                 ),
                 trailing: const Icon(Icons.chevron_right),
                 onTap: () => showPage(
                   PageBody(child: CodeWorkbench(controller: widget.controller)),
+                ),
+              ),
+            ),
+            Card(
+              child: ListTile(
+                leading: const Icon(Icons.table_chart_outlined),
+                title: const LText('Offline SQL practice'),
+                subtitle: const LText(
+                  'Explore fictional tables and see real query results.',
+                ),
+                trailing: const Icon(Icons.chevron_right),
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute<void>(
+                    builder: (_) => const SqlPracticeScreen(),
+                  ),
                 ),
               ),
             ),
@@ -332,6 +351,8 @@ class Dashboard extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 20),
+        RewardsPanel(controller: controller),
+        const SizedBox(height: 20),
         Card(
           child: Padding(
             padding: const EdgeInsets.all(20),
@@ -409,7 +430,9 @@ class Dashboard extends StatelessWidget {
                     color: green,
                   ),
                   title: LText(lesson.title),
-                  onTap: () => openLesson(context, controller, lesson),
+                  onTap: controller.lessonUnlocked(lesson)
+                      ? () => openLesson(context, controller, lesson)
+                      : null,
                 ),
             ],
           ),
@@ -459,7 +482,9 @@ class LessonCard extends StatelessWidget {
   Widget build(BuildContext context) => Card(
     child: InkWell(
       borderRadius: BorderRadius.circular(20),
-      onTap: () => openLesson(context, controller, lesson),
+      onTap: controller.lessonUnlocked(lesson)
+          ? () => openLesson(context, controller, lesson)
+          : null,
       child: Padding(
         padding: const EdgeInsets.all(20),
         child: Row(
@@ -472,7 +497,9 @@ class LessonCard extends StatelessWidget {
                 color: mint,
                 borderRadius: BorderRadius.circular(14),
               ),
-              child: controller.solvedIn(lesson) == lesson.exercises.length
+              child: !controller.lessonUnlocked(lesson)
+                  ? const Icon(Icons.lock_outline)
+                  : controller.solvedIn(lesson) == lesson.exercises.length
                   ? const Icon(Icons.check, color: green)
                   : LText(
                       '${controller.lessons.indexOf(lesson) + 1}'.padLeft(
@@ -832,10 +859,28 @@ class _SettingsScreenState extends State<SettingsScreen> {
           ),
         ),
         const SizedBox(height: 24),
+        Card(
+          child: ListTile(
+            contentPadding: const EdgeInsets.all(20),
+            leading: const Icon(Icons.favorite_outline, color: green),
+            title: const LText('About, contact, and support'),
+            subtitle: const LText(
+              'Meet Marifat Team and find the HesabPay support number.',
+            ),
+            trailing: const Icon(Icons.chevron_right),
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute<void>(
+                builder: (_) => const AboutSupportScreen(),
+              ),
+            ),
+          ),
+        ),
+        const SizedBox(height: 24),
         const LanguageGuide(),
         const SizedBox(height: 24),
         const LText(
-          'Learn By Marifat Team 1.1 · 15 offline curricula\nOriginal course content. A local-first learning application for Afghan CS students. '
+          'Learn By Marifat Team 3.1 · 20 offline courses\nOriginal course content. A local-first learning application for Afghan CS students. '
           'No analytics, remote services, or online activation. Practice scores are learning aids, not formal credentials.',
           style: TextStyle(fontSize: 12, height: 1.8),
         ),
@@ -843,7 +888,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           onPressed: () => showLicensePage(
             context: context,
             applicationName: 'Learn By Marifat Team',
-            applicationVersion: '1.1.0',
+            applicationVersion: '3.1.0',
           ),
           child: const LText('Open-source licenses'),
         ),

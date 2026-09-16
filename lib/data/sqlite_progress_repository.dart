@@ -52,6 +52,7 @@ class SqliteProgressRepository implements ProgressRepository {
           .map((e) => e.id)
           .toSet(),
       lessonIds: _courses.lessons.map((l) => l.id).toSet(),
+      courseIds: _curriculum.catalog.map((course) => course.id).toSet(),
     );
   }
 

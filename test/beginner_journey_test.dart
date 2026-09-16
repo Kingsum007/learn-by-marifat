@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:learn_by_marifat_team/application/learning_controller.dart';
 import 'package:learn_by_marifat_team/data/bundled_course.dart';
+import 'package:learn_by_marifat_team/data/detailed_foundations.dart';
 import 'package:learn_by_marifat_team/data/bundled_curriculum.dart';
 import 'package:learn_by_marifat_team/data/translations.dart';
 import 'package:learn_by_marifat_team/presentation/app.dart';
@@ -32,7 +33,10 @@ void main() {
     await tester.ensureVisible(find.text('Start learning'));
     await tester.tap(find.text('Start learning'));
     await tester.pumpAndSettle();
-    expect(find.text(controller.lessons.first.concept), findsOneWidget);
+    expect(
+      find.text(detailedFoundations['hello']['en'][0] as String),
+      findsOneWidget,
+    );
     expect(find.byType(SelectableText), findsNothing);
     await tester.tap(find.text('See an example'));
     await tester.pumpAndSettle();

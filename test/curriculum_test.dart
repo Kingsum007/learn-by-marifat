@@ -25,10 +25,10 @@ void main() {
   );
   test('all requested courses have aligned plans, projects, and acyclic prerequisites', () {
     final catalog = curriculum.catalog;
-    expect(catalog.length, 15);
+    expect(catalog.length, 20);
     final ids = catalog.map((c) => c.id).toSet();
-    expect(ids.length, 15);
-    expect(portfolioIds(curriculum).length, 225);
+    expect(ids.length, 20);
+    expect(portfolioIds(curriculum).length, 700);
     void visit(String id, Set<String> path) {
       expect(path.contains(id), isFalse, reason: 'Prerequisite cycle at $id');
       final course = catalog.firstWhere((c) => c.id == id);
@@ -40,11 +40,16 @@ void main() {
 
     for (final course in catalog) {
       visit(course.id, {});
-      expect(course.modules.length, 6);
+      expect(course.modules.length, 16);
       expect(course.projects.length, 3);
       final plans = course.modules.expand((m) => m.plans).toList();
+      expect(plans.length, 32);
+      expect(
+        course.modules.skip(6).every((m) => m.explanation.length > 70),
+        isTrue,
+      );
       expect(plans.map((p) => p.level).toSet(), BloomLevel.values.toSet());
-      expect(plans.fold<int>(0, (n, p) => n + p.minutes), 900);
+      expect(plans.fold<int>(0, (n, p) => n + p.minutes), 2400);
       for (final module in course.modules) {
         expect(module.explanation.length, greaterThan(100));
         expect(module.example, isNotEmpty);
@@ -57,6 +62,27 @@ void main() {
       for (final project in course.projects) {
         expect(project.requirements.length, 3);
         expect(project.milestones.length, 5);
+      }
+    }
+  });
+
+  test('lesson text stays focused and avoids unsupported outcome claims', () {
+    for (final course in curriculum.catalog) {
+      for (final module in course.modules) {
+        expect(
+          module.explanation.split(RegExp(r'\s+')).length,
+          lessThanOrEqualTo(130),
+          reason: '${course.id}: ${module.title}',
+        );
+        final text = '${module.explanation} ${module.practice}'.toLowerCase();
+        for (final unsupported in [
+          'guaranteed mastery',
+          'guaranteed job',
+          'job-ready',
+          'accredited certificate',
+        ]) {
+          expect(text, isNot(contains(unsupported)));
+        }
       }
     }
   });
@@ -94,7 +120,7 @@ void main() {
       final migrated = controller.validateBackup(jsonEncode(old));
       expect(migrated.solved, {'hello-q'});
       expect(migrated.portfolio, isEmpty);
-      expect(jsonDecode(migrated.encode())['version'], 3);
+      expect(jsonDecode(migrated.encode())['version'], 4);
     },
   );
   test('portfolio round trip preserves evidence, milestones, and rubric independently of quiz grades', () async {
@@ -176,6 +202,8 @@ void main() {
     tester,
   ) async {
     final controller = model();
+    await seedCourseProgress(controller, 'python');
+    await seedCourseProgress(controller, 'flutter-dart', projects: 2);
     addTearDown(controller.dispose);
     tester.view.physicalSize = const Size(390, 844);
     tester.view.devicePixelRatio = 1;
@@ -212,6 +240,8 @@ void main() {
     tester,
   ) async {
     final controller = model();
+    await seedCourseProgress(controller, 'python');
+    await seedCourseProgress(controller, 'flutter-dart', projects: 2);
     addTearDown(controller.dispose);
     tester.view.physicalSize = const Size(360, 800);
     tester.view.devicePixelRatio = 1;

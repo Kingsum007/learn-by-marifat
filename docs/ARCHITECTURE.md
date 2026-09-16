@@ -15,7 +15,7 @@ This specification describes the implemented application. Proposed extensions ar
 |---|---|---|
 | Unreliable or unavailable connectivity | Package lessons, fonts, grading, and the code runner inside the app; local storage is authoritative | No first-run content download; no remote compiler; Android manifest removes network permissions |
 | Beginner programming practice | Worked examples → prediction → code ordering → small coding tasks | Seven lessons and 21 exercises |
-| Multi-course study | Immutable catalog → modules → Bloom-aligned plans → practical projects | 15 courses, 180 plans, 45 project assignments; prerequisite and coverage tests |
+| Multi-course study | Immutable catalog → modules → Bloom-aligned plans → practical projects | 20 courses, 320 plans, 60 project assignments; prerequisite and coverage tests |
 | Evidence-based reflection | Portfolio entries with milestones and five rubric dimensions | Local SQLite persistence and version-1 backup migration tests |
 | Protect learner progress | Immutable learner aggregate, validated commands, serialized writes, SQLite transactions | Failed-write, concurrency, backup, and reopen tests |
 | Keep the UI responsive | Execute student code in an isolate with bounded resources | Step, value, recursion, output, and worker-timeout limits |
@@ -91,7 +91,7 @@ Rules:
 | Learner aggregate / codec | `lib/domain/learner_state.dart` | Immutable state and validated versioned serialization |
 | Bundled curriculum | `lib/data/bundled_course.dart` | Seven original lessons, always available |
 | Curriculum contract and models | `lib/domain/curriculum.dart` | Course, module, Bloom level, lesson plan, project, repository port |
-| Generated catalog adapter | `lib/data/bundled_curriculum.dart` | Immutable compiled-in 15-course catalog |
+| Generated catalog adapter | `lib/data/bundled_curriculum.dart` | Immutable compiled-in 20-course catalog |
 | Portfolio value object | `lib/domain/portfolio.dart` | Bounded evidence, milestones, rubric, validated serialization |
 | Curriculum and portfolio views | `lib/presentation/curriculum_screen.dart` | Search, prerequisites, plans, project briefs, evidence editing |
 | Curriculum authoring | `tool/build_curriculum.py` | One authoring source generates Dart, JSON, and Markdown plans |
@@ -206,7 +206,7 @@ Portfolio save follows the existing serialized commit pipeline. Known lesson-pla
 
 The curriculum generator emits a compiled Dart payload, distributable JSON, and an educator Markdown document. Learner runtime reads compiled data without filesystem downloads. Content changes ship with app releases. Stable IDs are part of the persistence contract; deleting or renaming an ID requires an explicit migration, not a cosmetic content edit.
 
-Every course has 6 modules, 12 session plans, and 3 progressively larger project assignments. Plans contain objectives, time allocation, activities, and assessment evidence. Rubric dimensions are correctness, design, verification, usability/accessibility, and reproducibility. This implements a curriculum and portfolio system, not an automated judge for arbitrary languages or an accreditation system.
+Every course has 16 modules, 32 session plans, and 3 progressively larger project assignments. Plans contain objectives, time allocation, activities, and assessment evidence. Rubric dimensions are correctness, design, verification, usability/accessibility, and reproducibility. This implements a curriculum and portfolio system, not an automated judge for arbitrary languages or an accreditation system.
 
 External project toolchains are outside the application process. The app never invokes a shell, compiler, local HTTP service, or SDK on behalf of curriculum content. Students use provisioned tools themselves. React/Node/Express exercises can run against loopback services on a disconnected workstation. Native iOS work requires a compatible Mac/Xcode. Such development is distinct from reading all curricula offline on the learner's device.
 

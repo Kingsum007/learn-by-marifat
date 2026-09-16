@@ -34,6 +34,7 @@ migrate_working_dir/
 /coverage/
 /work/
 /outputs/
+/tmp/
 /test/failures/
 
 # Symbolication related

@@ -32,12 +32,20 @@ class InventoryVisitor extends RecursiveAstVisitor<void> {
     }
     if ({
       'LearnSans',
+      'LearnMono',
       'monospace',
       'en',
       'fa',
       'ps',
       'playground',
+      'lab-language',
       'python',
+      'database-foundations',
+      'sql',
+      'sqlite',
+      'trace',
+      'practice',
+      'review',
       'run-code',
       'code-editor',
       'save-portfolio',
@@ -134,6 +142,7 @@ void main() {
   for (final file in [
     'lib/runtime/code_runner.dart',
     'lib/runtime/python_vm.dart',
+    'lib/runtime/sql_practice.dart',
     'lib/domain/learner_state.dart',
     'lib/domain/portfolio.dart',
     'lib/application/learning_controller.dart',

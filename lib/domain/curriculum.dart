@@ -51,13 +51,14 @@ class StudyModule {
   StudyModule(Map<String, dynamic> json)
     : title = json['title'] as String,
       explanation = json['explanation'] as String,
+      practice = json['practice'] as String,
       example = json['example'] as String,
       plans = List.unmodifiable(
         (json['plans'] as List).map(
           (e) => LessonPlan(e as Map<String, dynamic>),
         ),
       );
-  final String title, explanation, example;
+  final String title, explanation, example, practice;
   final List<LessonPlan> plans;
 }
 

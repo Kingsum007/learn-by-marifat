@@ -89,7 +89,7 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "org.afghanlearn" "\0"
+            VALUE "CompanyName", "Marifat Software Team" "\0"
             VALUE "FileDescription", "Learn By Marifat Team" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
             VALUE "InternalName", "learn_by_marifat_team" "\0"

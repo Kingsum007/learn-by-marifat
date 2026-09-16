@@ -534,3 +534,175 @@ Save your changes?|تغییرات ذخیره شود؟|بدلونونه خوند�
 Your code has changes that are not saved yet.|تغییرات کد شما هنوز ذخیره نشده است.|ستاسو د کوډ بدلونونه لا نه دي خوندي شوي.
 Save and leave|ذخیره و برگشت|خوندي کول او ستنېدل
 """)
+
+rows(r"""
++{0} XP earned|{0}+ امتیاز گرفتید|{0}+ امتیاز مو واخیست
+Back to course|برگشت به دوره|کورس ته ستنېدل
+Build your first real project|اولین پروژهٔ واقعی خود را بسازید|خپله لومړۍ واقعي پروژه جوړه کړئ
+Challenge completed. Keep your adventure going!|چالش را حل کردید. به مسیرتان ادامه دهید!|ننګونه مو حل کړه. خپل سفر ته دوام ورکړئ!
+Choose a stop. You can revisit any lesson without losing points.|یک مرحله انتخاب کنید. مرور درس‌ها امتیاز شما را کم نمی‌کند.|پړاو وټاکئ. د درسونو بیاکتنه مو امتیاز نه کموي.
+Continue|ادامه|دوام
+Earn 10 XP for each new correct answer and 20 XP for a completed Python lesson. Replays are always free.|هر پاسخ درست تازه ۱۰ امتیاز و تکمیل هر درس پایتون ۲۰ امتیاز دارد. تمرین دوباره همیشه آزاد است.|هر نوی سم ځواب ۱۰ امتیاز او د پایتون د هر درس بشپړول ۲۰ امتیاز لري. بیا تمرین تل ازاد دی.
+Explore each stop with a short explanation, an example, and a task.|در هر مرحله یک توضیح کوتاه، یک مثال و یک تمرین دارید.|په هر پړاو کې لنډه تشریح، بېلګه او تمرین لرئ.
+First spark|اولین جرقه|لومړۍ ځلا
+Follow the path. Solve a challenge. Collect your next badge.|مسیر را دنبال کنید، چالش را حل کنید و نشان بعدی را بگیرید.|لاره تعقیب، ننګونه حل او راتلونکې نښه ترلاسه کړئ.
+Guided workshop|کارگاه همراه با راهنما|لارښود کارځای
+Lesson champion|قهرمان درس|د درس اتل
+Level {0}|سطح {0}|کچه {0}
+Next challenge|چالش بعدی|راتلونکې ننګونه
+Problem solver|حل‌کنندهٔ مسئله|د مسئلې حلوونکی
+Project challenge|چالش پروژه|د پروژې ننګونه
+Python explorer|کاوشگر پایتون|د پایتون سپړونکی
+Reference library and advanced tools|کتابخانهٔ مرجع و ابزارهای پیشرفته|مرجع کتابتون او پرمختللي وسایل
+These workshops use the course tools. They do not award automatic XP.|این کارگاه‌ها از ابزارهای دوره استفاده می‌کنند و امتیاز خودکار ندارند.|دا کارځایونه د کورس وسایل کاروي او اتومات امتیاز نه لري.
+Your badges|نشان‌های شما|ستاسو نښې
+Your coding adventure|ماجراجویی برنامه‌نویسی شما|ستاسو د کوډ لیکلو سفر
+Your mission map|نقشهٔ چالش‌های شما|ستاسو د ننګونو نقشه
+{0} XP|{0} امتیاز|{0} امتیاز
+{0} XP to the next level|{0} امتیاز تا سطح بعدی|راتلونکې کچې ته {0} امتیاز
+{0}/{1} challenges|{0} از {1} چالش|له {1} ننګونو {0}
+""")
+
+rows(r"""
+Badges: solve 1 challenge, solve 5 challenges, finish 1 lesson, then finish all 7 foundation lessons.|نشان‌ها: حل ۱ چالش، حل ۵ چالش، تکمیل ۱ درس و سپس تکمیل هر ۷ درس مقدماتی.|نښې: ۱ ننګونه حل کړئ، ۵ ننګونې حل کړئ، ۱ درس او بیا ټول ۷ بنسټیز درسونه بشپړ کړئ.
+""")
+
+rows(r"""
+All foundation missions completed!|تمام چالش‌های مقدماتی را تمام کردید!|ټولې بنسټیزې ننګونې مو بشپړې کړې!
+Output|نتیجهٔ مثال|د مثال پایله
+Choose a language, write code, and keep a separate draft for each.|زبان را انتخاب کنید، کود بنویسید و برای هر زبان پیش‌نویس جدا نگه دارید.|ژبه وټاکئ، کوډ ولیکئ او د هرې ژبې لپاره جلا مسوده وساتئ.
+Coding language|زبان کودنویسی|د کوډ لیکلو ژبه
+Your code|کود شما|ستاسو کوډ
+Copy code|کاپی کود|کوډ کاپي کړئ
+Code copied.|کود کاپی شد.|کوډ کاپي شو.
+Save before switching language?|پیش از تغییر زبان ذخیره شود؟|د ژبې له بدلولو مخکې یې وساتو؟
+Each language has its own draft. Choose what to do with your current changes.|هر زبان پیش‌نویس جدا دارد. انتخاب کنید با تغییرهای فعلی چه شود.|هره ژبه جلا مسوده لري. وټاکئ چې له اوسنیو بدلونونو سره څه وشي.
+Save and switch|ذخیره و تغییر زبان|ساتل او ژبه بدلول
+Save your draft on this device. Code keeps its original writing direction.|پیش‌نویس را در همین دستگاه ذخیره کنید. جهت اصلی نوشتن کود حفظ می‌شود.|مسوده په همدې وسیله وساتئ. د کوډ اصلي لیکلو لوری ساتل کېږي.
+Write, save, and run offline.|آفلاین بنویسید، ذخیره و اجرا کنید.|آفلاین ولیکئ، وساتئ او وچلوئ.
+Write and save offline. Running this language requires the course tools on your computer.|آفلاین کود بنویسید و ذخیره کنید. اجرای این زبان ابزارهای کورس را در کمپیوتر شما لازم دارد.|آفلاین کوډ ولیکئ او وساتئ. د دې ژبې چلول ستاسو په کمپیوټر کې د کورس وسایل غواړي.
+This SQL runner reads fictional tables only. Use SELECT queries up to 2000 characters.|این اجراکنندهٔ SQL فقط جدول‌های فرضی را می‌خواند. پرس‌وجوی SELECT تا 2000 حرف بنویسید.|دا SQL چلوونکی یوازې فرضي جدولونه لولي. تر 2000 تورو SELECT پوښتنې ولیکئ.
+Check your work|کار خود را بررسی کنید|خپل کار وګورئ
+Course tools|ابزارهای کورس|د کورس وسایل
+Walk through the example|مثال را قدم‌به‌قدم بفهمیم|مثال ګام په ګام وپوهېږو
+Offline SQL practice|تمرین آفلاین SQL|آفلاین SQL تمرین
+Open offline SQL practice|باز کردن تمرین آفلاین SQL|آفلاین SQL تمرین پرانیزئ
+Explore fictional tables and see real query results.|جدول فرضی را بررسی و نتیجهٔ واقعی پرس‌وجو را ببینید.|فرضي جدولونه وګورئ او د پوښتنې واقعي پایله ووینئ.
+Practice tables|جدول‌های تمرین|تمریني جدولونه
+Your SQL query|پرس‌وجوی SQL شما|ستاسو SQL پوښتنه
+Run query|اجرای پرس‌وجو|پوښتنه وچلوئ
+Running...|در حال اجرا…|د اجرا په حال کې…
+Query result|نتیجهٔ پرس‌وجو|د پوښتنې پایله
+Leave SQL practice?|از تمرین SQL بیرون می‌شوید؟|له SQL تمرینه وځئ؟
+Discard and leave|بیرون شدن بدون نگه‌داشتن|له ساتلو پرته وتل
+This query is temporary. Copy it before leaving if you want to keep it.|این پرس‌وجو موقتی است. برای نگه‌داشتن، پیش از بیرون شدن آن را کاپی کنید.|دا پوښتنه موقتي ده. که ساتئ یې، له وتلو مخکې یې کاپي کړئ.
+No rows matched. Check your filter; an empty result is not an execution error.|سطر مطابق پیدا نشد. فلتر را بررسی کنید؛ نتیجهٔ خالی خطای اجرا نیست.|برابر کتار ونه موندل شو. چاڼ وګورئ؛ تشه پایله د اجرا خطا نه ده.
+Try finding books priced at 100. Then count loans for each book, including books with no loans.|کتاب‌های با قیمت 100 را پیدا کنید. سپس امانت هر کتاب، حتی کتاب بی‌امانت را بشمارید.|د 100 بیې کتابونه ومومئ. بیا د هر کتاب پورونه وشمېرئ، بې پوره کتابونه هم شامل کړئ.
+Read fictional tables with SELECT, filters, joins, grouping, and ordering. Each run uses fresh data and shows at most 100 rows. Queries here are temporary; copy any work you want to keep. Updates, subqueries, and server-specific commands are not supported in this practice.|جدول فرضی را با SELECT، فلتر، وصل، گروه‌بندی و ترتیب بخوانید. هر اجرا معلومات تازه و حداکثر 100 سطر نشان می‌دهد. پرس‌وجو موقتی است؛ کار لازم را کاپی کنید. تغییر معلومات، پرس‌وجوی تو‌در‌تو و دستور ویژهٔ سرور در این تمرین اجرا نمی‌شود.|فرضي جدولونه په SELECT، چاڼ، نښلونه، ډله کولو او ترتیب ولولئ. هر اجرا تازه معلومات او تر 100 کتارونو ښيي. پوښتنې موقتي دي؛ اړین کار کاپي کړئ. بدلون، دنننۍ پوښتنې او د سرور ځانګړې قوماندې دلته نه چلېږي.
+SQL practice could not start. Your query is still here; try again.|تمرین SQL آغاز نشد. پرس‌وجوی شما باقی است؛ دوباره تلاش کنید.|SQL تمرین پیل نه شو. پوښتنه مو پاتې ده؛ بیا هڅه وکړئ.
+Use one SELECT query on books, students, or loans. This practice does not change stored data.|یک پرس‌وجوی SELECT روی books، students یا loans بنویسید. این تمرین معلومات ذخیره‌شده را تغییر نمی‌دهد.|پر books، students یا loans یوه SELECT پوښتنه ولیکئ. دا تمرین ساتل شوي معلومات نه بدلوي.
+Write a query of 1 to 2000 characters.|پرس‌وجو باید از 1 تا 2000 حرف داشته باشد.|پوښتنه باید له 1 تر 2000 تورو وي.
+Use the displayed table and column names. Supported functions include COUNT, SUM, AVG, MIN, MAX, and COALESCE.|نام جدول و ستون نمایش‌داده‌شده را استفاده کنید. COUNT، SUM، AVG، MIN، MAX و COALESCE پشتیبانی می‌شوند.|ښودل شوي جدول او ستنې نومونه وکاروئ. COUNT، SUM، AVG، MIN، MAX او COALESCE ملاتړ کېږي.
+The query could not run. Check column names, commas, quotes, and the order of SELECT, FROM, WHERE, GROUP BY, and ORDER BY.|پرس‌وجو اجرا نشد. نام ستون، کامه، نقل قول و ترتیب SELECT، FROM، WHERE، GROUP BY و ORDER BY را بررسی کنید.|پوښتنه ونه چلېده. د ستنې نوم، کامه، نقل قول او د SELECT، FROM، WHERE، GROUP BY او ORDER BY ترتیب وګورئ.
+""")
+
+rows(r"""
+From foundations to advanced practice|از اساسات تا تمرین‌های پیشرفته|له بنسټونو تر پرمختللو تمرینونو
+Start with the introduction. Study the workshops in order, then apply what you learned in a project. You can return to any earlier topic.|از معرفی آغاز کنید. کارگاه‌ها را به ترتیب بخوانید، سپس آموخته‌های خود را در یک پروژه عملی کنید. هر وقت خواستید به موضوع قبلی برگردید.|له پېژندنې پیل وکړئ. کارګاوې په ترتیب ولولئ، بیا زده کړي شیان په یوه پروژه کې عملي کړئ. هر پخواني مطلب ته بېرته تللی شئ.
+Build your foundation|اساسات را یاد بگیرید|بنسټونه زده کړئ
+Connect your skills|مهارت‌های خود را یکجا کنید|خپل مهارتونه سره وتړئ
+Advanced practice|تمرین پیشرفته|پرمختللی تمرین
+Your learning goal|هدف یادگیری شما|ستاسې د زده کړې موخه
+Build on the previous lesson|از درس قبلی کمک بگیرید|له تېر درس څخه ګټه واخلئ
+Before starting, explain the previous example in your own words and repeat its practice without copying. If you are unsure, revisit it first.|پیش از آغاز، مثال قبلی را به زبان خود توضیح دهید و تمرین آن را بدون کاپی تکرار کنید. اگر مطمئن نیستید، نخست آن را مرور کنید.|له پیل مخکې، پخوانی مثال په خپلو خبرو تشریح کړئ او تمرین یې له کاپي کولو پرته بیا وکړئ. که ډاډه نه یاست، لومړی یې بیا ولولئ.
+Pause and predict|کمی مکث کنید و نتیجه را پیش‌بینی کنید|لږ تم شئ او پایله اټکل کړئ
+Before reading the explanation, identify the input, follow each operation, and write the result you expect. Some examples are fragments: check the course tools before trying to run them.|پیش از خواندن توضیح، ورودی را مشخص کنید، هر عمل را دنبال کنید و نتیجهٔ مورد انتظار را بنویسید. بعضی مثال‌ها بخشی از برنامه هستند؛ پیش از اجرا، ابزارهای دوره را بررسی کنید.|د تشریح له لوستلو مخکې، ورودي معلومات وپېژنئ، هر عمل تعقیب کړئ او تمه شوې پایله ولیکئ. ځینې مثالونه د پروګرام برخې دي؛ له چلولو مخکې د کورس وسایل وګورئ.
+Practice in small steps|قدم‌به‌قدم تمرین کنید|ګام په ګام تمرین وکړئ
+First reproduce the example. Then change one value or rule and predict the difference. Finally complete the task without copying. Keep your work and explain why it works.|نخست مثال را دوباره بسازید. سپس یک مقدار یا قاعده را تغییر دهید و تفاوت را پیش‌بینی کنید. در پایان تمرین را بدون کاپی انجام دهید. کار خود را نگه دارید و توضیح دهید چرا درست کار می‌کند.|لومړی مثال بیا جوړ کړئ. بیا یو ارزښت یا قاعده بدله کړئ او توپیر اټکل کړئ. په پای کې تمرین له کاپي کولو پرته بشپړ کړئ. خپل کار وساتئ او تشریح کړئ چې ولې سم کار کوي.
+When something goes wrong|وقتی نتیجه درست نیست|کله چې پایله سمه نه وي
+Compare your result with your prediction. Find the first step where they differ. Check names, values, and punctuation; change one thing and try again. A mistake is a clue, not a reason to stop.|نتیجه را با پیش‌بینی خود مقایسه کنید. اولین قدمی را پیدا کنید که تفاوت ایجاد می‌شود. نام‌ها، مقدارها و نشانه‌ها را بررسی کنید؛ یک چیز را تغییر دهید و دوباره کوشش کنید. اشتباه برای یافتن مشکل کمک می‌کند، دلیل توقف نیست.|پایله له خپل اټکل سره پرتله کړئ. لومړی هغه ګام ومومئ چې توپیر پکې پیدا کېږي. نومونه، ارزښتونه او نښې وګورئ؛ یو شی بدل کړئ او بیا هڅه وکړئ. تېروتنه د ستونزې نښه ده، د درېدو دلیل نه دی.
+Ready for the next lesson?|برای درس بعدی آماده هستید؟|راتلونکي درس ته چمتو یاست؟
+You are ready when you can explain the idea, complete the task, and describe one mistake you corrected. This is a self-check, not an automatic grade. Use the practice activities below to save your evidence.|وقتی آماده هستید که بتوانید مفهوم را توضیح دهید، تمرین را انجام دهید و یک اشتباه اصلاح‌شده را شرح دهید. این بررسی شخصی است و نمرهٔ خودکار ندارد. برای ثبت کار خود از فعالیت‌های تمرینی پایین استفاده کنید.|هغه وخت چمتو یاست چې مفهوم تشریح، تمرین بشپړ او یوه سمه کړې تېروتنه بیان کړای شئ. دا خپله ارزونه ده او اتومات نمره نه لري. د خپل کار د ثبت لپاره لاندې تمرینونه وکاروئ.
+""")
+
+rows(r"""
+Topic locked|موضوع قفل است|مطلب تړلی دی
+Complete each topic to unlock the next. Finished topics remain available for review.|هر موضوع را تکمیل کنید تا موضوع بعدی باز شود. موضوع‌های تکمیل‌شده برای مرور باز می‌مانند.|هر مطلب بشپړ کړئ چې راتلونکی خلاص شي. بشپړ شوي مطالب د بیاکتنې لپاره خلاص پاتې کېږي.
+I completed this activity and checked my work.|این فعالیت را تکمیل کردم و کار خود را بررسی کردم.|ما دا فعالیت بشپړ کړ او خپل کار مې وکوت.
+Finish the earlier topics first. For Python foundations, solve every challenge. For workshops, save evidence and confirm completion in both practice activities. Projects unlock after the workshops.|نخست موضوع‌های قبلی را تکمیل کنید. در اساسات پایتون، همهٔ چالش‌ها را حل کنید. در کارگاه‌ها، کار خود را ذخیره کنید و تکمیل هر دو فعالیت تمرینی را تأیید کنید. پروژه‌ها پس از کارگاه‌ها باز می‌شوند.|لومړی پخواني مطالب بشپړ کړئ. د پایتون په بنسټونو کې ټولې ننګونې حل کړئ. په کارګاوو کې خپل کار وساتئ او د دواړو تمرینونو بشپړېدل تایید کړئ. پروژې له کارګاوو وروسته خلاصېږي.
+Ready to start|آمادهٔ آغاز|پیل ته چمتو
+Finish first: {0}|نخست این را تکمیل کنید: {0}|لومړی دا بشپړ کړئ: {0}
+Finish the required earlier course or topic first. For Python foundations, solve every challenge. For workshops, save evidence and confirm completion in both practice activities. Projects unlock after the workshops.|نخست دوره یا موضوع لازم قبلی را تکمیل کنید. در اساسات پایتون، همهٔ چالش‌ها را حل کنید. در کارگاه‌ها، کار خود را ذخیره کنید و تکمیل هر دو فعالیت تمرینی را تأیید کنید. پروژه‌ها پس از کارگاه‌ها باز می‌شوند.|لومړی اړین پخوانی کورس یا مطلب بشپړ کړئ. د پایتون په بنسټونو کې ټولې ننګونې حل کړئ. په کارګاوو کې خپل کار وساتئ او د دواړو تمرینونو بشپړېدل تایید کړئ. پروژې له کارګاوو وروسته خلاصېږي.
+Complete introduction and unlock topic 1|معرفی را تکمیل و موضوع اول را باز کنید|پېژندنه بشپړه او لومړی مطلب خلاص کړئ
+Topic 1 unlocked|موضوع اول باز شد|لومړی مطلب خلاص شو
+Finish the previous topic to unlock this lesson.|برای باز کردن این درس، موضوع قبلی را تکمیل کنید.|د دې درس د خلاصولو لپاره پخوانی مطلب بشپړ کړئ.
+About and support|درباره و پشتیبانی|زموږ په اړه او ملاتړ
+About, contact, and support|درباره، ارتباط و پشتیبانی|زموږ په اړه، اړیکه او ملاتړ
+Meet Marifat Team and find the HesabPay support number.|با تیم معرفت آشنا شوید و شمارهٔ حمایت حساب‌پی را پیدا کنید.|د معرفت ټیم وپېژنئ او د حساب‌پی د ملاتړ شمېره ومومئ.
+Learn, build, and help others learn.|یاد بگیرید، بسازید و به یادگیری دیگران کمک کنید.|زده کړئ، جوړ یې کړئ او له نورو سره په زده کړه کې مرسته وکړئ.
+Learn By Marifat Team is designed for Afghan students who need clear programming education that remains available without internet.|Learn By Marifat Team برای دانشجویان افغانستان ساخته شده که به آموزش روشن برنامه‌نویسی نیاز دارند و باید بدون اینترنت نیز در دسترس باشد.|Learn By Marifat Team د افغانستان هغو زده‌کوونکو لپاره جوړ شوی چې روښانه پروګرام‌لیکنې زده کړې ته اړتیا لري او باید له انټرنېټ پرته هم ورته لاسرسی ولري.
+Support the project|از پروژه حمایت کنید|د پروژې ملاتړ وکړئ
+Your voluntary contribution helps Marifat Team improve offline lessons, translations, testing, and learning resources. Learning content remains available without a donation.|کمک داوطلبانهٔ شما به تیم معرفت کمک می‌کند درس‌های آفلاین، ترجمه‌ها، آزمایش و منابع یادگیری را بهتر سازد. محتوای آموزشی بدون کمک مالی نیز در دسترس می‌ماند.|ستاسې خپله خوښه مرسته له معرفت ټیم سره د آفلاین درسونو، ژباړو، ازموینو او زده‌کړیزو سرچینو په ښه کولو کې مرسته کوي. زده‌کړیز مطالب له مرستې پرته هم د لاسرسي وړ پاتې کېږي.
+HesabPay|حساب‌پی|حساب‌پی
+Copy HesabPay number|کاپی شمارهٔ حساب‌پی|د حساب‌پی شمېره کاپي کړئ
+HesabPay number copied|شمارهٔ حساب‌پی کاپی شد|د حساب‌پی شمېره کاپي شوه
+About Marifat Team|دربارهٔ تیم معرفت|د معرفت ټیم په اړه
+Marifat Software Team builds practical software and educational tools. This project focuses on understandable, project-based programming education for Afghanistan, with English, Dari, and Pashto content stored on the learner’s device.|تیم نرم‌افزاری معرفت نرم‌افزارهای کاربردی و ابزارهای آموزشی می‌سازد. این پروژه بر آموزش قابل‌فهم و پروژه‌محور برنامه‌نویسی برای افغانستان تمرکز دارد و محتوای انگلیسی، دری و پشتو را روی دستگاه یادگیرنده نگه می‌دارد.|د معرفت سافټویر ټیم عملي سافټویر او زده‌کړیز وسایل جوړوي. دا پروژه د افغانستان لپاره پر پوهېدونکې او پروژه‌محوره پروګرام‌لیکنې زده کړه تمرکز کوي او انګلیسي، دري او پښتو مطالب د زده‌کوونکي پر آله ساتي.
+About the founder|دربارهٔ بنیان‌گذار|د بنسټګر په اړه
+The founder’s verified name, biography, role, and public profile will be shown here after they are provided. The app does not invent or publish personal information.|نام تأییدشده، زندگی‌نامه، نقش و صفحهٔ عمومی بنیان‌گذار پس از دریافت در اینجا نشان داده می‌شود. برنامه اطلاعات شخصی را حدس نمی‌زند یا منتشر نمی‌کند.|د بنسټګر تایید شوی نوم، ژوندلیک، دنده او عامه پاڼه به له ترلاسه کېدو وروسته دلته ښکاره شي. اپ شخصي معلومات نه اټکلوي او نه یې خپروي.
+Contact Marifat Team|ارتباط با تیم معرفت|له معرفت ټیم سره اړیکه
+Verified public email, website, social pages, and messaging contacts will be listed here after they are provided.|ایمیل عمومی، وب‌سایت، صفحه‌های اجتماعی و راه‌های پیام‌رسانی تأییدشده پس از دریافت در اینجا فهرست می‌شوند.|تایید شوی عامه برېښنالیک، وېبپاڼه، ټولنیزې پاڼې او د پیغام اړیکې به له ترلاسه کېدو وروسته دلته ولیکل شي.
+YouTube channel|کانال یوتیوب|یوټیوب چینل
+The verified YouTube channel link will appear here after it is provided. Opening YouTube requires an internet connection; the courses themselves remain offline.|لینک تأییدشدهٔ کانال یوتیوب پس از دریافت در اینجا نشان داده می‌شود. باز کردن یوتیوب به اینترنت نیاز دارد؛ خود دوره‌ها آفلاین باقی می‌مانند.|د یوټیوب تایید شوی لینک به له ترلاسه کېدو وروسته دلته ښکاره شي. د یوټیوب پرانیستل انټرنېټ غواړي؛ خپله کورسونه آفلاین پاتې کېږي.
+Learn By Marifat Team 2.9 · 20 offline courses\nOriginal course content. A local-first learning application for Afghan CS students. No analytics, remote services, or online activation. Practice scores are learning aids, not formal credentials.|Learn By Marifat Team 2.9 · ۲۰ دورهٔ آفلاین\nمحتوای اصلی دوره. یک برنامهٔ آموزشی با اولویت ذخیرهٔ محلی برای دانشجویان کمپیوترساینس افغانستان. بدون تحلیل رفتار، خدمات راه دور یا فعال‌سازی آنلاین. امتیاز تمرین ابزار یادگیری است، نه مدرک رسمی.|Learn By Marifat Team 2.9 · ۲۰ آفلاین کورسونه\nاصلي کورسي مطالب. د افغانستان د کمپیوټر ساینس زده‌کوونکو لپاره محلي لومړیتوب زده‌کړیز اپ. شننه، لیرې خدمتونه او آنلاین فعالول نه لري. د تمرین نمرې د زده کړې مرسته ده، رسمي سند نه دی.
+Learn By Marifat Team 3.1 · 20 offline courses\nOriginal course content. A local-first learning application for Afghan CS students. No analytics, remote services, or online activation. Practice scores are learning aids, not formal credentials.|Learn By Marifat Team 3.1 · ۲۰ دورهٔ آفلاین\nمحتوای اصلی دوره. یک برنامهٔ آموزشی با اولویت ذخیرهٔ محلی برای دانشجویان کمپیوترساینس افغانستان. بدون تحلیل رفتار، خدمات راه دور یا فعال‌سازی آنلاین. امتیاز تمرین ابزار یادگیری است، نه مدرک رسمی.|Learn By Marifat Team 3.1 · ۲۰ آفلاین کورسونه\nاصلي کورسي مطالب. د افغانستان د کمپیوټر ساینس زده‌کوونکو لپاره محلي لومړیتوب زده‌کړیز اپ. شننه، لیرې خدمتونه او آنلاین فعالول نه لري. د تمرین نمرې د زده کړې مرسته ده، رسمي سند نه دی.
+Learn By Marifat Team 3.0 · 20 offline courses\nOriginal course content. A local-first learning application for Afghan CS students. No analytics, remote services, or online activation. Practice scores are learning aids, not formal credentials.|Learn By Marifat Team 3.0 · ۲۰ دورهٔ آفلاین\nمحتوای اصلی دوره. یک برنامهٔ آموزشی با اولویت ذخیرهٔ محلی برای دانشجویان کمپیوترساینس افغانستان. بدون تحلیل رفتار، خدمات راه دور یا فعال‌سازی آنلاین. امتیاز تمرین ابزار یادگیری است، نه مدرک رسمی.|Learn By Marifat Team 3.0 · ۲۰ آفلاین کورسونه\nاصلي کورسي مطالب. د افغانستان د کمپیوټر ساینس زده‌کوونکو لپاره محلي لومړیتوب زده‌کړیز اپ. شننه، لیرې خدمتونه او آنلاین فعالول نه لري. د تمرین نمرې د زده کړې مرسته ده، رسمي سند نه دی.
+STORE_BUILD|STORE_BUILD|STORE_BUILD
+This is not a supported Learn By Marifat Team backup (version 1, 2, 3, or 4).|این فایل پشتیبان پشتیبانی نمی‌شود؛ نسخه باید 1، 2، 3 یا 4 برنامهٔ Learn By Marifat Team باشد.|دا شاتړ فایل نه ملاتړ کېږي؛ باید د Learn By Marifat Team د 1، 2، 3 یا 4 نسخې وي.
+Safi Ullah Mirzai|صفی‌الله میرزایی|صفي‌الله میرزایي
+Founder of Marifat Software Team, senior full-stack developer, and computer science lecturer in Kabul. He teaches databases, programming, mobile application development, software engineering, computer architecture, and software assurance. He holds a bachelor’s degree in Computer Science (Software Engineering) and is pursuing a master’s degree in Information Systems at Kabul University. His work includes educational tools, management information systems, web applications, mobile development, and database systems.|صفی‌الله میرزایی بنیان‌گذار تیم نرم‌افزاری معرفت، توسعه‌دهندهٔ ارشد فول‌استک و استاد کمپیوترساینس در کابل است. او دیتابیس، برنامه‌نویسی، توسعهٔ اپلیکیشن موبایل، مهندسی نرم‌افزار، معماری کمپیوتر و تضمین نرم‌افزار تدریس می‌کند. او مدرک لیسانس کمپیوترساینس در رشتهٔ مهندسی نرم‌افزار دارد و در دانشگاه کابل دورهٔ ماستری سیستم‌های اطلاعاتی را دنبال می‌کند. کارهای او شامل ابزارهای آموزشی، سیستم‌های معلوماتی مدیریتی، برنامه‌های وب، توسعهٔ موبایل و سیستم‌های دیتابیس است.|صفي‌الله میرزایي د معرفت سافټویر ټیم بنسټګر، د فول‌سټک لوړپوړی پراختیاکوونکی او په کابل کې د کمپیوټرساینس استاد دی. هغه ډیټابیسونه، پروګرام‌لیکنه، د موبایل اپلېکېشن پراختیا، سافټویر انجینري، د کمپیوټر معماري او د سافټویر تضمین تدریسوي. هغه د کمپیوټرساینس د سافټویر انجینرۍ لیسانس لري او په کابل پوهنتون کې د معلوماتي سیسټمونو ماستري تعقیبوي. د هغه په کارونو کې زده‌کړیز وسایل، مدیریتي معلوماتي سیسټمونه، وېب اپلېکېشنونه، د موبایل پراختیا او ډیټابیس سیسټمونه شامل دي.
+Use the copy button to save a contact address. Opening websites and social pages requires internet access.|برای ذخیرهٔ یک راه ارتباطی از دکمهٔ کاپی استفاده کنید. باز کردن وب‌سایت‌ها و صفحه‌های اجتماعی به اینترنت نیاز دارد.|د اړیکې پته د ساتلو لپاره د کاپي تڼۍ وکاروئ. د وېبپاڼو او ټولنیزو پاڼو پرانیستل انټرنېټ غواړي.
+Email|ایمیل|برېښنالیک
+Website|وب‌سایت|وېبپاڼه
+LinkedIn|لینکدین|لېنکډاېن
+GitHub|گیت‌هاب|ګېټ‌هب
+Phone and WhatsApp|تلفن و واتساپ|تلیفون او واټس‌اپ
+Copy contact|کاپی راه ارتباطی|اړیکه کاپي کړئ
+Contact copied|راه ارتباطی کاپی شد|اړیکه کاپي شوه
+sumirzai@gmail.com|sumirzai@gmail.com|sumirzai@gmail.com
+safimirzai.dev|safimirzai.dev|safimirzai.dev
+linkedin.com/in/kingsum007|linkedin.com/in/kingsum007|linkedin.com/in/kingsum007
+github.com/Kingsum007|github.com/Kingsum007|github.com/Kingsum007
+A YouTube channel was not listed in the provided résumé. The verified channel link will appear here after it is provided. Opening YouTube requires an internet connection; the courses themselves remain offline.|در رزومهٔ ارائه‌شده کانال یوتیوب ذکر نشده است. لینک تأییدشدهٔ کانال پس از دریافت در اینجا نشان داده می‌شود. باز کردن یوتیوب به اینترنت نیاز دارد؛ خود دوره‌ها آفلاین باقی می‌مانند.|په ورکړل شوې ژوندلیک کې د یوټیوب چینل نه و یاد شوی. تایید شوی لینک به له ترلاسه کېدو وروسته دلته ښکاره شي. د یوټیوب پرانیستل انټرنېټ غواړي؛ خپله کورسونه آفلاین پاتې کېږي.
+Code With Safi|کُد با صفی|له صفي سره کوډ
+Watch programming lessons and practical tutorials on the official YouTube channel. Opening YouTube requires internet; the courses in this app remain offline.|درس‌های برنامه‌نویسی و آموزش‌های عملی را در کانال رسمی یوتیوب تماشا کنید. باز کردن یوتیوب به اینترنت نیاز دارد؛ دوره‌های داخل این برنامه آفلاین باقی می‌مانند.|د پروګرام‌لیکنې درسونه او عملي ښوونې په رسمي یوټیوب چینل کې وګورئ. د یوټیوب پرانیستل انټرنېټ غواړي؛ د دې اپ کورسونه آفلاین پاتې کېږي.
+Open YouTube channel|بازکردن کانال یوتیوب|د یوټیوب چینل پرانیستل
+Copy channel link|کاپی لینک کانال|د چینل لینک کاپي کړئ
+YouTube link copied|لینک یوتیوب کاپی شد|د یوټیوب لینک کاپي شو
+Could not open the YouTube channel|کانال یوتیوب باز نشد|د یوټیوب چینل خلاص نه شو
+https://www.youtube.com/@codewithsafi-sum|https://www.youtube.com/@codewithsafi-sum|https://www.youtube.com/@codewithsafi-sum
+START HERE|از این‌جا آغاز کنید|له دې ځایه پیل کړئ
+Learn programming step by step|برنامه‌نویسی را گام‌به‌گام بیاموزید|پروګرام‌لیکنه ګام په ګام زده کړئ
+Never coded before? Begin with Python. We explain every new idea, then help you practise it in a small project.|قبلاً کُد ننوشته‌اید؟ با پایتون آغاز کنید. هر مفهوم تازه را با توضیح روشن یاد می‌گیرید و سپس آن را در یک پروژهٔ کوچک تمرین می‌کنید.|مخکې مو کوډ نه دی لیکلی؟ له پایتون څخه پیل وکړئ. هر نوی مفهوم درته روښانه کوو، بیا یې په یوې کوچنۍ پروژې کې تمرینوئ.
+Start with Python|آغاز با پایتون|له پایتون سره پیل
+Learning paths|مسیرهای یادگیری|د زده‌کړې لارې
+{0} courses|{0} دوره|{0} کورسونه
+Begin with the first available path. New paths unlock as you complete their foundations.|از نخستین مسیر باز آغاز کنید. با تکمیل مبانی، مسیرهای تازه برایتان باز می‌شوند.|له لومړۍ پرانیستې لارې پیل وکړئ. د بنسټونو په بشپړولو سره نوې لارې درته پرانیستل کېږي.
+Completed|تکمیل‌شده|بشپړ شوی
+Locked|قفل|تړلی
+Beginner friendly · no prior experience needed|مناسب مبتدی · بدون نیاز به تجربهٔ قبلی|د پیل کوونکي لپاره مناسب · پخوانۍ تجربه نه غواړي
+Your next learning path is ready|مسیر بعدی یادگیری شما آماده است|ستاسې راتلونکې زده‌کړیزه لاره چمتو ده
+Complete first: {0}|نخست تکمیل کنید: {0}|لومړی بشپړ کړئ: {0}
+{0} modules|{0} بخش|{0} برخې
+{0} projects|{0} پروژه|{0} پروژې
+web-development|web-development|web-development
+javascript|javascript|javascript
+nodejs|nodejs|nodejs
+expressjs|expressjs|expressjs
+postgresql|postgresql|postgresql
+mongodb|mongodb|mongodb
+Quick checkpoint|بررسی کوتاه|لنډه کتنه
+Reproduce the example, change one value, and predict the result. If it fails, find the first step that differs from your prediction and change one thing at a time. Continue when you can complete the task and explain one correction you made.|نمونه را دوباره بسازید، یک مقدار را تغییر دهید و نتیجه را پیش‌بینی کنید. اگر ناکام شد، نخستین گامی را پیدا کنید که با پیش‌بینی شما فرق دارد و هر بار فقط یک چیز را تغییر دهید. زمانی ادامه دهید که کار را تکمیل و یک اصلاح خود را توضیح داده بتوانید.|بېلګه بیا جوړه، یو ارزښت بدل او پایله اټکل کړئ. که ناکامه شوه، لومړی هغه ګام ومومئ چې له اټکل سره توپیر لري او هر ځل یوازې یو شی بدل کړئ. هغه وخت دوام ورکړئ چې کار بشپړ او خپل یو سمون تشریح کولی شئ.
+Privacy and learner data|حریم خصوصی و داده‌های یادگیرنده|محرمیت او د زده‌کوونکي معلومات
+The app has no account, advertising, analytics, or remote server. Lessons, progress, answers, drafts, and portfolio notes stay on this device. The app does not transmit learner data. You choose when and where to export a local backup. Opening the YouTube channel leaves the app and follows the privacy terms of the external service.|برنامه حساب کاربری، تبلیغات، تحلیل رفتار یا سرور دور ندارد. درس‌ها، پیشرفت، جواب‌ها، پیش‌نویس‌ها و یادداشت‌های دوسیه روی همین دستگاه می‌مانند. برنامه داده‌های یادگیرنده را انتقال نمی‌دهد. زمان و محل صدور پشتیبان محلی را خودتان انتخاب می‌کنید. بازکردن کانال یوتیوب شما را از برنامه بیرون می‌برد و تابع شرایط حریم خصوصی آن خدمت است.|اپ حساب، اعلانونه، شننه یا لیرې سرور نه لري. درسونه، پرمختګ، ځوابونه، مسودې او د کار دوسیې یادښتونه پر همدې آله پاتې کېږي. اپ د زده‌کوونکي معلومات نه لېږي. د محلي شاتړ د صادرولو وخت او ځای تاسې ټاکئ. د یوټیوب چینل پرانیستل له اپ څخه وځي او د بهرني خدمت د محرمیت شرطونه پلي کېږي.
+""")

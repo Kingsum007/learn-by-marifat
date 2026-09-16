@@ -1,8 +1,8 @@
 # Learn By Marifat Team — Curriculum and lesson plans
 
-Original curriculum, edition 1. Bloom means the revised cognitive taxonomy, not an accreditation or a fixed rule requiring every lesson to traverse six levels. These are guided lesson plans and project assignments, not a claim that all topics have full interactive textbooks or embedded compilers.
+Original curriculum, edition 3. Bloom means the revised cognitive taxonomy, not an accreditation or a fixed rule requiring every lesson to traverse six levels. These are guided lesson plans and project assignments, not a claim that every toolchain is embedded in the app.
 
-Every course has six modules, twelve planned sessions (15 guided hours), and three projects (6 + 12 + 24 estimated hours). Allow additional practice and remediation. “Zero to Hero” names the Python pathway; competence requires demonstrated work, not seat time.
+Every course has sixteen modules, thirty-two planned sessions (40 guided hours), and three projects (6 + 12 + 24 estimated hours). Modules seven through sixteen progress through advanced technology and applied software engineering. Allow additional practice and remediation. “Zero to Hero” names the Python pathway; competence requires demonstrated work, not seat time.
 
 ## Lesson delivery protocol
 
@@ -21,6 +21,8 @@ Prerequisites: No prior programming required; basic device and file use.
 Offline tools: Python basics run in the app’s limited sandbox. Advanced modules require a separately installed CPython 3 interpreter; use only the standard library. Save local .py files and run python filename.py. No pip packages are needed for these projects.
 
 ### Start here: first guided lesson
+
+This is the true starting point for this course. No vocabulary from this course is assumed. You will first learn what the example is for, the meaning of its four key terms, and how to follow it one step at a time. Read the prerequisite course shown in the catalog first when one is required.
 
 No programming experience is needed. Open Code lab. Replace its sample with the two lines below. Type straight quotes, not decorative quotation marks. Press Run code. You can also trace the example on paper.
 
@@ -252,6 +254,341 @@ Activity: a batch report with sequential and worker implementations, measuring t
 
 Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
 
+### Protocols, descriptors, and metaprogramming
+
+This Python module teaches you to define stable behavioral contracts and control attribute access without fragile inheritance. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+from typing import Protocol
+class Priced(Protocol):
+    price: int
+def total(items: list[Priced]) -> int:
+    return sum(item.price for item in items)
+```
+
+#### Protocols, descriptors, and metaprogramming: guided investigation (60 min; Create)
+
+ID: `python-m7-l1`
+
+Objective: Design and deliver an original extension using protocols, descriptors, and metaprogramming with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Design a protocol-based pricing service and test two unrelated implementations. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Protocols, descriptors, and metaprogramming: independent studio (90 min; Evaluate)
+
+ID: `python-m7-l2`
+
+Objective: Judge two approaches to protocols, descriptors, and metaprogramming against correctness, maintainability, and offline operation.
+
+Activity: Design a protocol-based pricing service and test two unrelated implementations. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Async services, packaging, and secure delivery
+
+This Python module teaches you to coordinate bounded asynchronous work, package reproducibly, and protect local inputs and secrets. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+import asyncio
+async def report(values):
+    await asyncio.sleep(0)
+    return sum(values)
+print(asyncio.run(report([20, 30])))
+```
+
+#### Async services, packaging, and secure delivery: guided investigation (60 min; Create)
+
+ID: `python-m8-l1`
+
+Objective: Design and deliver an original extension using async services, packaging, and secure delivery with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Build an offline asynchronous report pipeline with timeouts, cancellation, tests, and a reproducible package. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Async services, packaging, and secure delivery: independent studio (90 min; Evaluate)
+
+ID: `python-m8-l2`
+
+Objective: Judge two approaches to async services, packaging, and secure delivery against correctness, maintainability, and offline operation.
+
+Activity: Build an offline asynchronous report pipeline with timeouts, cancellation, tests, and a reproducible package. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Requirements and domain discovery
+
+This Python module teaches you to turn a learner or client problem into user stories, a shared vocabulary, scope boundaries, and testable acceptance examples. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+User: a learner with an older device
+Need: finish work without internet
+Acceptance: saved work survives restart
+Out of scope: cloud accounts
+```
+
+#### Requirements and domain discovery: guided investigation (60 min; Create)
+
+ID: `python-m9-l1`
+
+Objective: Design and deliver an original extension using requirements and domain discovery with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Interview a fictional learner, write three user stories and acceptance examples, then reject one attractive feature that violates the offline scope. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Requirements and domain discovery: independent studio (90 min; Evaluate)
+
+ID: `python-m9-l2`
+
+Objective: Judge two approaches to requirements and domain discovery against correctness, maintainability, and offline operation.
+
+Activity: Interview a fictional learner, write three user stories and acceptance examples, then reject one attractive feature that violates the offline scope. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Models, interfaces, and contracts
+
+This Python module teaches you to model domain rules separately from screens and frameworks, define small interfaces, and state preconditions, results, and errors. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Input contract: non-empty learner_id
+Rule: progress can only move forward
+Result: saved progress or a specific error
+Adapter: local file or database
+```
+
+#### Models, interfaces, and contracts: guided investigation (60 min; Create)
+
+ID: `python-m10-l1`
+
+Objective: Design and deliver an original extension using models, interfaces, and contracts with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Draw the domain, application, storage, and interface boundaries for a small attendance feature; define one contract at every boundary. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Models, interfaces, and contracts: independent studio (90 min; Evaluate)
+
+ID: `python-m10-l2`
+
+Objective: Judge two approaches to models, interfaces, and contracts against correctness, maintainability, and offline operation.
+
+Activity: Draw the domain, application, storage, and interface boundaries for a small attendance feature; define one contract at every boundary. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Validation and failure recovery
+
+This Python module teaches you to validate at trust boundaries, preserve the last valid state, use atomic changes, and design recovery users can understand. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+normal: 3 valid records -> save
+edge: empty list -> valid empty result
+invalid: negative score -> reject
+interruption: old data remains readable
+```
+
+#### Validation and failure recovery: guided investigation (60 min; Create)
+
+ID: `python-m11-l1`
+
+Objective: Design and deliver an original extension using validation and failure recovery with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Build a validation table for normal, empty, boundary, malformed, duplicate, and interrupted operations, then implement or simulate safe recovery. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Validation and failure recovery: independent studio (90 min; Evaluate)
+
+ID: `python-m11-l2`
+
+Objective: Judge two approaches to validation and failure recovery against correctness, maintainability, and offline operation.
+
+Activity: Build a validation table for normal, empty, boundary, malformed, duplicate, and interrupted operations, then implement or simulate safe recovery. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Testing strategy and quality gates
+
+This Python module teaches you to combine focused unit tests, boundary tests, integration checks, and user-visible acceptance evidence without mirroring the implementation. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Given saved progress at lesson 2
+When the app restarts offline
+Then lesson 2 remains complete
+And lesson 3 is the next available step
+```
+
+#### Testing strategy and quality gates: guided investigation (60 min; Create)
+
+ID: `python-m12-l1`
+
+Objective: Design and deliver an original extension using testing strategy and quality gates with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Create a test pyramid for one real feature, write at least five meaningful cases, and explain which failure each test would catch. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Testing strategy and quality gates: independent studio (90 min; Evaluate)
+
+ID: `python-m12-l2`
+
+Objective: Judge two approaches to testing strategy and quality gates against correctness, maintainability, and offline operation.
+
+Activity: Create a test pyramid for one real feature, write at least five meaningful cases, and explain which failure each test would catch. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Architecture and dependency boundaries
+
+This Python module teaches you to apply separation of concerns, dependency inversion, cohesive modules, and architecture decision records to keep change affordable. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+presentation -> application -> domain
+data implements domain ports
+platform code stays behind adapters
+Decision: local storage is the source of truth
+```
+
+#### Architecture and dependency boundaries: guided investigation (60 min; Create)
+
+ID: `python-m13-l1`
+
+Objective: Design and deliver an original extension using architecture and dependency boundaries with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Refactor or redesign one feature so its business rule can be tested without its UI, database, framework, or network. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Architecture and dependency boundaries: independent studio (90 min; Evaluate)
+
+ID: `python-m13-l2`
+
+Objective: Judge two approaches to architecture and dependency boundaries against correctness, maintainability, and offline operation.
+
+Activity: Refactor or redesign one feature so its business rule can be tested without its UI, database, framework, or network. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Security, privacy, and inclusive access
+
+This Python module teaches you to threat-model assets and trust boundaries, minimize data and permissions, and include keyboard, screen-reader, contrast, language, and large-text needs. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Asset: learner progress
+Threat: unintended disclosure
+Control: local minimum data
+Access check: keyboard + 200% text
+Recovery: explicit local backup
+```
+
+#### Security, privacy, and inclusive access: guided investigation (60 min; Create)
+
+ID: `python-m14-l1`
+
+Objective: Design and deliver an original extension using security, privacy, and inclusive access with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Produce a compact threat and accessibility review, repair the two highest-impact findings, and record evidence with fictional data. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Security, privacy, and inclusive access: independent studio (90 min; Evaluate)
+
+ID: `python-m14-l2`
+
+Objective: Judge two approaches to security, privacy, and inclusive access against correctness, maintainability, and offline operation.
+
+Activity: Produce a compact threat and accessibility review, repair the two highest-impact findings, and record evidence with fictional data. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Performance and resource budgets
+
+This Python module teaches you to measure startup, responsiveness, memory, storage, and expensive operations before optimizing for realistic low-resource devices. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+startup budget: 2 seconds
+interaction budget: 100 ms
+storage budget: 50 MB
+offline check: airplane mode from first launch
+```
+
+#### Performance and resource budgets: guided investigation (60 min; Create)
+
+ID: `python-m15-l1`
+
+Objective: Design and deliver an original extension using performance and resource budgets with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Choose three measurable budgets, capture a baseline, improve one proven bottleneck, and verify that behavior and accessibility still pass. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Performance and resource budgets: independent studio (90 min; Evaluate)
+
+ID: `python-m15-l2`
+
+Objective: Judge two approaches to performance and resource budgets against correctness, maintainability, and offline operation.
+
+Activity: Choose three measurable budgets, capture a baseline, improve one proven bottleneck, and verify that behavior and accessibility still pass. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Capstone delivery and maintenance
+
+This Python module teaches you to plan incremental delivery, version data safely, document offline setup, review risks, and maintain the product after its first release. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Release evidence:
+- acceptance checks pass
+- migration and rollback tested
+- offline install documented
+- known limits published
+- next improvement prioritized
+```
+
+#### Capstone delivery and maintenance: guided investigation (60 min; Create)
+
+ID: `python-m16-l1`
+
+Objective: Design and deliver an original extension using capstone delivery and maintenance with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Deliver a course-specific capstone increment with requirements, architecture decision, implementation evidence, tests, usability review, migration or rollback plan, and a short demonstration. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Capstone delivery and maintenance: independent studio (90 min; Evaluate)
+
+ID: `python-m16-l2`
+
+Objective: Judge two approaches to capstone delivery and maintenance against correctness, maintainability, and offline operation.
+
+Activity: Deliver a course-specific capstone increment with requirements, architecture decision, implementation evidence, tests, usability review, migration or rollback plan, and a short demonstration. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
 ### Project: Household expense ledger (6 hours)
 
 Help a fictional family understand weekly spending in AFN.
@@ -313,6 +650,8 @@ Prerequisites: No prior programming required; basic device and file use.
 Offline tools: Use a local text editor and browser. Open index.html directly; bundle CSS, images, and fonts locally. No CDN, online design service, or package manager is required.
 
 ### Start here: first guided lesson
+
+This is the true starting point for this course. No vocabulary from this course is assumed. You will first learn what the example is for, the meaning of its four key terms, and how to follow it one step at a time. Read the prerequisite course shown in the catalog first when one is required.
 
 No programming experience is needed. Create a folder named first-page. In a plain-text editor save a file named index.html, not index.html.txt. Paste the example, save it, and open it in a browser. No internet is needed.
 
@@ -533,6 +872,337 @@ Activity: a small component guide and a usability report with three observed iss
 
 Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
 
+### Design systems and component architecture
+
+This web design module teaches you to turn tokens, components, states, and content rules into a maintainable interface system. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+:root { --space-2: .5rem; --brand: #087c89; }
+.button { padding: var(--space-2) 1rem; }
+.button:focus-visible { outline: 3px solid currentColor; }
+```
+
+#### Design systems and component architecture: guided investigation (60 min; Create)
+
+ID: `web-design-m7-l1`
+
+Objective: Design and deliver an original extension using design systems and component architecture with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Create a documented local design system with accessible default, hover, focus, error, and disabled states. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Design systems and component architecture: independent studio (90 min; Evaluate)
+
+ID: `web-design-m7-l2`
+
+Objective: Judge two approaches to design systems and component architecture against correctness, maintainability, and offline operation.
+
+Activity: Create a documented local design system with accessible default, hover, focus, error, and disabled states. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Advanced accessibility and performance
+
+This web design module teaches you to audit semantics, keyboard flow, contrast, motion, responsive images, and rendering cost under real constraints. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; }
+}
+```
+
+#### Advanced accessibility and performance: guided investigation (60 min; Create)
+
+ID: `web-design-m8-l1`
+
+Objective: Design and deliver an original extension using advanced accessibility and performance with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Audit and repair a multi-page site for keyboard, screen-reader, large-text, reduced-motion, and offline performance. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Advanced accessibility and performance: independent studio (90 min; Evaluate)
+
+ID: `web-design-m8-l2`
+
+Objective: Judge two approaches to advanced accessibility and performance against correctness, maintainability, and offline operation.
+
+Activity: Audit and repair a multi-page site for keyboard, screen-reader, large-text, reduced-motion, and offline performance. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Requirements and domain discovery
+
+This web design module teaches you to turn a learner or client problem into user stories, a shared vocabulary, scope boundaries, and testable acceptance examples. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+User: a learner with an older device
+Need: finish work without internet
+Acceptance: saved work survives restart
+Out of scope: cloud accounts
+```
+
+#### Requirements and domain discovery: guided investigation (60 min; Create)
+
+ID: `web-design-m9-l1`
+
+Objective: Design and deliver an original extension using requirements and domain discovery with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Interview a fictional learner, write three user stories and acceptance examples, then reject one attractive feature that violates the offline scope. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Requirements and domain discovery: independent studio (90 min; Evaluate)
+
+ID: `web-design-m9-l2`
+
+Objective: Judge two approaches to requirements and domain discovery against correctness, maintainability, and offline operation.
+
+Activity: Interview a fictional learner, write three user stories and acceptance examples, then reject one attractive feature that violates the offline scope. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Models, interfaces, and contracts
+
+This web design module teaches you to model domain rules separately from screens and frameworks, define small interfaces, and state preconditions, results, and errors. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Input contract: non-empty learner_id
+Rule: progress can only move forward
+Result: saved progress or a specific error
+Adapter: local file or database
+```
+
+#### Models, interfaces, and contracts: guided investigation (60 min; Create)
+
+ID: `web-design-m10-l1`
+
+Objective: Design and deliver an original extension using models, interfaces, and contracts with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Draw the domain, application, storage, and interface boundaries for a small attendance feature; define one contract at every boundary. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Models, interfaces, and contracts: independent studio (90 min; Evaluate)
+
+ID: `web-design-m10-l2`
+
+Objective: Judge two approaches to models, interfaces, and contracts against correctness, maintainability, and offline operation.
+
+Activity: Draw the domain, application, storage, and interface boundaries for a small attendance feature; define one contract at every boundary. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Validation and failure recovery
+
+This web design module teaches you to validate at trust boundaries, preserve the last valid state, use atomic changes, and design recovery users can understand. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+normal: 3 valid records -> save
+edge: empty list -> valid empty result
+invalid: negative score -> reject
+interruption: old data remains readable
+```
+
+#### Validation and failure recovery: guided investigation (60 min; Create)
+
+ID: `web-design-m11-l1`
+
+Objective: Design and deliver an original extension using validation and failure recovery with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Build a validation table for normal, empty, boundary, malformed, duplicate, and interrupted operations, then implement or simulate safe recovery. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Validation and failure recovery: independent studio (90 min; Evaluate)
+
+ID: `web-design-m11-l2`
+
+Objective: Judge two approaches to validation and failure recovery against correctness, maintainability, and offline operation.
+
+Activity: Build a validation table for normal, empty, boundary, malformed, duplicate, and interrupted operations, then implement or simulate safe recovery. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Testing strategy and quality gates
+
+This web design module teaches you to combine focused unit tests, boundary tests, integration checks, and user-visible acceptance evidence without mirroring the implementation. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Given saved progress at lesson 2
+When the app restarts offline
+Then lesson 2 remains complete
+And lesson 3 is the next available step
+```
+
+#### Testing strategy and quality gates: guided investigation (60 min; Create)
+
+ID: `web-design-m12-l1`
+
+Objective: Design and deliver an original extension using testing strategy and quality gates with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Create a test pyramid for one real feature, write at least five meaningful cases, and explain which failure each test would catch. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Testing strategy and quality gates: independent studio (90 min; Evaluate)
+
+ID: `web-design-m12-l2`
+
+Objective: Judge two approaches to testing strategy and quality gates against correctness, maintainability, and offline operation.
+
+Activity: Create a test pyramid for one real feature, write at least five meaningful cases, and explain which failure each test would catch. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Architecture and dependency boundaries
+
+This web design module teaches you to apply separation of concerns, dependency inversion, cohesive modules, and architecture decision records to keep change affordable. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+presentation -> application -> domain
+data implements domain ports
+platform code stays behind adapters
+Decision: local storage is the source of truth
+```
+
+#### Architecture and dependency boundaries: guided investigation (60 min; Create)
+
+ID: `web-design-m13-l1`
+
+Objective: Design and deliver an original extension using architecture and dependency boundaries with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Refactor or redesign one feature so its business rule can be tested without its UI, database, framework, or network. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Architecture and dependency boundaries: independent studio (90 min; Evaluate)
+
+ID: `web-design-m13-l2`
+
+Objective: Judge two approaches to architecture and dependency boundaries against correctness, maintainability, and offline operation.
+
+Activity: Refactor or redesign one feature so its business rule can be tested without its UI, database, framework, or network. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Security, privacy, and inclusive access
+
+This web design module teaches you to threat-model assets and trust boundaries, minimize data and permissions, and include keyboard, screen-reader, contrast, language, and large-text needs. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Asset: learner progress
+Threat: unintended disclosure
+Control: local minimum data
+Access check: keyboard + 200% text
+Recovery: explicit local backup
+```
+
+#### Security, privacy, and inclusive access: guided investigation (60 min; Create)
+
+ID: `web-design-m14-l1`
+
+Objective: Design and deliver an original extension using security, privacy, and inclusive access with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Produce a compact threat and accessibility review, repair the two highest-impact findings, and record evidence with fictional data. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Security, privacy, and inclusive access: independent studio (90 min; Evaluate)
+
+ID: `web-design-m14-l2`
+
+Objective: Judge two approaches to security, privacy, and inclusive access against correctness, maintainability, and offline operation.
+
+Activity: Produce a compact threat and accessibility review, repair the two highest-impact findings, and record evidence with fictional data. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Performance and resource budgets
+
+This web design module teaches you to measure startup, responsiveness, memory, storage, and expensive operations before optimizing for realistic low-resource devices. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+startup budget: 2 seconds
+interaction budget: 100 ms
+storage budget: 50 MB
+offline check: airplane mode from first launch
+```
+
+#### Performance and resource budgets: guided investigation (60 min; Create)
+
+ID: `web-design-m15-l1`
+
+Objective: Design and deliver an original extension using performance and resource budgets with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Choose three measurable budgets, capture a baseline, improve one proven bottleneck, and verify that behavior and accessibility still pass. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Performance and resource budgets: independent studio (90 min; Evaluate)
+
+ID: `web-design-m15-l2`
+
+Objective: Judge two approaches to performance and resource budgets against correctness, maintainability, and offline operation.
+
+Activity: Choose three measurable budgets, capture a baseline, improve one proven bottleneck, and verify that behavior and accessibility still pass. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Capstone delivery and maintenance
+
+This web design module teaches you to plan incremental delivery, version data safely, document offline setup, review risks, and maintain the product after its first release. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Release evidence:
+- acceptance checks pass
+- migration and rollback tested
+- offline install documented
+- known limits published
+- next improvement prioritized
+```
+
+#### Capstone delivery and maintenance: guided investigation (60 min; Create)
+
+ID: `web-design-m16-l1`
+
+Objective: Design and deliver an original extension using capstone delivery and maintenance with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Deliver a course-specific capstone increment with requirements, architecture decision, implementation evidence, tests, usability review, migration or rollback plan, and a short demonstration. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Capstone delivery and maintenance: independent studio (90 min; Evaluate)
+
+ID: `web-design-m16-l2`
+
+Objective: Judge two approaches to capstone delivery and maintenance against correctness, maintainability, and offline operation.
+
+Activity: Deliver a course-specific capstone increment with requirements, architecture decision, implementation evidence, tests, usability review, migration or rollback plan, and a short demonstration. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
 ### Project: Student portfolio (6 hours)
 
 Present a fictional student’s work in an accessible local website.
@@ -594,6 +1264,8 @@ Prerequisites: web-design, javascript, nodejs, expressjs
 Offline tools: Provision a browser, Node.js, Express, and the package cache in advance. Run client and server on the same computer using loopback. Localhost is used for practice; no internet service is required.
 
 ### Start here: first guided lesson
+
+This is the true starting point for this course. No vocabulary from this course is assumed. You will first learn what the example is for, the meaning of its four key terms, and how to follow it one step at a time. Read the prerequisite course shown in the catalog first when one is required.
 
 First complete Web Design, JavaScript, NodeJs, and ExpressJs. If these words are new, open the prerequisites below. This first example is a paper trace; it does not require a running server.
 
@@ -816,6 +1488,337 @@ Activity: a reproducible local release with seed data, migration instructions, a
 
 Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
 
+### Distributed system boundaries
+
+This web development module teaches you to design versioned contracts, idempotent operations, retries, and failure isolation between client and server. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+POST /loans HTTP/1.1
+Idempotency-Key: loan-42
+Content-Type: application/json
+
+{"bookId": 7}
+```
+
+#### Distributed system boundaries: guided investigation (60 min; Create)
+
+ID: `web-development-m7-l1`
+
+Objective: Design and deliver an original extension using distributed system boundaries with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Design an idempotent lending workflow and prove that retrying cannot create duplicate records. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Distributed system boundaries: independent studio (90 min; Evaluate)
+
+ID: `web-development-m7-l2`
+
+Objective: Judge two approaches to distributed system boundaries against correctness, maintainability, and offline operation.
+
+Activity: Design an idempotent lending workflow and prove that retrying cannot create duplicate records. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Security, observability, and deployment
+
+This web development module teaches you to apply threat modeling, least privilege, structured logs, health checks, migrations, and reversible releases. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+request_id=8f2 action=create_loan outcome=accepted duration_ms=12
+```
+
+#### Security, observability, and deployment: guided investigation (60 min; Create)
+
+ID: `web-development-m8-l1`
+
+Objective: Design and deliver an original extension using security, observability, and deployment with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Ship a locally deployable service with a threat model, redacted logs, health checks, migration rollback, and recovery drill. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Security, observability, and deployment: independent studio (90 min; Evaluate)
+
+ID: `web-development-m8-l2`
+
+Objective: Judge two approaches to security, observability, and deployment against correctness, maintainability, and offline operation.
+
+Activity: Ship a locally deployable service with a threat model, redacted logs, health checks, migration rollback, and recovery drill. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Requirements and domain discovery
+
+This web development module teaches you to turn a learner or client problem into user stories, a shared vocabulary, scope boundaries, and testable acceptance examples. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+User: a learner with an older device
+Need: finish work without internet
+Acceptance: saved work survives restart
+Out of scope: cloud accounts
+```
+
+#### Requirements and domain discovery: guided investigation (60 min; Create)
+
+ID: `web-development-m9-l1`
+
+Objective: Design and deliver an original extension using requirements and domain discovery with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Interview a fictional learner, write three user stories and acceptance examples, then reject one attractive feature that violates the offline scope. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Requirements and domain discovery: independent studio (90 min; Evaluate)
+
+ID: `web-development-m9-l2`
+
+Objective: Judge two approaches to requirements and domain discovery against correctness, maintainability, and offline operation.
+
+Activity: Interview a fictional learner, write three user stories and acceptance examples, then reject one attractive feature that violates the offline scope. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Models, interfaces, and contracts
+
+This web development module teaches you to model domain rules separately from screens and frameworks, define small interfaces, and state preconditions, results, and errors. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Input contract: non-empty learner_id
+Rule: progress can only move forward
+Result: saved progress or a specific error
+Adapter: local file or database
+```
+
+#### Models, interfaces, and contracts: guided investigation (60 min; Create)
+
+ID: `web-development-m10-l1`
+
+Objective: Design and deliver an original extension using models, interfaces, and contracts with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Draw the domain, application, storage, and interface boundaries for a small attendance feature; define one contract at every boundary. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Models, interfaces, and contracts: independent studio (90 min; Evaluate)
+
+ID: `web-development-m10-l2`
+
+Objective: Judge two approaches to models, interfaces, and contracts against correctness, maintainability, and offline operation.
+
+Activity: Draw the domain, application, storage, and interface boundaries for a small attendance feature; define one contract at every boundary. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Validation and failure recovery
+
+This web development module teaches you to validate at trust boundaries, preserve the last valid state, use atomic changes, and design recovery users can understand. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+normal: 3 valid records -> save
+edge: empty list -> valid empty result
+invalid: negative score -> reject
+interruption: old data remains readable
+```
+
+#### Validation and failure recovery: guided investigation (60 min; Create)
+
+ID: `web-development-m11-l1`
+
+Objective: Design and deliver an original extension using validation and failure recovery with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Build a validation table for normal, empty, boundary, malformed, duplicate, and interrupted operations, then implement or simulate safe recovery. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Validation and failure recovery: independent studio (90 min; Evaluate)
+
+ID: `web-development-m11-l2`
+
+Objective: Judge two approaches to validation and failure recovery against correctness, maintainability, and offline operation.
+
+Activity: Build a validation table for normal, empty, boundary, malformed, duplicate, and interrupted operations, then implement or simulate safe recovery. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Testing strategy and quality gates
+
+This web development module teaches you to combine focused unit tests, boundary tests, integration checks, and user-visible acceptance evidence without mirroring the implementation. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Given saved progress at lesson 2
+When the app restarts offline
+Then lesson 2 remains complete
+And lesson 3 is the next available step
+```
+
+#### Testing strategy and quality gates: guided investigation (60 min; Create)
+
+ID: `web-development-m12-l1`
+
+Objective: Design and deliver an original extension using testing strategy and quality gates with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Create a test pyramid for one real feature, write at least five meaningful cases, and explain which failure each test would catch. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Testing strategy and quality gates: independent studio (90 min; Evaluate)
+
+ID: `web-development-m12-l2`
+
+Objective: Judge two approaches to testing strategy and quality gates against correctness, maintainability, and offline operation.
+
+Activity: Create a test pyramid for one real feature, write at least five meaningful cases, and explain which failure each test would catch. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Architecture and dependency boundaries
+
+This web development module teaches you to apply separation of concerns, dependency inversion, cohesive modules, and architecture decision records to keep change affordable. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+presentation -> application -> domain
+data implements domain ports
+platform code stays behind adapters
+Decision: local storage is the source of truth
+```
+
+#### Architecture and dependency boundaries: guided investigation (60 min; Create)
+
+ID: `web-development-m13-l1`
+
+Objective: Design and deliver an original extension using architecture and dependency boundaries with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Refactor or redesign one feature so its business rule can be tested without its UI, database, framework, or network. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Architecture and dependency boundaries: independent studio (90 min; Evaluate)
+
+ID: `web-development-m13-l2`
+
+Objective: Judge two approaches to architecture and dependency boundaries against correctness, maintainability, and offline operation.
+
+Activity: Refactor or redesign one feature so its business rule can be tested without its UI, database, framework, or network. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Security, privacy, and inclusive access
+
+This web development module teaches you to threat-model assets and trust boundaries, minimize data and permissions, and include keyboard, screen-reader, contrast, language, and large-text needs. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Asset: learner progress
+Threat: unintended disclosure
+Control: local minimum data
+Access check: keyboard + 200% text
+Recovery: explicit local backup
+```
+
+#### Security, privacy, and inclusive access: guided investigation (60 min; Create)
+
+ID: `web-development-m14-l1`
+
+Objective: Design and deliver an original extension using security, privacy, and inclusive access with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Produce a compact threat and accessibility review, repair the two highest-impact findings, and record evidence with fictional data. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Security, privacy, and inclusive access: independent studio (90 min; Evaluate)
+
+ID: `web-development-m14-l2`
+
+Objective: Judge two approaches to security, privacy, and inclusive access against correctness, maintainability, and offline operation.
+
+Activity: Produce a compact threat and accessibility review, repair the two highest-impact findings, and record evidence with fictional data. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Performance and resource budgets
+
+This web development module teaches you to measure startup, responsiveness, memory, storage, and expensive operations before optimizing for realistic low-resource devices. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+startup budget: 2 seconds
+interaction budget: 100 ms
+storage budget: 50 MB
+offline check: airplane mode from first launch
+```
+
+#### Performance and resource budgets: guided investigation (60 min; Create)
+
+ID: `web-development-m15-l1`
+
+Objective: Design and deliver an original extension using performance and resource budgets with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Choose three measurable budgets, capture a baseline, improve one proven bottleneck, and verify that behavior and accessibility still pass. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Performance and resource budgets: independent studio (90 min; Evaluate)
+
+ID: `web-development-m15-l2`
+
+Objective: Judge two approaches to performance and resource budgets against correctness, maintainability, and offline operation.
+
+Activity: Choose three measurable budgets, capture a baseline, improve one proven bottleneck, and verify that behavior and accessibility still pass. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Capstone delivery and maintenance
+
+This web development module teaches you to plan incremental delivery, version data safely, document offline setup, review risks, and maintain the product after its first release. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Release evidence:
+- acceptance checks pass
+- migration and rollback tested
+- offline install documented
+- known limits published
+- next improvement prioritized
+```
+
+#### Capstone delivery and maintenance: guided investigation (60 min; Create)
+
+ID: `web-development-m16-l1`
+
+Objective: Design and deliver an original extension using capstone delivery and maintenance with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Deliver a course-specific capstone increment with requirements, architecture decision, implementation evidence, tests, usability review, migration or rollback plan, and a short demonstration. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Capstone delivery and maintenance: independent studio (90 min; Evaluate)
+
+ID: `web-development-m16-l2`
+
+Objective: Judge two approaches to capstone delivery and maintenance against correctness, maintainability, and offline operation.
+
+Activity: Deliver a course-specific capstone increment with requirements, architecture decision, implementation evidence, tests, usability review, migration or rollback plan, and a short demonstration. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
 ### Project: Local event registration (6 hours)
 
 Manage seats for a fictional workshop on one local computer.
@@ -877,6 +1880,8 @@ Prerequisites: No prior programming required; basic device and file use.
 Offline tools: Install a JDK before going offline. Use javac Main.java and java Main for plain examples. Provision build tools and any test libraries beforehand; initial projects can use Java assertions with java -ea Main.
 
 ### Start here: first guided lesson
+
+This is the true starting point for this course. No vocabulary from this course is assumed. You will first learn what the example is for, the meaning of its four key terms, and how to follow it one step at a time. Read the prerequisite course shown in the catalog first when one is required.
 
 No prior programming is required. A classroom computer needs an installed JDK. Save the example as Main.java. In that folder run javac Main.java, then java Main. Keep capital letters exactly as shown.
 
@@ -1092,6 +2097,338 @@ Activity: a repository-backed report with fake storage and failure-path tests. C
 
 Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
 
+### Concurrency and the Java memory model
+
+This Java module teaches you to reason about visibility, atomicity, executors, immutable messages, and structured task lifecycles. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+try (var executor = java.util.concurrent.Executors.newVirtualThreadPerTaskExecutor()) {
+  var future = executor.submit(() -> 40 + 2);
+  System.out.println(future.get());
+}
+```
+
+#### Concurrency and the Java memory model: guided investigation (60 min; Create)
+
+ID: `java-m7-l1`
+
+Objective: Design and deliver an original extension using concurrency and the java memory model with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Build a bounded concurrent importer and test cancellation, ordering, failure propagation, and clean shutdown. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Concurrency and the Java memory model: independent studio (90 min; Evaluate)
+
+ID: `java-m7-l2`
+
+Objective: Judge two approaches to concurrency and the java memory model against correctness, maintainability, and offline operation.
+
+Activity: Build a bounded concurrent importer and test cancellation, ordering, failure propagation, and clean shutdown. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### JVM architecture, profiling, and delivery
+
+This Java module teaches you to measure allocation and latency, define module boundaries, and create reproducible runtime images. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+module school.reports {
+  exports school.reports.api;
+}
+```
+
+#### JVM architecture, profiling, and delivery: guided investigation (60 min; Create)
+
+ID: `java-m8-l1`
+
+Objective: Design and deliver an original extension using jvm architecture, profiling, and delivery with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Profile a modular reporting service, remove one measured bottleneck, and package it with repeatable offline build instructions. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### JVM architecture, profiling, and delivery: independent studio (90 min; Evaluate)
+
+ID: `java-m8-l2`
+
+Objective: Judge two approaches to jvm architecture, profiling, and delivery against correctness, maintainability, and offline operation.
+
+Activity: Profile a modular reporting service, remove one measured bottleneck, and package it with repeatable offline build instructions. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Requirements and domain discovery
+
+This Java module teaches you to turn a learner or client problem into user stories, a shared vocabulary, scope boundaries, and testable acceptance examples. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+User: a learner with an older device
+Need: finish work without internet
+Acceptance: saved work survives restart
+Out of scope: cloud accounts
+```
+
+#### Requirements and domain discovery: guided investigation (60 min; Create)
+
+ID: `java-m9-l1`
+
+Objective: Design and deliver an original extension using requirements and domain discovery with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Interview a fictional learner, write three user stories and acceptance examples, then reject one attractive feature that violates the offline scope. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Requirements and domain discovery: independent studio (90 min; Evaluate)
+
+ID: `java-m9-l2`
+
+Objective: Judge two approaches to requirements and domain discovery against correctness, maintainability, and offline operation.
+
+Activity: Interview a fictional learner, write three user stories and acceptance examples, then reject one attractive feature that violates the offline scope. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Models, interfaces, and contracts
+
+This Java module teaches you to model domain rules separately from screens and frameworks, define small interfaces, and state preconditions, results, and errors. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Input contract: non-empty learner_id
+Rule: progress can only move forward
+Result: saved progress or a specific error
+Adapter: local file or database
+```
+
+#### Models, interfaces, and contracts: guided investigation (60 min; Create)
+
+ID: `java-m10-l1`
+
+Objective: Design and deliver an original extension using models, interfaces, and contracts with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Draw the domain, application, storage, and interface boundaries for a small attendance feature; define one contract at every boundary. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Models, interfaces, and contracts: independent studio (90 min; Evaluate)
+
+ID: `java-m10-l2`
+
+Objective: Judge two approaches to models, interfaces, and contracts against correctness, maintainability, and offline operation.
+
+Activity: Draw the domain, application, storage, and interface boundaries for a small attendance feature; define one contract at every boundary. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Validation and failure recovery
+
+This Java module teaches you to validate at trust boundaries, preserve the last valid state, use atomic changes, and design recovery users can understand. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+normal: 3 valid records -> save
+edge: empty list -> valid empty result
+invalid: negative score -> reject
+interruption: old data remains readable
+```
+
+#### Validation and failure recovery: guided investigation (60 min; Create)
+
+ID: `java-m11-l1`
+
+Objective: Design and deliver an original extension using validation and failure recovery with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Build a validation table for normal, empty, boundary, malformed, duplicate, and interrupted operations, then implement or simulate safe recovery. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Validation and failure recovery: independent studio (90 min; Evaluate)
+
+ID: `java-m11-l2`
+
+Objective: Judge two approaches to validation and failure recovery against correctness, maintainability, and offline operation.
+
+Activity: Build a validation table for normal, empty, boundary, malformed, duplicate, and interrupted operations, then implement or simulate safe recovery. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Testing strategy and quality gates
+
+This Java module teaches you to combine focused unit tests, boundary tests, integration checks, and user-visible acceptance evidence without mirroring the implementation. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Given saved progress at lesson 2
+When the app restarts offline
+Then lesson 2 remains complete
+And lesson 3 is the next available step
+```
+
+#### Testing strategy and quality gates: guided investigation (60 min; Create)
+
+ID: `java-m12-l1`
+
+Objective: Design and deliver an original extension using testing strategy and quality gates with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Create a test pyramid for one real feature, write at least five meaningful cases, and explain which failure each test would catch. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Testing strategy and quality gates: independent studio (90 min; Evaluate)
+
+ID: `java-m12-l2`
+
+Objective: Judge two approaches to testing strategy and quality gates against correctness, maintainability, and offline operation.
+
+Activity: Create a test pyramid for one real feature, write at least five meaningful cases, and explain which failure each test would catch. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Architecture and dependency boundaries
+
+This Java module teaches you to apply separation of concerns, dependency inversion, cohesive modules, and architecture decision records to keep change affordable. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+presentation -> application -> domain
+data implements domain ports
+platform code stays behind adapters
+Decision: local storage is the source of truth
+```
+
+#### Architecture and dependency boundaries: guided investigation (60 min; Create)
+
+ID: `java-m13-l1`
+
+Objective: Design and deliver an original extension using architecture and dependency boundaries with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Refactor or redesign one feature so its business rule can be tested without its UI, database, framework, or network. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Architecture and dependency boundaries: independent studio (90 min; Evaluate)
+
+ID: `java-m13-l2`
+
+Objective: Judge two approaches to architecture and dependency boundaries against correctness, maintainability, and offline operation.
+
+Activity: Refactor or redesign one feature so its business rule can be tested without its UI, database, framework, or network. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Security, privacy, and inclusive access
+
+This Java module teaches you to threat-model assets and trust boundaries, minimize data and permissions, and include keyboard, screen-reader, contrast, language, and large-text needs. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Asset: learner progress
+Threat: unintended disclosure
+Control: local minimum data
+Access check: keyboard + 200% text
+Recovery: explicit local backup
+```
+
+#### Security, privacy, and inclusive access: guided investigation (60 min; Create)
+
+ID: `java-m14-l1`
+
+Objective: Design and deliver an original extension using security, privacy, and inclusive access with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Produce a compact threat and accessibility review, repair the two highest-impact findings, and record evidence with fictional data. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Security, privacy, and inclusive access: independent studio (90 min; Evaluate)
+
+ID: `java-m14-l2`
+
+Objective: Judge two approaches to security, privacy, and inclusive access against correctness, maintainability, and offline operation.
+
+Activity: Produce a compact threat and accessibility review, repair the two highest-impact findings, and record evidence with fictional data. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Performance and resource budgets
+
+This Java module teaches you to measure startup, responsiveness, memory, storage, and expensive operations before optimizing for realistic low-resource devices. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+startup budget: 2 seconds
+interaction budget: 100 ms
+storage budget: 50 MB
+offline check: airplane mode from first launch
+```
+
+#### Performance and resource budgets: guided investigation (60 min; Create)
+
+ID: `java-m15-l1`
+
+Objective: Design and deliver an original extension using performance and resource budgets with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Choose three measurable budgets, capture a baseline, improve one proven bottleneck, and verify that behavior and accessibility still pass. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Performance and resource budgets: independent studio (90 min; Evaluate)
+
+ID: `java-m15-l2`
+
+Objective: Judge two approaches to performance and resource budgets against correctness, maintainability, and offline operation.
+
+Activity: Choose three measurable budgets, capture a baseline, improve one proven bottleneck, and verify that behavior and accessibility still pass. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Capstone delivery and maintenance
+
+This Java module teaches you to plan incremental delivery, version data safely, document offline setup, review risks, and maintain the product after its first release. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Release evidence:
+- acceptance checks pass
+- migration and rollback tested
+- offline install documented
+- known limits published
+- next improvement prioritized
+```
+
+#### Capstone delivery and maintenance: guided investigation (60 min; Create)
+
+ID: `java-m16-l1`
+
+Objective: Design and deliver an original extension using capstone delivery and maintenance with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Deliver a course-specific capstone increment with requirements, architecture decision, implementation evidence, tests, usability review, migration or rollback plan, and a short demonstration. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Capstone delivery and maintenance: independent studio (90 min; Evaluate)
+
+ID: `java-m16-l2`
+
+Objective: Judge two approaches to capstone delivery and maintenance against correctness, maintainability, and offline operation.
+
+Activity: Deliver a course-specific capstone increment with requirements, architecture decision, implementation evidence, tests, usability review, migration or rollback plan, and a short demonstration. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
 ### Project: Student gradebook (6 hours)
 
 Produce course results from fictional marks.
@@ -1153,6 +2490,8 @@ Prerequisites: No prior programming required; basic device and file use.
 Offline tools: Provision Kotlin/JVM and a JDK. Compile local code with kotlinc Main.kt -include-runtime -d main.jar, then java -jar main.jar. Coroutine libraries and Gradle dependencies, if used, must be cached before offline study.
 
 ### Start here: first guided lesson
+
+This is the true starting point for this course. No vocabulary from this course is assumed. You will first learn what the example is for, the meaning of its four key terms, and how to follow it one step at a time. Read the prerequisite course shown in the catalog first when one is required.
 
 No prior programming is required. On a provisioned computer save Main.kt. Compile with kotlinc Main.kt -include-runtime -d main.jar, then run java -jar main.jar. The app cannot run Kotlin code.
 
@@ -1367,6 +2706,338 @@ Activity: a command-line release with boundary tests, persistence checks, and a 
 
 Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
 
+### Coroutines, Flow, and structured concurrency
+
+This Kotlin module teaches you to model cancellation, backpressure, lifecycle ownership, and deterministic coroutine tests. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+suspend fun total(values: List<Int>) = kotlinx.coroutines.coroutineScope {
+    values.map { async { it } }.awaitAll().sum()
+}
+```
+
+#### Coroutines, Flow, and structured concurrency: guided investigation (60 min; Create)
+
+ID: `kotlin-m7-l1`
+
+Objective: Design and deliver an original extension using coroutines, flow, and structured concurrency with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Implement a cancellable report stream with bounded work, failure tests, and no orphaned coroutines. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Coroutines, Flow, and structured concurrency: independent studio (90 min; Evaluate)
+
+ID: `kotlin-m7-l2`
+
+Objective: Judge two approaches to coroutines, flow, and structured concurrency against correctness, maintainability, and offline operation.
+
+Activity: Implement a cancellable report stream with bounded work, failure tests, and no orphaned coroutines. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### DSLs, multiplatform boundaries, and performance
+
+This Kotlin module teaches you to use receivers and sealed models carefully while separating common logic from platform adapters. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+sealed interface Result<out T> {
+ data class Ok<T>(val value:T): Result<T>
+ data class Error(val message:String): Result<Nothing>
+}
+```
+
+#### DSLs, multiplatform boundaries, and performance: guided investigation (60 min; Create)
+
+ID: `kotlin-m8-l1`
+
+Objective: Design and deliver an original extension using dsls, multiplatform boundaries, and performance with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Design a typed validation DSL shared by two platform adapters and benchmark the critical transformation. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### DSLs, multiplatform boundaries, and performance: independent studio (90 min; Evaluate)
+
+ID: `kotlin-m8-l2`
+
+Objective: Judge two approaches to dsls, multiplatform boundaries, and performance against correctness, maintainability, and offline operation.
+
+Activity: Design a typed validation DSL shared by two platform adapters and benchmark the critical transformation. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Requirements and domain discovery
+
+This Kotlin module teaches you to turn a learner or client problem into user stories, a shared vocabulary, scope boundaries, and testable acceptance examples. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+User: a learner with an older device
+Need: finish work without internet
+Acceptance: saved work survives restart
+Out of scope: cloud accounts
+```
+
+#### Requirements and domain discovery: guided investigation (60 min; Create)
+
+ID: `kotlin-m9-l1`
+
+Objective: Design and deliver an original extension using requirements and domain discovery with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Interview a fictional learner, write three user stories and acceptance examples, then reject one attractive feature that violates the offline scope. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Requirements and domain discovery: independent studio (90 min; Evaluate)
+
+ID: `kotlin-m9-l2`
+
+Objective: Judge two approaches to requirements and domain discovery against correctness, maintainability, and offline operation.
+
+Activity: Interview a fictional learner, write three user stories and acceptance examples, then reject one attractive feature that violates the offline scope. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Models, interfaces, and contracts
+
+This Kotlin module teaches you to model domain rules separately from screens and frameworks, define small interfaces, and state preconditions, results, and errors. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Input contract: non-empty learner_id
+Rule: progress can only move forward
+Result: saved progress or a specific error
+Adapter: local file or database
+```
+
+#### Models, interfaces, and contracts: guided investigation (60 min; Create)
+
+ID: `kotlin-m10-l1`
+
+Objective: Design and deliver an original extension using models, interfaces, and contracts with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Draw the domain, application, storage, and interface boundaries for a small attendance feature; define one contract at every boundary. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Models, interfaces, and contracts: independent studio (90 min; Evaluate)
+
+ID: `kotlin-m10-l2`
+
+Objective: Judge two approaches to models, interfaces, and contracts against correctness, maintainability, and offline operation.
+
+Activity: Draw the domain, application, storage, and interface boundaries for a small attendance feature; define one contract at every boundary. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Validation and failure recovery
+
+This Kotlin module teaches you to validate at trust boundaries, preserve the last valid state, use atomic changes, and design recovery users can understand. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+normal: 3 valid records -> save
+edge: empty list -> valid empty result
+invalid: negative score -> reject
+interruption: old data remains readable
+```
+
+#### Validation and failure recovery: guided investigation (60 min; Create)
+
+ID: `kotlin-m11-l1`
+
+Objective: Design and deliver an original extension using validation and failure recovery with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Build a validation table for normal, empty, boundary, malformed, duplicate, and interrupted operations, then implement or simulate safe recovery. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Validation and failure recovery: independent studio (90 min; Evaluate)
+
+ID: `kotlin-m11-l2`
+
+Objective: Judge two approaches to validation and failure recovery against correctness, maintainability, and offline operation.
+
+Activity: Build a validation table for normal, empty, boundary, malformed, duplicate, and interrupted operations, then implement or simulate safe recovery. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Testing strategy and quality gates
+
+This Kotlin module teaches you to combine focused unit tests, boundary tests, integration checks, and user-visible acceptance evidence without mirroring the implementation. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Given saved progress at lesson 2
+When the app restarts offline
+Then lesson 2 remains complete
+And lesson 3 is the next available step
+```
+
+#### Testing strategy and quality gates: guided investigation (60 min; Create)
+
+ID: `kotlin-m12-l1`
+
+Objective: Design and deliver an original extension using testing strategy and quality gates with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Create a test pyramid for one real feature, write at least five meaningful cases, and explain which failure each test would catch. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Testing strategy and quality gates: independent studio (90 min; Evaluate)
+
+ID: `kotlin-m12-l2`
+
+Objective: Judge two approaches to testing strategy and quality gates against correctness, maintainability, and offline operation.
+
+Activity: Create a test pyramid for one real feature, write at least five meaningful cases, and explain which failure each test would catch. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Architecture and dependency boundaries
+
+This Kotlin module teaches you to apply separation of concerns, dependency inversion, cohesive modules, and architecture decision records to keep change affordable. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+presentation -> application -> domain
+data implements domain ports
+platform code stays behind adapters
+Decision: local storage is the source of truth
+```
+
+#### Architecture and dependency boundaries: guided investigation (60 min; Create)
+
+ID: `kotlin-m13-l1`
+
+Objective: Design and deliver an original extension using architecture and dependency boundaries with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Refactor or redesign one feature so its business rule can be tested without its UI, database, framework, or network. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Architecture and dependency boundaries: independent studio (90 min; Evaluate)
+
+ID: `kotlin-m13-l2`
+
+Objective: Judge two approaches to architecture and dependency boundaries against correctness, maintainability, and offline operation.
+
+Activity: Refactor or redesign one feature so its business rule can be tested without its UI, database, framework, or network. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Security, privacy, and inclusive access
+
+This Kotlin module teaches you to threat-model assets and trust boundaries, minimize data and permissions, and include keyboard, screen-reader, contrast, language, and large-text needs. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Asset: learner progress
+Threat: unintended disclosure
+Control: local minimum data
+Access check: keyboard + 200% text
+Recovery: explicit local backup
+```
+
+#### Security, privacy, and inclusive access: guided investigation (60 min; Create)
+
+ID: `kotlin-m14-l1`
+
+Objective: Design and deliver an original extension using security, privacy, and inclusive access with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Produce a compact threat and accessibility review, repair the two highest-impact findings, and record evidence with fictional data. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Security, privacy, and inclusive access: independent studio (90 min; Evaluate)
+
+ID: `kotlin-m14-l2`
+
+Objective: Judge two approaches to security, privacy, and inclusive access against correctness, maintainability, and offline operation.
+
+Activity: Produce a compact threat and accessibility review, repair the two highest-impact findings, and record evidence with fictional data. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Performance and resource budgets
+
+This Kotlin module teaches you to measure startup, responsiveness, memory, storage, and expensive operations before optimizing for realistic low-resource devices. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+startup budget: 2 seconds
+interaction budget: 100 ms
+storage budget: 50 MB
+offline check: airplane mode from first launch
+```
+
+#### Performance and resource budgets: guided investigation (60 min; Create)
+
+ID: `kotlin-m15-l1`
+
+Objective: Design and deliver an original extension using performance and resource budgets with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Choose three measurable budgets, capture a baseline, improve one proven bottleneck, and verify that behavior and accessibility still pass. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Performance and resource budgets: independent studio (90 min; Evaluate)
+
+ID: `kotlin-m15-l2`
+
+Objective: Judge two approaches to performance and resource budgets against correctness, maintainability, and offline operation.
+
+Activity: Choose three measurable budgets, capture a baseline, improve one proven bottleneck, and verify that behavior and accessibility still pass. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Capstone delivery and maintenance
+
+This Kotlin module teaches you to plan incremental delivery, version data safely, document offline setup, review risks, and maintain the product after its first release. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Release evidence:
+- acceptance checks pass
+- migration and rollback tested
+- offline install documented
+- known limits published
+- next improvement prioritized
+```
+
+#### Capstone delivery and maintenance: guided investigation (60 min; Create)
+
+ID: `kotlin-m16-l1`
+
+Objective: Design and deliver an original extension using capstone delivery and maintenance with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Deliver a course-specific capstone increment with requirements, architecture decision, implementation evidence, tests, usability review, migration or rollback plan, and a short demonstration. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Capstone delivery and maintenance: independent studio (90 min; Evaluate)
+
+ID: `kotlin-m16-l2`
+
+Objective: Judge two approaches to capstone delivery and maintenance against correctness, maintainability, and offline operation.
+
+Activity: Deliver a course-specific capstone increment with requirements, architecture decision, implementation evidence, tests, usability review, migration or rollback plan, and a short demonstration. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
 ### Project: Study planner (6 hours)
 
 Organize weekly study tasks.
@@ -1428,6 +3099,8 @@ Prerequisites: kotlin
 Offline tools: Provision Android Studio, JDK, Android SDK, emulator image or device drivers, and all Gradle/Compose/Room dependencies. Use Gradle offline mode after provisioning. The learning app cannot compile Android projects itself.
 
 ### Start here: first guided lesson
+
+This is the true starting point for this course. No vocabulary from this course is assumed. You will first learn what the example is for, the meaning of its four key terms, and how to follow it one step at a time. Read the prerequisite course shown in the catalog first when one is required.
 
 Complete Kotlin first. Use a provisioned Android Studio Empty Activity project with Compose. Keep the generated project structure. Replace only the starter greeting composable with the example. Run on a prepared emulator or device.
 
@@ -1655,6 +3328,335 @@ Activity: an accessible release candidate with lifecycle tests and a documented 
 
 Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
 
+### Offline-first synchronization architecture
+
+This Android module teaches you to model local truth, conflict resolution, work scheduling, retries, and observable sync state. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+data class SyncState(val pending: Int, val lastError: String?)
+// Room remains the source of truth; workers reconcile later.
+```
+
+#### Offline-first synchronization architecture: guided investigation (60 min; Create)
+
+ID: `android-m7-l1`
+
+Objective: Design and deliver an original extension using offline-first synchronization architecture with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Build a local-first queue with deterministic conflict rules and tests for restart, duplicate work, and interrupted synchronization. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Offline-first synchronization architecture: independent studio (90 min; Evaluate)
+
+ID: `android-m7-l2`
+
+Objective: Judge two approaches to offline-first synchronization architecture against correctness, maintainability, and offline operation.
+
+Activity: Build a local-first queue with deterministic conflict rules and tests for restart, duplicate work, and interrupted synchronization. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Performance, security, and production delivery
+
+This Android module teaches you to profile startup and rendering, protect stored data, minimize permissions, and verify signed release behavior. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+<uses-permission android:name="android.permission.INTERNET" />
+<!-- Remove this permission when the product is fully offline. -->
+```
+
+#### Performance, security, and production delivery: guided investigation (60 min; Create)
+
+ID: `android-m8-l1`
+
+Objective: Design and deliver an original extension using performance, security, and production delivery with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Produce a release audit covering startup, jank, accessibility, backup policy, permissions, secrets, signing, and offline acceptance. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Performance, security, and production delivery: independent studio (90 min; Evaluate)
+
+ID: `android-m8-l2`
+
+Objective: Judge two approaches to performance, security, and production delivery against correctness, maintainability, and offline operation.
+
+Activity: Produce a release audit covering startup, jank, accessibility, backup policy, permissions, secrets, signing, and offline acceptance. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Requirements and domain discovery
+
+This Android module teaches you to turn a learner or client problem into user stories, a shared vocabulary, scope boundaries, and testable acceptance examples. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+User: a learner with an older device
+Need: finish work without internet
+Acceptance: saved work survives restart
+Out of scope: cloud accounts
+```
+
+#### Requirements and domain discovery: guided investigation (60 min; Create)
+
+ID: `android-m9-l1`
+
+Objective: Design and deliver an original extension using requirements and domain discovery with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Interview a fictional learner, write three user stories and acceptance examples, then reject one attractive feature that violates the offline scope. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Requirements and domain discovery: independent studio (90 min; Evaluate)
+
+ID: `android-m9-l2`
+
+Objective: Judge two approaches to requirements and domain discovery against correctness, maintainability, and offline operation.
+
+Activity: Interview a fictional learner, write three user stories and acceptance examples, then reject one attractive feature that violates the offline scope. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Models, interfaces, and contracts
+
+This Android module teaches you to model domain rules separately from screens and frameworks, define small interfaces, and state preconditions, results, and errors. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Input contract: non-empty learner_id
+Rule: progress can only move forward
+Result: saved progress or a specific error
+Adapter: local file or database
+```
+
+#### Models, interfaces, and contracts: guided investigation (60 min; Create)
+
+ID: `android-m10-l1`
+
+Objective: Design and deliver an original extension using models, interfaces, and contracts with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Draw the domain, application, storage, and interface boundaries for a small attendance feature; define one contract at every boundary. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Models, interfaces, and contracts: independent studio (90 min; Evaluate)
+
+ID: `android-m10-l2`
+
+Objective: Judge two approaches to models, interfaces, and contracts against correctness, maintainability, and offline operation.
+
+Activity: Draw the domain, application, storage, and interface boundaries for a small attendance feature; define one contract at every boundary. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Validation and failure recovery
+
+This Android module teaches you to validate at trust boundaries, preserve the last valid state, use atomic changes, and design recovery users can understand. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+normal: 3 valid records -> save
+edge: empty list -> valid empty result
+invalid: negative score -> reject
+interruption: old data remains readable
+```
+
+#### Validation and failure recovery: guided investigation (60 min; Create)
+
+ID: `android-m11-l1`
+
+Objective: Design and deliver an original extension using validation and failure recovery with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Build a validation table for normal, empty, boundary, malformed, duplicate, and interrupted operations, then implement or simulate safe recovery. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Validation and failure recovery: independent studio (90 min; Evaluate)
+
+ID: `android-m11-l2`
+
+Objective: Judge two approaches to validation and failure recovery against correctness, maintainability, and offline operation.
+
+Activity: Build a validation table for normal, empty, boundary, malformed, duplicate, and interrupted operations, then implement or simulate safe recovery. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Testing strategy and quality gates
+
+This Android module teaches you to combine focused unit tests, boundary tests, integration checks, and user-visible acceptance evidence without mirroring the implementation. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Given saved progress at lesson 2
+When the app restarts offline
+Then lesson 2 remains complete
+And lesson 3 is the next available step
+```
+
+#### Testing strategy and quality gates: guided investigation (60 min; Create)
+
+ID: `android-m12-l1`
+
+Objective: Design and deliver an original extension using testing strategy and quality gates with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Create a test pyramid for one real feature, write at least five meaningful cases, and explain which failure each test would catch. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Testing strategy and quality gates: independent studio (90 min; Evaluate)
+
+ID: `android-m12-l2`
+
+Objective: Judge two approaches to testing strategy and quality gates against correctness, maintainability, and offline operation.
+
+Activity: Create a test pyramid for one real feature, write at least five meaningful cases, and explain which failure each test would catch. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Architecture and dependency boundaries
+
+This Android module teaches you to apply separation of concerns, dependency inversion, cohesive modules, and architecture decision records to keep change affordable. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+presentation -> application -> domain
+data implements domain ports
+platform code stays behind adapters
+Decision: local storage is the source of truth
+```
+
+#### Architecture and dependency boundaries: guided investigation (60 min; Create)
+
+ID: `android-m13-l1`
+
+Objective: Design and deliver an original extension using architecture and dependency boundaries with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Refactor or redesign one feature so its business rule can be tested without its UI, database, framework, or network. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Architecture and dependency boundaries: independent studio (90 min; Evaluate)
+
+ID: `android-m13-l2`
+
+Objective: Judge two approaches to architecture and dependency boundaries against correctness, maintainability, and offline operation.
+
+Activity: Refactor or redesign one feature so its business rule can be tested without its UI, database, framework, or network. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Security, privacy, and inclusive access
+
+This Android module teaches you to threat-model assets and trust boundaries, minimize data and permissions, and include keyboard, screen-reader, contrast, language, and large-text needs. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Asset: learner progress
+Threat: unintended disclosure
+Control: local minimum data
+Access check: keyboard + 200% text
+Recovery: explicit local backup
+```
+
+#### Security, privacy, and inclusive access: guided investigation (60 min; Create)
+
+ID: `android-m14-l1`
+
+Objective: Design and deliver an original extension using security, privacy, and inclusive access with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Produce a compact threat and accessibility review, repair the two highest-impact findings, and record evidence with fictional data. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Security, privacy, and inclusive access: independent studio (90 min; Evaluate)
+
+ID: `android-m14-l2`
+
+Objective: Judge two approaches to security, privacy, and inclusive access against correctness, maintainability, and offline operation.
+
+Activity: Produce a compact threat and accessibility review, repair the two highest-impact findings, and record evidence with fictional data. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Performance and resource budgets
+
+This Android module teaches you to measure startup, responsiveness, memory, storage, and expensive operations before optimizing for realistic low-resource devices. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+startup budget: 2 seconds
+interaction budget: 100 ms
+storage budget: 50 MB
+offline check: airplane mode from first launch
+```
+
+#### Performance and resource budgets: guided investigation (60 min; Create)
+
+ID: `android-m15-l1`
+
+Objective: Design and deliver an original extension using performance and resource budgets with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Choose three measurable budgets, capture a baseline, improve one proven bottleneck, and verify that behavior and accessibility still pass. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Performance and resource budgets: independent studio (90 min; Evaluate)
+
+ID: `android-m15-l2`
+
+Objective: Judge two approaches to performance and resource budgets against correctness, maintainability, and offline operation.
+
+Activity: Choose three measurable budgets, capture a baseline, improve one proven bottleneck, and verify that behavior and accessibility still pass. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Capstone delivery and maintenance
+
+This Android module teaches you to plan incremental delivery, version data safely, document offline setup, review risks, and maintain the product after its first release. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Release evidence:
+- acceptance checks pass
+- migration and rollback tested
+- offline install documented
+- known limits published
+- next improvement prioritized
+```
+
+#### Capstone delivery and maintenance: guided investigation (60 min; Create)
+
+ID: `android-m16-l1`
+
+Objective: Design and deliver an original extension using capstone delivery and maintenance with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Deliver a course-specific capstone increment with requirements, architecture decision, implementation evidence, tests, usability review, migration or rollback plan, and a short demonstration. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Capstone delivery and maintenance: independent studio (90 min; Evaluate)
+
+ID: `android-m16-l2`
+
+Objective: Judge two approaches to capstone delivery and maintenance against correctness, maintainability, and offline operation.
+
+Activity: Deliver a course-specific capstone increment with requirements, architecture decision, implementation evidence, tests, usability review, migration or rollback plan, and a short demonstration. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
 ### Project: Campus timetable (6 hours)
 
 Help students view a local weekly timetable.
@@ -1716,6 +3718,8 @@ Prerequisites: swift
 Offline tools: Native iOS development requires a compatible Mac with Xcode, SDKs, and simulator runtimes provisioned beforehand. Simulator exercises can be local; physical-device signing and distribution have separate Apple requirements. Windows or Android alone cannot build these native projects.
 
 ### Start here: first guided lesson
+
+This is the true starting point for this course. No vocabulary from this course is assumed. You will first learn what the example is for, the meaning of its four key terms, and how to follow it one step at a time. Read the prerequisite course shown in the catalog first when one is required.
 
 Complete Swift first. Use a compatible Mac with provisioned Xcode. Create an iOS SwiftUI app. Replace the generated ContentView with this example and run the prepared simulator. This cannot be compiled on an Android phone.
 
@@ -1931,6 +3935,337 @@ Activity: a tested simulator release with an explicit signing and physical-devic
 
 Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
 
+### Offline data, background work, and conflict handling
+
+This iOS module teaches you to coordinate SwiftData or Core Data transactions, background tasks, migrations, and merge policies. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+@Model final class Note {
+ var title: String
+ init(title: String) { self.title = title }
+}
+```
+
+#### Offline data, background work, and conflict handling: guided investigation (60 min; Create)
+
+ID: `ios-m7-l1`
+
+Objective: Design and deliver an original extension using offline data, background work, and conflict handling with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Build a migration-tested local store with background import, deterministic conflict handling, and restart recovery. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Offline data, background work, and conflict handling: independent studio (90 min; Evaluate)
+
+ID: `ios-m7-l2`
+
+Objective: Judge two approaches to offline data, background work, and conflict handling against correctness, maintainability, and offline operation.
+
+Activity: Build a migration-tested local store with background import, deterministic conflict handling, and restart recovery. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Privacy, performance, and App Store delivery
+
+This iOS module teaches you to measure launch and UI responsiveness, apply data minimization, signing, entitlements, and release checks. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+let started = ContinuousClock.now
+// Measure a defined operation, then compare against a budget.
+```
+
+#### Privacy, performance, and App Store delivery: guided investigation (60 min; Create)
+
+ID: `ios-m8-l1`
+
+Objective: Design and deliver an original extension using privacy, performance, and app store delivery with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Prepare a privacy manifest, performance budget, accessibility audit, signed archive checklist, and offline release evidence. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Privacy, performance, and App Store delivery: independent studio (90 min; Evaluate)
+
+ID: `ios-m8-l2`
+
+Objective: Judge two approaches to privacy, performance, and app store delivery against correctness, maintainability, and offline operation.
+
+Activity: Prepare a privacy manifest, performance budget, accessibility audit, signed archive checklist, and offline release evidence. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Requirements and domain discovery
+
+This iOS module teaches you to turn a learner or client problem into user stories, a shared vocabulary, scope boundaries, and testable acceptance examples. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+User: a learner with an older device
+Need: finish work without internet
+Acceptance: saved work survives restart
+Out of scope: cloud accounts
+```
+
+#### Requirements and domain discovery: guided investigation (60 min; Create)
+
+ID: `ios-m9-l1`
+
+Objective: Design and deliver an original extension using requirements and domain discovery with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Interview a fictional learner, write three user stories and acceptance examples, then reject one attractive feature that violates the offline scope. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Requirements and domain discovery: independent studio (90 min; Evaluate)
+
+ID: `ios-m9-l2`
+
+Objective: Judge two approaches to requirements and domain discovery against correctness, maintainability, and offline operation.
+
+Activity: Interview a fictional learner, write three user stories and acceptance examples, then reject one attractive feature that violates the offline scope. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Models, interfaces, and contracts
+
+This iOS module teaches you to model domain rules separately from screens and frameworks, define small interfaces, and state preconditions, results, and errors. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Input contract: non-empty learner_id
+Rule: progress can only move forward
+Result: saved progress or a specific error
+Adapter: local file or database
+```
+
+#### Models, interfaces, and contracts: guided investigation (60 min; Create)
+
+ID: `ios-m10-l1`
+
+Objective: Design and deliver an original extension using models, interfaces, and contracts with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Draw the domain, application, storage, and interface boundaries for a small attendance feature; define one contract at every boundary. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Models, interfaces, and contracts: independent studio (90 min; Evaluate)
+
+ID: `ios-m10-l2`
+
+Objective: Judge two approaches to models, interfaces, and contracts against correctness, maintainability, and offline operation.
+
+Activity: Draw the domain, application, storage, and interface boundaries for a small attendance feature; define one contract at every boundary. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Validation and failure recovery
+
+This iOS module teaches you to validate at trust boundaries, preserve the last valid state, use atomic changes, and design recovery users can understand. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+normal: 3 valid records -> save
+edge: empty list -> valid empty result
+invalid: negative score -> reject
+interruption: old data remains readable
+```
+
+#### Validation and failure recovery: guided investigation (60 min; Create)
+
+ID: `ios-m11-l1`
+
+Objective: Design and deliver an original extension using validation and failure recovery with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Build a validation table for normal, empty, boundary, malformed, duplicate, and interrupted operations, then implement or simulate safe recovery. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Validation and failure recovery: independent studio (90 min; Evaluate)
+
+ID: `ios-m11-l2`
+
+Objective: Judge two approaches to validation and failure recovery against correctness, maintainability, and offline operation.
+
+Activity: Build a validation table for normal, empty, boundary, malformed, duplicate, and interrupted operations, then implement or simulate safe recovery. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Testing strategy and quality gates
+
+This iOS module teaches you to combine focused unit tests, boundary tests, integration checks, and user-visible acceptance evidence without mirroring the implementation. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Given saved progress at lesson 2
+When the app restarts offline
+Then lesson 2 remains complete
+And lesson 3 is the next available step
+```
+
+#### Testing strategy and quality gates: guided investigation (60 min; Create)
+
+ID: `ios-m12-l1`
+
+Objective: Design and deliver an original extension using testing strategy and quality gates with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Create a test pyramid for one real feature, write at least five meaningful cases, and explain which failure each test would catch. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Testing strategy and quality gates: independent studio (90 min; Evaluate)
+
+ID: `ios-m12-l2`
+
+Objective: Judge two approaches to testing strategy and quality gates against correctness, maintainability, and offline operation.
+
+Activity: Create a test pyramid for one real feature, write at least five meaningful cases, and explain which failure each test would catch. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Architecture and dependency boundaries
+
+This iOS module teaches you to apply separation of concerns, dependency inversion, cohesive modules, and architecture decision records to keep change affordable. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+presentation -> application -> domain
+data implements domain ports
+platform code stays behind adapters
+Decision: local storage is the source of truth
+```
+
+#### Architecture and dependency boundaries: guided investigation (60 min; Create)
+
+ID: `ios-m13-l1`
+
+Objective: Design and deliver an original extension using architecture and dependency boundaries with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Refactor or redesign one feature so its business rule can be tested without its UI, database, framework, or network. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Architecture and dependency boundaries: independent studio (90 min; Evaluate)
+
+ID: `ios-m13-l2`
+
+Objective: Judge two approaches to architecture and dependency boundaries against correctness, maintainability, and offline operation.
+
+Activity: Refactor or redesign one feature so its business rule can be tested without its UI, database, framework, or network. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Security, privacy, and inclusive access
+
+This iOS module teaches you to threat-model assets and trust boundaries, minimize data and permissions, and include keyboard, screen-reader, contrast, language, and large-text needs. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Asset: learner progress
+Threat: unintended disclosure
+Control: local minimum data
+Access check: keyboard + 200% text
+Recovery: explicit local backup
+```
+
+#### Security, privacy, and inclusive access: guided investigation (60 min; Create)
+
+ID: `ios-m14-l1`
+
+Objective: Design and deliver an original extension using security, privacy, and inclusive access with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Produce a compact threat and accessibility review, repair the two highest-impact findings, and record evidence with fictional data. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Security, privacy, and inclusive access: independent studio (90 min; Evaluate)
+
+ID: `ios-m14-l2`
+
+Objective: Judge two approaches to security, privacy, and inclusive access against correctness, maintainability, and offline operation.
+
+Activity: Produce a compact threat and accessibility review, repair the two highest-impact findings, and record evidence with fictional data. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Performance and resource budgets
+
+This iOS module teaches you to measure startup, responsiveness, memory, storage, and expensive operations before optimizing for realistic low-resource devices. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+startup budget: 2 seconds
+interaction budget: 100 ms
+storage budget: 50 MB
+offline check: airplane mode from first launch
+```
+
+#### Performance and resource budgets: guided investigation (60 min; Create)
+
+ID: `ios-m15-l1`
+
+Objective: Design and deliver an original extension using performance and resource budgets with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Choose three measurable budgets, capture a baseline, improve one proven bottleneck, and verify that behavior and accessibility still pass. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Performance and resource budgets: independent studio (90 min; Evaluate)
+
+ID: `ios-m15-l2`
+
+Objective: Judge two approaches to performance and resource budgets against correctness, maintainability, and offline operation.
+
+Activity: Choose three measurable budgets, capture a baseline, improve one proven bottleneck, and verify that behavior and accessibility still pass. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Capstone delivery and maintenance
+
+This iOS module teaches you to plan incremental delivery, version data safely, document offline setup, review risks, and maintain the product after its first release. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Release evidence:
+- acceptance checks pass
+- migration and rollback tested
+- offline install documented
+- known limits published
+- next improvement prioritized
+```
+
+#### Capstone delivery and maintenance: guided investigation (60 min; Create)
+
+ID: `ios-m16-l1`
+
+Objective: Design and deliver an original extension using capstone delivery and maintenance with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Deliver a course-specific capstone increment with requirements, architecture decision, implementation evidence, tests, usability review, migration or rollback plan, and a short demonstration. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Capstone delivery and maintenance: independent studio (90 min; Evaluate)
+
+ID: `ios-m16-l2`
+
+Objective: Judge two approaches to capstone delivery and maintenance against correctness, maintainability, and offline operation.
+
+Activity: Deliver a course-specific capstone increment with requirements, architecture decision, implementation evidence, tests, usability review, migration or rollback plan, and a short demonstration. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
 ### Project: Campus guide for iOS (6 hours)
 
 Provide local campus information without maps or web services.
@@ -1992,6 +4327,8 @@ Prerequisites: No prior programming required; basic device and file use.
 Offline tools: Provision a supported Swift toolchain. Use swift main.swift for basic programs and swift test for package tests. Foundation availability varies by platform; iOS UI work belongs to the iOS course and requires Xcode on macOS.
 
 ### Start here: first guided lesson
+
+This is the true starting point for this course. No vocabulary from this course is assumed. You will first learn what the example is for, the meaning of its four key terms, and how to follow it one step at a time. Read the prerequisite course shown in the catalog first when one is required.
 
 No programming experience is required. On a computer with Swift provisioned, save main.swift and run swift main.swift from its folder. This language lesson does not require an iOS interface.
 
@@ -2203,6 +4540,340 @@ Activity: a package with a fake store, tested failure paths, and a local usage e
 
 Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
 
+### Actors and advanced concurrency
+
+This Swift module teaches you to use actors, task groups, cancellation, Sendable values, and isolation boundaries safely. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+actor Counter {
+ private var value = 0
+ func increment() { value += 1 }
+ func read() -> Int { value }
+}
+```
+
+#### Actors and advanced concurrency: guided investigation (60 min; Create)
+
+ID: `swift-m7-l1`
+
+Objective: Design and deliver an original extension using actors and advanced concurrency with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Implement a cancellable actor-based batch processor and test isolation, partial failure, and deterministic output. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Actors and advanced concurrency: independent studio (90 min; Evaluate)
+
+ID: `swift-m7-l2`
+
+Objective: Judge two approaches to actors and advanced concurrency against correctness, maintainability, and offline operation.
+
+Activity: Implement a cancellable actor-based batch processor and test isolation, partial failure, and deterministic output. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Protocols, generics, macros, and package design
+
+This Swift module teaches you to create expressive compile-time contracts while keeping APIs small, testable, and source compatible. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+protocol Repository<Item> {
+ associatedtype Item
+ func load() throws -> [Item]
+}
+```
+
+#### Protocols, generics, macros, and package design: guided investigation (60 min; Create)
+
+ID: `swift-m8-l1`
+
+Objective: Design and deliver an original extension using protocols, generics, macros, and package design with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Publish a local Swift package with protocol-based storage adapters, semantic version notes, documentation, and tests. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Protocols, generics, macros, and package design: independent studio (90 min; Evaluate)
+
+ID: `swift-m8-l2`
+
+Objective: Judge two approaches to protocols, generics, macros, and package design against correctness, maintainability, and offline operation.
+
+Activity: Publish a local Swift package with protocol-based storage adapters, semantic version notes, documentation, and tests. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Requirements and domain discovery
+
+This Swift module teaches you to turn a learner or client problem into user stories, a shared vocabulary, scope boundaries, and testable acceptance examples. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+User: a learner with an older device
+Need: finish work without internet
+Acceptance: saved work survives restart
+Out of scope: cloud accounts
+```
+
+#### Requirements and domain discovery: guided investigation (60 min; Create)
+
+ID: `swift-m9-l1`
+
+Objective: Design and deliver an original extension using requirements and domain discovery with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Interview a fictional learner, write three user stories and acceptance examples, then reject one attractive feature that violates the offline scope. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Requirements and domain discovery: independent studio (90 min; Evaluate)
+
+ID: `swift-m9-l2`
+
+Objective: Judge two approaches to requirements and domain discovery against correctness, maintainability, and offline operation.
+
+Activity: Interview a fictional learner, write three user stories and acceptance examples, then reject one attractive feature that violates the offline scope. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Models, interfaces, and contracts
+
+This Swift module teaches you to model domain rules separately from screens and frameworks, define small interfaces, and state preconditions, results, and errors. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Input contract: non-empty learner_id
+Rule: progress can only move forward
+Result: saved progress or a specific error
+Adapter: local file or database
+```
+
+#### Models, interfaces, and contracts: guided investigation (60 min; Create)
+
+ID: `swift-m10-l1`
+
+Objective: Design and deliver an original extension using models, interfaces, and contracts with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Draw the domain, application, storage, and interface boundaries for a small attendance feature; define one contract at every boundary. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Models, interfaces, and contracts: independent studio (90 min; Evaluate)
+
+ID: `swift-m10-l2`
+
+Objective: Judge two approaches to models, interfaces, and contracts against correctness, maintainability, and offline operation.
+
+Activity: Draw the domain, application, storage, and interface boundaries for a small attendance feature; define one contract at every boundary. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Validation and failure recovery
+
+This Swift module teaches you to validate at trust boundaries, preserve the last valid state, use atomic changes, and design recovery users can understand. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+normal: 3 valid records -> save
+edge: empty list -> valid empty result
+invalid: negative score -> reject
+interruption: old data remains readable
+```
+
+#### Validation and failure recovery: guided investigation (60 min; Create)
+
+ID: `swift-m11-l1`
+
+Objective: Design and deliver an original extension using validation and failure recovery with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Build a validation table for normal, empty, boundary, malformed, duplicate, and interrupted operations, then implement or simulate safe recovery. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Validation and failure recovery: independent studio (90 min; Evaluate)
+
+ID: `swift-m11-l2`
+
+Objective: Judge two approaches to validation and failure recovery against correctness, maintainability, and offline operation.
+
+Activity: Build a validation table for normal, empty, boundary, malformed, duplicate, and interrupted operations, then implement or simulate safe recovery. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Testing strategy and quality gates
+
+This Swift module teaches you to combine focused unit tests, boundary tests, integration checks, and user-visible acceptance evidence without mirroring the implementation. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Given saved progress at lesson 2
+When the app restarts offline
+Then lesson 2 remains complete
+And lesson 3 is the next available step
+```
+
+#### Testing strategy and quality gates: guided investigation (60 min; Create)
+
+ID: `swift-m12-l1`
+
+Objective: Design and deliver an original extension using testing strategy and quality gates with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Create a test pyramid for one real feature, write at least five meaningful cases, and explain which failure each test would catch. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Testing strategy and quality gates: independent studio (90 min; Evaluate)
+
+ID: `swift-m12-l2`
+
+Objective: Judge two approaches to testing strategy and quality gates against correctness, maintainability, and offline operation.
+
+Activity: Create a test pyramid for one real feature, write at least five meaningful cases, and explain which failure each test would catch. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Architecture and dependency boundaries
+
+This Swift module teaches you to apply separation of concerns, dependency inversion, cohesive modules, and architecture decision records to keep change affordable. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+presentation -> application -> domain
+data implements domain ports
+platform code stays behind adapters
+Decision: local storage is the source of truth
+```
+
+#### Architecture and dependency boundaries: guided investigation (60 min; Create)
+
+ID: `swift-m13-l1`
+
+Objective: Design and deliver an original extension using architecture and dependency boundaries with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Refactor or redesign one feature so its business rule can be tested without its UI, database, framework, or network. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Architecture and dependency boundaries: independent studio (90 min; Evaluate)
+
+ID: `swift-m13-l2`
+
+Objective: Judge two approaches to architecture and dependency boundaries against correctness, maintainability, and offline operation.
+
+Activity: Refactor or redesign one feature so its business rule can be tested without its UI, database, framework, or network. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Security, privacy, and inclusive access
+
+This Swift module teaches you to threat-model assets and trust boundaries, minimize data and permissions, and include keyboard, screen-reader, contrast, language, and large-text needs. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Asset: learner progress
+Threat: unintended disclosure
+Control: local minimum data
+Access check: keyboard + 200% text
+Recovery: explicit local backup
+```
+
+#### Security, privacy, and inclusive access: guided investigation (60 min; Create)
+
+ID: `swift-m14-l1`
+
+Objective: Design and deliver an original extension using security, privacy, and inclusive access with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Produce a compact threat and accessibility review, repair the two highest-impact findings, and record evidence with fictional data. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Security, privacy, and inclusive access: independent studio (90 min; Evaluate)
+
+ID: `swift-m14-l2`
+
+Objective: Judge two approaches to security, privacy, and inclusive access against correctness, maintainability, and offline operation.
+
+Activity: Produce a compact threat and accessibility review, repair the two highest-impact findings, and record evidence with fictional data. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Performance and resource budgets
+
+This Swift module teaches you to measure startup, responsiveness, memory, storage, and expensive operations before optimizing for realistic low-resource devices. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+startup budget: 2 seconds
+interaction budget: 100 ms
+storage budget: 50 MB
+offline check: airplane mode from first launch
+```
+
+#### Performance and resource budgets: guided investigation (60 min; Create)
+
+ID: `swift-m15-l1`
+
+Objective: Design and deliver an original extension using performance and resource budgets with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Choose three measurable budgets, capture a baseline, improve one proven bottleneck, and verify that behavior and accessibility still pass. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Performance and resource budgets: independent studio (90 min; Evaluate)
+
+ID: `swift-m15-l2`
+
+Objective: Judge two approaches to performance and resource budgets against correctness, maintainability, and offline operation.
+
+Activity: Choose three measurable budgets, capture a baseline, improve one proven bottleneck, and verify that behavior and accessibility still pass. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Capstone delivery and maintenance
+
+This Swift module teaches you to plan incremental delivery, version data safely, document offline setup, review risks, and maintain the product after its first release. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Release evidence:
+- acceptance checks pass
+- migration and rollback tested
+- offline install documented
+- known limits published
+- next improvement prioritized
+```
+
+#### Capstone delivery and maintenance: guided investigation (60 min; Create)
+
+ID: `swift-m16-l1`
+
+Objective: Design and deliver an original extension using capstone delivery and maintenance with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Deliver a course-specific capstone increment with requirements, architecture decision, implementation evidence, tests, usability review, migration or rollback plan, and a short demonstration. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Capstone delivery and maintenance: independent studio (90 min; Evaluate)
+
+ID: `swift-m16-l2`
+
+Objective: Judge two approaches to capstone delivery and maintenance against correctness, maintainability, and offline operation.
+
+Activity: Deliver a course-specific capstone increment with requirements, architecture decision, implementation evidence, tests, usability review, migration or rollback plan, and a short demonstration. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
 ### Project: AFN budget calculator (6 hours)
 
 Calculate a fictional household budget.
@@ -2264,6 +4935,8 @@ Prerequisites: No prior programming required; basic device and file use.
 Offline tools: Provision a C++17-capable compiler and local standard library. Compile with g++ -std=c++17 -Wall -Wextra main.cpp -o app or the equivalent MSVC/Clang command. Sanitizers are optional and must be provisioned; no external libraries are required.
 
 ### Start here: first guided lesson
+
+This is the true starting point for this course. No vocabulary from this course is assumed. You will first learn what the example is for, the meaning of its four key terms, and how to follow it one step at a time. Read the prerequisite course shown in the catalog first when one is required.
 
 No prior programming is required. Use a provisioned C++ compiler. Save main.cpp and compile with g++ -std=c++17 -Wall -Wextra main.cpp -o app. Run ./app, or app.exe on Windows. The app itself cannot compile C++.
 
@@ -2486,6 +5159,337 @@ Activity: a modular release with warning-clean builds, test evidence, and a meas
 
 Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
 
+### Templates, concepts, and compile-time design
+
+This C++ module teaches you to constrain generic algorithms, understand instantiation cost, and expose clear diagnostics and ownership contracts. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+#include <concepts>
+template<std::integral T>
+T total(T a, T b) { return a + b; }
+```
+
+#### Templates, concepts, and compile-time design: guided investigation (60 min; Create)
+
+ID: `cpp-m7-l1`
+
+Objective: Design and deliver an original extension using templates, concepts, and compile-time design with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Design a constrained statistics library and test signed, unsigned, overflow, empty, and invalid cases. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Templates, concepts, and compile-time design: independent studio (90 min; Evaluate)
+
+ID: `cpp-m7-l2`
+
+Objective: Judge two approaches to templates, concepts, and compile-time design against correctness, maintainability, and offline operation.
+
+Activity: Design a constrained statistics library and test signed, unsigned, overflow, empty, and invalid cases. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Concurrency, profiling, and systems reliability
+
+This C++ module teaches you to apply race-free ownership, atomics or locks, sanitizers, profiling, and failure-safe resource control. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+std::jthread worker([](std::stop_token stop) {
+  while (!stop.stop_requested()) { break; }
+});
+```
+
+#### Concurrency, profiling, and systems reliability: guided investigation (60 min; Create)
+
+ID: `cpp-m8-l1`
+
+Objective: Design and deliver an original extension using concurrency, profiling, and systems reliability with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Build a bounded worker queue, verify it with thread/address sanitizers, profile it, and document shutdown guarantees. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Concurrency, profiling, and systems reliability: independent studio (90 min; Evaluate)
+
+ID: `cpp-m8-l2`
+
+Objective: Judge two approaches to concurrency, profiling, and systems reliability against correctness, maintainability, and offline operation.
+
+Activity: Build a bounded worker queue, verify it with thread/address sanitizers, profile it, and document shutdown guarantees. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Requirements and domain discovery
+
+This C++ module teaches you to turn a learner or client problem into user stories, a shared vocabulary, scope boundaries, and testable acceptance examples. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+User: a learner with an older device
+Need: finish work without internet
+Acceptance: saved work survives restart
+Out of scope: cloud accounts
+```
+
+#### Requirements and domain discovery: guided investigation (60 min; Create)
+
+ID: `cpp-m9-l1`
+
+Objective: Design and deliver an original extension using requirements and domain discovery with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Interview a fictional learner, write three user stories and acceptance examples, then reject one attractive feature that violates the offline scope. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Requirements and domain discovery: independent studio (90 min; Evaluate)
+
+ID: `cpp-m9-l2`
+
+Objective: Judge two approaches to requirements and domain discovery against correctness, maintainability, and offline operation.
+
+Activity: Interview a fictional learner, write three user stories and acceptance examples, then reject one attractive feature that violates the offline scope. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Models, interfaces, and contracts
+
+This C++ module teaches you to model domain rules separately from screens and frameworks, define small interfaces, and state preconditions, results, and errors. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Input contract: non-empty learner_id
+Rule: progress can only move forward
+Result: saved progress or a specific error
+Adapter: local file or database
+```
+
+#### Models, interfaces, and contracts: guided investigation (60 min; Create)
+
+ID: `cpp-m10-l1`
+
+Objective: Design and deliver an original extension using models, interfaces, and contracts with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Draw the domain, application, storage, and interface boundaries for a small attendance feature; define one contract at every boundary. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Models, interfaces, and contracts: independent studio (90 min; Evaluate)
+
+ID: `cpp-m10-l2`
+
+Objective: Judge two approaches to models, interfaces, and contracts against correctness, maintainability, and offline operation.
+
+Activity: Draw the domain, application, storage, and interface boundaries for a small attendance feature; define one contract at every boundary. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Validation and failure recovery
+
+This C++ module teaches you to validate at trust boundaries, preserve the last valid state, use atomic changes, and design recovery users can understand. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+normal: 3 valid records -> save
+edge: empty list -> valid empty result
+invalid: negative score -> reject
+interruption: old data remains readable
+```
+
+#### Validation and failure recovery: guided investigation (60 min; Create)
+
+ID: `cpp-m11-l1`
+
+Objective: Design and deliver an original extension using validation and failure recovery with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Build a validation table for normal, empty, boundary, malformed, duplicate, and interrupted operations, then implement or simulate safe recovery. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Validation and failure recovery: independent studio (90 min; Evaluate)
+
+ID: `cpp-m11-l2`
+
+Objective: Judge two approaches to validation and failure recovery against correctness, maintainability, and offline operation.
+
+Activity: Build a validation table for normal, empty, boundary, malformed, duplicate, and interrupted operations, then implement or simulate safe recovery. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Testing strategy and quality gates
+
+This C++ module teaches you to combine focused unit tests, boundary tests, integration checks, and user-visible acceptance evidence without mirroring the implementation. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Given saved progress at lesson 2
+When the app restarts offline
+Then lesson 2 remains complete
+And lesson 3 is the next available step
+```
+
+#### Testing strategy and quality gates: guided investigation (60 min; Create)
+
+ID: `cpp-m12-l1`
+
+Objective: Design and deliver an original extension using testing strategy and quality gates with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Create a test pyramid for one real feature, write at least five meaningful cases, and explain which failure each test would catch. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Testing strategy and quality gates: independent studio (90 min; Evaluate)
+
+ID: `cpp-m12-l2`
+
+Objective: Judge two approaches to testing strategy and quality gates against correctness, maintainability, and offline operation.
+
+Activity: Create a test pyramid for one real feature, write at least five meaningful cases, and explain which failure each test would catch. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Architecture and dependency boundaries
+
+This C++ module teaches you to apply separation of concerns, dependency inversion, cohesive modules, and architecture decision records to keep change affordable. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+presentation -> application -> domain
+data implements domain ports
+platform code stays behind adapters
+Decision: local storage is the source of truth
+```
+
+#### Architecture and dependency boundaries: guided investigation (60 min; Create)
+
+ID: `cpp-m13-l1`
+
+Objective: Design and deliver an original extension using architecture and dependency boundaries with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Refactor or redesign one feature so its business rule can be tested without its UI, database, framework, or network. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Architecture and dependency boundaries: independent studio (90 min; Evaluate)
+
+ID: `cpp-m13-l2`
+
+Objective: Judge two approaches to architecture and dependency boundaries against correctness, maintainability, and offline operation.
+
+Activity: Refactor or redesign one feature so its business rule can be tested without its UI, database, framework, or network. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Security, privacy, and inclusive access
+
+This C++ module teaches you to threat-model assets and trust boundaries, minimize data and permissions, and include keyboard, screen-reader, contrast, language, and large-text needs. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Asset: learner progress
+Threat: unintended disclosure
+Control: local minimum data
+Access check: keyboard + 200% text
+Recovery: explicit local backup
+```
+
+#### Security, privacy, and inclusive access: guided investigation (60 min; Create)
+
+ID: `cpp-m14-l1`
+
+Objective: Design and deliver an original extension using security, privacy, and inclusive access with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Produce a compact threat and accessibility review, repair the two highest-impact findings, and record evidence with fictional data. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Security, privacy, and inclusive access: independent studio (90 min; Evaluate)
+
+ID: `cpp-m14-l2`
+
+Objective: Judge two approaches to security, privacy, and inclusive access against correctness, maintainability, and offline operation.
+
+Activity: Produce a compact threat and accessibility review, repair the two highest-impact findings, and record evidence with fictional data. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Performance and resource budgets
+
+This C++ module teaches you to measure startup, responsiveness, memory, storage, and expensive operations before optimizing for realistic low-resource devices. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+startup budget: 2 seconds
+interaction budget: 100 ms
+storage budget: 50 MB
+offline check: airplane mode from first launch
+```
+
+#### Performance and resource budgets: guided investigation (60 min; Create)
+
+ID: `cpp-m15-l1`
+
+Objective: Design and deliver an original extension using performance and resource budgets with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Choose three measurable budgets, capture a baseline, improve one proven bottleneck, and verify that behavior and accessibility still pass. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Performance and resource budgets: independent studio (90 min; Evaluate)
+
+ID: `cpp-m15-l2`
+
+Objective: Judge two approaches to performance and resource budgets against correctness, maintainability, and offline operation.
+
+Activity: Choose three measurable budgets, capture a baseline, improve one proven bottleneck, and verify that behavior and accessibility still pass. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Capstone delivery and maintenance
+
+This C++ module teaches you to plan incremental delivery, version data safely, document offline setup, review risks, and maintain the product after its first release. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Release evidence:
+- acceptance checks pass
+- migration and rollback tested
+- offline install documented
+- known limits published
+- next improvement prioritized
+```
+
+#### Capstone delivery and maintenance: guided investigation (60 min; Create)
+
+ID: `cpp-m16-l1`
+
+Objective: Design and deliver an original extension using capstone delivery and maintenance with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Deliver a course-specific capstone increment with requirements, architecture decision, implementation evidence, tests, usability review, migration or rollback plan, and a short demonstration. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Capstone delivery and maintenance: independent studio (90 min; Evaluate)
+
+ID: `cpp-m16-l2`
+
+Objective: Judge two approaches to capstone delivery and maintenance against correctness, maintainability, and offline operation.
+
+Activity: Deliver a course-specific capstone increment with requirements, architecture decision, implementation evidence, tests, usability review, migration or rollback plan, and a short demonstration. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
 ### Project: Exam statistics CLI (6 hours)
 
 Summarize fictional exam scores.
@@ -2547,6 +5551,8 @@ Prerequisites: web-design
 Offline tools: Use a browser’s developer tools for pure language examples and local HTML with classic scripts. ES modules and fetch may require a provisioned local server. Node.js is optional for node --test; no remote scripts are needed.
 
 ### Start here: first guided lesson
+
+This is the true starting point for this course. No vocabulary from this course is assumed. You will first learn what the example is for, the meaning of its four key terms, and how to follow it one step at a time. Read the prerequisite course shown in the catalog first when one is required.
 
 Begin with Web Design so you can create local files. Open a browser’s developer tools and its Console. Enter the two lines below. No website account or internet service is needed.
 
@@ -2759,6 +5765,337 @@ Activity: a tested task app with a storage adapter and reproducible local instru
 
 Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
 
+### Event loop, workers, and performance
+
+This JavaScript module teaches you to reason about tasks and microtasks, move CPU work to workers, and measure responsiveness. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+console.log("A");
+queueMicrotask(() => console.log("microtask"));
+setTimeout(() => console.log("task"), 0);
+```
+
+#### Event loop, workers, and performance: guided investigation (60 min; Create)
+
+ID: `javascript-m7-l1`
+
+Objective: Design and deliver an original extension using event loop, workers, and performance with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Build a responsive local data processor using a worker, cancellation, progress messages, and performance measurements. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Event loop, workers, and performance: independent studio (90 min; Evaluate)
+
+ID: `javascript-m7-l2`
+
+Objective: Judge two approaches to event loop, workers, and performance against correctness, maintainability, and offline operation.
+
+Activity: Build a responsive local data processor using a worker, cancellation, progress messages, and performance measurements. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Language internals, security, and package design
+
+This JavaScript module teaches you to apply prototypes, iterators, typed boundaries, input safety, modules, and reproducible dependency policy. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+export function* valid(records) {
+  for (const record of records) if (record?.id != null) yield record;
+}
+```
+
+#### Language internals, security, and package design: guided investigation (60 min; Create)
+
+ID: `javascript-m8-l1`
+
+Objective: Design and deliver an original extension using language internals, security, and package design with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Design a dependency-light module with a threat model, strict validation, public API documentation, and compatibility tests. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Language internals, security, and package design: independent studio (90 min; Evaluate)
+
+ID: `javascript-m8-l2`
+
+Objective: Judge two approaches to language internals, security, and package design against correctness, maintainability, and offline operation.
+
+Activity: Design a dependency-light module with a threat model, strict validation, public API documentation, and compatibility tests. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Requirements and domain discovery
+
+This JavaScript module teaches you to turn a learner or client problem into user stories, a shared vocabulary, scope boundaries, and testable acceptance examples. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+User: a learner with an older device
+Need: finish work without internet
+Acceptance: saved work survives restart
+Out of scope: cloud accounts
+```
+
+#### Requirements and domain discovery: guided investigation (60 min; Create)
+
+ID: `javascript-m9-l1`
+
+Objective: Design and deliver an original extension using requirements and domain discovery with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Interview a fictional learner, write three user stories and acceptance examples, then reject one attractive feature that violates the offline scope. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Requirements and domain discovery: independent studio (90 min; Evaluate)
+
+ID: `javascript-m9-l2`
+
+Objective: Judge two approaches to requirements and domain discovery against correctness, maintainability, and offline operation.
+
+Activity: Interview a fictional learner, write three user stories and acceptance examples, then reject one attractive feature that violates the offline scope. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Models, interfaces, and contracts
+
+This JavaScript module teaches you to model domain rules separately from screens and frameworks, define small interfaces, and state preconditions, results, and errors. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Input contract: non-empty learner_id
+Rule: progress can only move forward
+Result: saved progress or a specific error
+Adapter: local file or database
+```
+
+#### Models, interfaces, and contracts: guided investigation (60 min; Create)
+
+ID: `javascript-m10-l1`
+
+Objective: Design and deliver an original extension using models, interfaces, and contracts with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Draw the domain, application, storage, and interface boundaries for a small attendance feature; define one contract at every boundary. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Models, interfaces, and contracts: independent studio (90 min; Evaluate)
+
+ID: `javascript-m10-l2`
+
+Objective: Judge two approaches to models, interfaces, and contracts against correctness, maintainability, and offline operation.
+
+Activity: Draw the domain, application, storage, and interface boundaries for a small attendance feature; define one contract at every boundary. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Validation and failure recovery
+
+This JavaScript module teaches you to validate at trust boundaries, preserve the last valid state, use atomic changes, and design recovery users can understand. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+normal: 3 valid records -> save
+edge: empty list -> valid empty result
+invalid: negative score -> reject
+interruption: old data remains readable
+```
+
+#### Validation and failure recovery: guided investigation (60 min; Create)
+
+ID: `javascript-m11-l1`
+
+Objective: Design and deliver an original extension using validation and failure recovery with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Build a validation table for normal, empty, boundary, malformed, duplicate, and interrupted operations, then implement or simulate safe recovery. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Validation and failure recovery: independent studio (90 min; Evaluate)
+
+ID: `javascript-m11-l2`
+
+Objective: Judge two approaches to validation and failure recovery against correctness, maintainability, and offline operation.
+
+Activity: Build a validation table for normal, empty, boundary, malformed, duplicate, and interrupted operations, then implement or simulate safe recovery. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Testing strategy and quality gates
+
+This JavaScript module teaches you to combine focused unit tests, boundary tests, integration checks, and user-visible acceptance evidence without mirroring the implementation. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Given saved progress at lesson 2
+When the app restarts offline
+Then lesson 2 remains complete
+And lesson 3 is the next available step
+```
+
+#### Testing strategy and quality gates: guided investigation (60 min; Create)
+
+ID: `javascript-m12-l1`
+
+Objective: Design and deliver an original extension using testing strategy and quality gates with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Create a test pyramid for one real feature, write at least five meaningful cases, and explain which failure each test would catch. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Testing strategy and quality gates: independent studio (90 min; Evaluate)
+
+ID: `javascript-m12-l2`
+
+Objective: Judge two approaches to testing strategy and quality gates against correctness, maintainability, and offline operation.
+
+Activity: Create a test pyramid for one real feature, write at least five meaningful cases, and explain which failure each test would catch. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Architecture and dependency boundaries
+
+This JavaScript module teaches you to apply separation of concerns, dependency inversion, cohesive modules, and architecture decision records to keep change affordable. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+presentation -> application -> domain
+data implements domain ports
+platform code stays behind adapters
+Decision: local storage is the source of truth
+```
+
+#### Architecture and dependency boundaries: guided investigation (60 min; Create)
+
+ID: `javascript-m13-l1`
+
+Objective: Design and deliver an original extension using architecture and dependency boundaries with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Refactor or redesign one feature so its business rule can be tested without its UI, database, framework, or network. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Architecture and dependency boundaries: independent studio (90 min; Evaluate)
+
+ID: `javascript-m13-l2`
+
+Objective: Judge two approaches to architecture and dependency boundaries against correctness, maintainability, and offline operation.
+
+Activity: Refactor or redesign one feature so its business rule can be tested without its UI, database, framework, or network. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Security, privacy, and inclusive access
+
+This JavaScript module teaches you to threat-model assets and trust boundaries, minimize data and permissions, and include keyboard, screen-reader, contrast, language, and large-text needs. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Asset: learner progress
+Threat: unintended disclosure
+Control: local minimum data
+Access check: keyboard + 200% text
+Recovery: explicit local backup
+```
+
+#### Security, privacy, and inclusive access: guided investigation (60 min; Create)
+
+ID: `javascript-m14-l1`
+
+Objective: Design and deliver an original extension using security, privacy, and inclusive access with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Produce a compact threat and accessibility review, repair the two highest-impact findings, and record evidence with fictional data. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Security, privacy, and inclusive access: independent studio (90 min; Evaluate)
+
+ID: `javascript-m14-l2`
+
+Objective: Judge two approaches to security, privacy, and inclusive access against correctness, maintainability, and offline operation.
+
+Activity: Produce a compact threat and accessibility review, repair the two highest-impact findings, and record evidence with fictional data. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Performance and resource budgets
+
+This JavaScript module teaches you to measure startup, responsiveness, memory, storage, and expensive operations before optimizing for realistic low-resource devices. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+startup budget: 2 seconds
+interaction budget: 100 ms
+storage budget: 50 MB
+offline check: airplane mode from first launch
+```
+
+#### Performance and resource budgets: guided investigation (60 min; Create)
+
+ID: `javascript-m15-l1`
+
+Objective: Design and deliver an original extension using performance and resource budgets with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Choose three measurable budgets, capture a baseline, improve one proven bottleneck, and verify that behavior and accessibility still pass. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Performance and resource budgets: independent studio (90 min; Evaluate)
+
+ID: `javascript-m15-l2`
+
+Objective: Judge two approaches to performance and resource budgets against correctness, maintainability, and offline operation.
+
+Activity: Choose three measurable budgets, capture a baseline, improve one proven bottleneck, and verify that behavior and accessibility still pass. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Capstone delivery and maintenance
+
+This JavaScript module teaches you to plan incremental delivery, version data safely, document offline setup, review risks, and maintain the product after its first release. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Release evidence:
+- acceptance checks pass
+- migration and rollback tested
+- offline install documented
+- known limits published
+- next improvement prioritized
+```
+
+#### Capstone delivery and maintenance: guided investigation (60 min; Create)
+
+ID: `javascript-m16-l1`
+
+Objective: Design and deliver an original extension using capstone delivery and maintenance with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Deliver a course-specific capstone increment with requirements, architecture decision, implementation evidence, tests, usability review, migration or rollback plan, and a short demonstration. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Capstone delivery and maintenance: independent studio (90 min; Evaluate)
+
+ID: `javascript-m16-l2`
+
+Objective: Judge two approaches to capstone delivery and maintenance against correctness, maintainability, and offline operation.
+
+Activity: Deliver a course-specific capstone increment with requirements, architecture decision, implementation evidence, tests, usability review, migration or rollback plan, and a short demonstration. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
 ### Project: AFN expense calculator (6 hours)
 
 Summarize daily expenses in the browser.
@@ -2820,6 +6157,8 @@ Prerequisites: javascript
 Offline tools: Provision Node.js and a React project with pinned dependencies and a populated package cache. Use local development/build scripts from that project. All data, fonts, and images must be local; do not depend on a CDN.
 
 ### Start here: first guided lesson
+
+This is the true starting point for this course. No vocabulary from this course is assumed. You will first learn what the example is for, the meaning of its four key terms, and how to follow it one step at a time. Read the prerequisite course shown in the catalog first when one is required.
 
 Complete JavaScript first. Open a provisioned local React starter project. In its App.jsx file use this example, keeping the project’s generated entry point. Run the starter project’s documented local command.
 
@@ -3031,6 +6370,334 @@ Activity: a production build with local data, failure states, and an architectur
 
 Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
 
+### Concurrent rendering and application architecture
+
+This React module teaches you to design transitions, suspense boundaries, server-state ownership, and predictable feature boundaries. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+const [isPending, startTransition] = useTransition();
+startTransition(() => setQuery(nextQuery));
+```
+
+#### Concurrent rendering and application architecture: guided investigation (60 min; Create)
+
+ID: `reactjs-m7-l1`
+
+Objective: Design and deliver an original extension using concurrent rendering and application architecture with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Build a large searchable local catalog that stays responsive and has explicit loading, empty, error, and recovery states. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Concurrent rendering and application architecture: independent studio (90 min; Evaluate)
+
+ID: `reactjs-m7-l2`
+
+Objective: Judge two approaches to concurrent rendering and application architecture against correctness, maintainability, and offline operation.
+
+Activity: Build a large searchable local catalog that stays responsive and has explicit loading, empty, error, and recovery states. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Performance, accessibility, and secure delivery
+
+This React module teaches you to profile renders and bundles, test keyboard and screen-reader flows, and defend browser boundaries. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+const visible = useMemo(() => filter(items, query), [items, query]);
+```
+
+#### Performance, accessibility, and secure delivery: guided investigation (60 min; Create)
+
+ID: `reactjs-m8-l1`
+
+Objective: Design and deliver an original extension using performance, accessibility, and secure delivery with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Measure and repair a real render bottleneck, complete an accessibility audit, and produce a reproducible offline build. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Performance, accessibility, and secure delivery: independent studio (90 min; Evaluate)
+
+ID: `reactjs-m8-l2`
+
+Objective: Judge two approaches to performance, accessibility, and secure delivery against correctness, maintainability, and offline operation.
+
+Activity: Measure and repair a real render bottleneck, complete an accessibility audit, and produce a reproducible offline build. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Requirements and domain discovery
+
+This React module teaches you to turn a learner or client problem into user stories, a shared vocabulary, scope boundaries, and testable acceptance examples. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+User: a learner with an older device
+Need: finish work without internet
+Acceptance: saved work survives restart
+Out of scope: cloud accounts
+```
+
+#### Requirements and domain discovery: guided investigation (60 min; Create)
+
+ID: `reactjs-m9-l1`
+
+Objective: Design and deliver an original extension using requirements and domain discovery with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Interview a fictional learner, write three user stories and acceptance examples, then reject one attractive feature that violates the offline scope. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Requirements and domain discovery: independent studio (90 min; Evaluate)
+
+ID: `reactjs-m9-l2`
+
+Objective: Judge two approaches to requirements and domain discovery against correctness, maintainability, and offline operation.
+
+Activity: Interview a fictional learner, write three user stories and acceptance examples, then reject one attractive feature that violates the offline scope. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Models, interfaces, and contracts
+
+This React module teaches you to model domain rules separately from screens and frameworks, define small interfaces, and state preconditions, results, and errors. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Input contract: non-empty learner_id
+Rule: progress can only move forward
+Result: saved progress or a specific error
+Adapter: local file or database
+```
+
+#### Models, interfaces, and contracts: guided investigation (60 min; Create)
+
+ID: `reactjs-m10-l1`
+
+Objective: Design and deliver an original extension using models, interfaces, and contracts with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Draw the domain, application, storage, and interface boundaries for a small attendance feature; define one contract at every boundary. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Models, interfaces, and contracts: independent studio (90 min; Evaluate)
+
+ID: `reactjs-m10-l2`
+
+Objective: Judge two approaches to models, interfaces, and contracts against correctness, maintainability, and offline operation.
+
+Activity: Draw the domain, application, storage, and interface boundaries for a small attendance feature; define one contract at every boundary. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Validation and failure recovery
+
+This React module teaches you to validate at trust boundaries, preserve the last valid state, use atomic changes, and design recovery users can understand. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+normal: 3 valid records -> save
+edge: empty list -> valid empty result
+invalid: negative score -> reject
+interruption: old data remains readable
+```
+
+#### Validation and failure recovery: guided investigation (60 min; Create)
+
+ID: `reactjs-m11-l1`
+
+Objective: Design and deliver an original extension using validation and failure recovery with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Build a validation table for normal, empty, boundary, malformed, duplicate, and interrupted operations, then implement or simulate safe recovery. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Validation and failure recovery: independent studio (90 min; Evaluate)
+
+ID: `reactjs-m11-l2`
+
+Objective: Judge two approaches to validation and failure recovery against correctness, maintainability, and offline operation.
+
+Activity: Build a validation table for normal, empty, boundary, malformed, duplicate, and interrupted operations, then implement or simulate safe recovery. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Testing strategy and quality gates
+
+This React module teaches you to combine focused unit tests, boundary tests, integration checks, and user-visible acceptance evidence without mirroring the implementation. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Given saved progress at lesson 2
+When the app restarts offline
+Then lesson 2 remains complete
+And lesson 3 is the next available step
+```
+
+#### Testing strategy and quality gates: guided investigation (60 min; Create)
+
+ID: `reactjs-m12-l1`
+
+Objective: Design and deliver an original extension using testing strategy and quality gates with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Create a test pyramid for one real feature, write at least five meaningful cases, and explain which failure each test would catch. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Testing strategy and quality gates: independent studio (90 min; Evaluate)
+
+ID: `reactjs-m12-l2`
+
+Objective: Judge two approaches to testing strategy and quality gates against correctness, maintainability, and offline operation.
+
+Activity: Create a test pyramid for one real feature, write at least five meaningful cases, and explain which failure each test would catch. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Architecture and dependency boundaries
+
+This React module teaches you to apply separation of concerns, dependency inversion, cohesive modules, and architecture decision records to keep change affordable. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+presentation -> application -> domain
+data implements domain ports
+platform code stays behind adapters
+Decision: local storage is the source of truth
+```
+
+#### Architecture and dependency boundaries: guided investigation (60 min; Create)
+
+ID: `reactjs-m13-l1`
+
+Objective: Design and deliver an original extension using architecture and dependency boundaries with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Refactor or redesign one feature so its business rule can be tested without its UI, database, framework, or network. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Architecture and dependency boundaries: independent studio (90 min; Evaluate)
+
+ID: `reactjs-m13-l2`
+
+Objective: Judge two approaches to architecture and dependency boundaries against correctness, maintainability, and offline operation.
+
+Activity: Refactor or redesign one feature so its business rule can be tested without its UI, database, framework, or network. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Security, privacy, and inclusive access
+
+This React module teaches you to threat-model assets and trust boundaries, minimize data and permissions, and include keyboard, screen-reader, contrast, language, and large-text needs. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Asset: learner progress
+Threat: unintended disclosure
+Control: local minimum data
+Access check: keyboard + 200% text
+Recovery: explicit local backup
+```
+
+#### Security, privacy, and inclusive access: guided investigation (60 min; Create)
+
+ID: `reactjs-m14-l1`
+
+Objective: Design and deliver an original extension using security, privacy, and inclusive access with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Produce a compact threat and accessibility review, repair the two highest-impact findings, and record evidence with fictional data. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Security, privacy, and inclusive access: independent studio (90 min; Evaluate)
+
+ID: `reactjs-m14-l2`
+
+Objective: Judge two approaches to security, privacy, and inclusive access against correctness, maintainability, and offline operation.
+
+Activity: Produce a compact threat and accessibility review, repair the two highest-impact findings, and record evidence with fictional data. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Performance and resource budgets
+
+This React module teaches you to measure startup, responsiveness, memory, storage, and expensive operations before optimizing for realistic low-resource devices. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+startup budget: 2 seconds
+interaction budget: 100 ms
+storage budget: 50 MB
+offline check: airplane mode from first launch
+```
+
+#### Performance and resource budgets: guided investigation (60 min; Create)
+
+ID: `reactjs-m15-l1`
+
+Objective: Design and deliver an original extension using performance and resource budgets with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Choose three measurable budgets, capture a baseline, improve one proven bottleneck, and verify that behavior and accessibility still pass. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Performance and resource budgets: independent studio (90 min; Evaluate)
+
+ID: `reactjs-m15-l2`
+
+Objective: Judge two approaches to performance and resource budgets against correctness, maintainability, and offline operation.
+
+Activity: Choose three measurable budgets, capture a baseline, improve one proven bottleneck, and verify that behavior and accessibility still pass. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Capstone delivery and maintenance
+
+This React module teaches you to plan incremental delivery, version data safely, document offline setup, review risks, and maintain the product after its first release. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Release evidence:
+- acceptance checks pass
+- migration and rollback tested
+- offline install documented
+- known limits published
+- next improvement prioritized
+```
+
+#### Capstone delivery and maintenance: guided investigation (60 min; Create)
+
+ID: `reactjs-m16-l1`
+
+Objective: Design and deliver an original extension using capstone delivery and maintenance with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Deliver a course-specific capstone increment with requirements, architecture decision, implementation evidence, tests, usability review, migration or rollback plan, and a short demonstration. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Capstone delivery and maintenance: independent studio (90 min; Evaluate)
+
+ID: `reactjs-m16-l2`
+
+Objective: Judge two approaches to capstone delivery and maintenance against correctness, maintainability, and offline operation.
+
+Activity: Deliver a course-specific capstone increment with requirements, architecture decision, implementation evidence, tests, usability review, migration or rollback plan, and a short demonstration. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
 ### Project: Course catalog UI (6 hours)
 
 Help students browse a local course list.
@@ -3092,6 +6759,8 @@ Prerequisites: reactjs
 Offline tools: Provision Node.js, a native React Native project, native SDKs, and all packages. Android uses Android Studio/JDK; iOS requires macOS/Xcode. Do not require an online Expo service or cloud build. Local native builds need their complete dependency cache.
 
 ### Start here: first guided lesson
+
+This is the true starting point for this course. No vocabulary from this course is assumed. You will first learn what the example is for, the meaning of its four key terms, and how to follow it one step at a time. Read the prerequisite course shown in the catalog first when one is required.
 
 Complete ReactJs first. Open a fully provisioned local React Native starter project. Replace its App component with this example. Use the starter’s native build command and prepared emulator; a cloud build is not required.
 
@@ -3302,6 +6971,333 @@ Activity: a native release candidate with documented platform gaps and reproduci
 
 Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
 
+### Native modules, threads, and performance
+
+This React Native module teaches you to understand the new architecture boundary, avoid JS-thread stalls, and measure startup, lists, and memory. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+<FlatList data={items} keyExtractor={item => item.id} renderItem={renderItem} />
+```
+
+#### Native modules, threads, and performance: guided investigation (60 min; Create)
+
+ID: `reactnative-m7-l1`
+
+Objective: Design and deliver an original extension using native modules, threads, and performance with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Profile a large offline list, repair measured frame drops, and document when native code is justified. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Native modules, threads, and performance: independent studio (90 min; Evaluate)
+
+ID: `reactnative-m7-l2`
+
+Objective: Judge two approaches to native modules, threads, and performance against correctness, maintainability, and offline operation.
+
+Activity: Profile a large offline list, repair measured frame drops, and document when native code is justified. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Offline-first mobile delivery
+
+This React Native module teaches you to design durable local state, migrations, conflict policies, accessibility, signing, and reproducible Android/iOS releases. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+type PendingChange = { id: string; operation: "upsert" | "delete"; version: number };
+```
+
+#### Offline-first mobile delivery: guided investigation (60 min; Create)
+
+ID: `reactnative-m8-l1`
+
+Objective: Design and deliver an original extension using offline-first mobile delivery with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Deliver a local-first mobile feature with migration tests, interrupted-write recovery, platform accessibility checks, and release evidence. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Offline-first mobile delivery: independent studio (90 min; Evaluate)
+
+ID: `reactnative-m8-l2`
+
+Objective: Judge two approaches to offline-first mobile delivery against correctness, maintainability, and offline operation.
+
+Activity: Deliver a local-first mobile feature with migration tests, interrupted-write recovery, platform accessibility checks, and release evidence. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Requirements and domain discovery
+
+This React Native module teaches you to turn a learner or client problem into user stories, a shared vocabulary, scope boundaries, and testable acceptance examples. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+User: a learner with an older device
+Need: finish work without internet
+Acceptance: saved work survives restart
+Out of scope: cloud accounts
+```
+
+#### Requirements and domain discovery: guided investigation (60 min; Create)
+
+ID: `reactnative-m9-l1`
+
+Objective: Design and deliver an original extension using requirements and domain discovery with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Interview a fictional learner, write three user stories and acceptance examples, then reject one attractive feature that violates the offline scope. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Requirements and domain discovery: independent studio (90 min; Evaluate)
+
+ID: `reactnative-m9-l2`
+
+Objective: Judge two approaches to requirements and domain discovery against correctness, maintainability, and offline operation.
+
+Activity: Interview a fictional learner, write three user stories and acceptance examples, then reject one attractive feature that violates the offline scope. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Models, interfaces, and contracts
+
+This React Native module teaches you to model domain rules separately from screens and frameworks, define small interfaces, and state preconditions, results, and errors. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Input contract: non-empty learner_id
+Rule: progress can only move forward
+Result: saved progress or a specific error
+Adapter: local file or database
+```
+
+#### Models, interfaces, and contracts: guided investigation (60 min; Create)
+
+ID: `reactnative-m10-l1`
+
+Objective: Design and deliver an original extension using models, interfaces, and contracts with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Draw the domain, application, storage, and interface boundaries for a small attendance feature; define one contract at every boundary. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Models, interfaces, and contracts: independent studio (90 min; Evaluate)
+
+ID: `reactnative-m10-l2`
+
+Objective: Judge two approaches to models, interfaces, and contracts against correctness, maintainability, and offline operation.
+
+Activity: Draw the domain, application, storage, and interface boundaries for a small attendance feature; define one contract at every boundary. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Validation and failure recovery
+
+This React Native module teaches you to validate at trust boundaries, preserve the last valid state, use atomic changes, and design recovery users can understand. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+normal: 3 valid records -> save
+edge: empty list -> valid empty result
+invalid: negative score -> reject
+interruption: old data remains readable
+```
+
+#### Validation and failure recovery: guided investigation (60 min; Create)
+
+ID: `reactnative-m11-l1`
+
+Objective: Design and deliver an original extension using validation and failure recovery with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Build a validation table for normal, empty, boundary, malformed, duplicate, and interrupted operations, then implement or simulate safe recovery. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Validation and failure recovery: independent studio (90 min; Evaluate)
+
+ID: `reactnative-m11-l2`
+
+Objective: Judge two approaches to validation and failure recovery against correctness, maintainability, and offline operation.
+
+Activity: Build a validation table for normal, empty, boundary, malformed, duplicate, and interrupted operations, then implement or simulate safe recovery. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Testing strategy and quality gates
+
+This React Native module teaches you to combine focused unit tests, boundary tests, integration checks, and user-visible acceptance evidence without mirroring the implementation. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Given saved progress at lesson 2
+When the app restarts offline
+Then lesson 2 remains complete
+And lesson 3 is the next available step
+```
+
+#### Testing strategy and quality gates: guided investigation (60 min; Create)
+
+ID: `reactnative-m12-l1`
+
+Objective: Design and deliver an original extension using testing strategy and quality gates with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Create a test pyramid for one real feature, write at least five meaningful cases, and explain which failure each test would catch. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Testing strategy and quality gates: independent studio (90 min; Evaluate)
+
+ID: `reactnative-m12-l2`
+
+Objective: Judge two approaches to testing strategy and quality gates against correctness, maintainability, and offline operation.
+
+Activity: Create a test pyramid for one real feature, write at least five meaningful cases, and explain which failure each test would catch. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Architecture and dependency boundaries
+
+This React Native module teaches you to apply separation of concerns, dependency inversion, cohesive modules, and architecture decision records to keep change affordable. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+presentation -> application -> domain
+data implements domain ports
+platform code stays behind adapters
+Decision: local storage is the source of truth
+```
+
+#### Architecture and dependency boundaries: guided investigation (60 min; Create)
+
+ID: `reactnative-m13-l1`
+
+Objective: Design and deliver an original extension using architecture and dependency boundaries with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Refactor or redesign one feature so its business rule can be tested without its UI, database, framework, or network. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Architecture and dependency boundaries: independent studio (90 min; Evaluate)
+
+ID: `reactnative-m13-l2`
+
+Objective: Judge two approaches to architecture and dependency boundaries against correctness, maintainability, and offline operation.
+
+Activity: Refactor or redesign one feature so its business rule can be tested without its UI, database, framework, or network. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Security, privacy, and inclusive access
+
+This React Native module teaches you to threat-model assets and trust boundaries, minimize data and permissions, and include keyboard, screen-reader, contrast, language, and large-text needs. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Asset: learner progress
+Threat: unintended disclosure
+Control: local minimum data
+Access check: keyboard + 200% text
+Recovery: explicit local backup
+```
+
+#### Security, privacy, and inclusive access: guided investigation (60 min; Create)
+
+ID: `reactnative-m14-l1`
+
+Objective: Design and deliver an original extension using security, privacy, and inclusive access with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Produce a compact threat and accessibility review, repair the two highest-impact findings, and record evidence with fictional data. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Security, privacy, and inclusive access: independent studio (90 min; Evaluate)
+
+ID: `reactnative-m14-l2`
+
+Objective: Judge two approaches to security, privacy, and inclusive access against correctness, maintainability, and offline operation.
+
+Activity: Produce a compact threat and accessibility review, repair the two highest-impact findings, and record evidence with fictional data. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Performance and resource budgets
+
+This React Native module teaches you to measure startup, responsiveness, memory, storage, and expensive operations before optimizing for realistic low-resource devices. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+startup budget: 2 seconds
+interaction budget: 100 ms
+storage budget: 50 MB
+offline check: airplane mode from first launch
+```
+
+#### Performance and resource budgets: guided investigation (60 min; Create)
+
+ID: `reactnative-m15-l1`
+
+Objective: Design and deliver an original extension using performance and resource budgets with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Choose three measurable budgets, capture a baseline, improve one proven bottleneck, and verify that behavior and accessibility still pass. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Performance and resource budgets: independent studio (90 min; Evaluate)
+
+ID: `reactnative-m15-l2`
+
+Objective: Judge two approaches to performance and resource budgets against correctness, maintainability, and offline operation.
+
+Activity: Choose three measurable budgets, capture a baseline, improve one proven bottleneck, and verify that behavior and accessibility still pass. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Capstone delivery and maintenance
+
+This React Native module teaches you to plan incremental delivery, version data safely, document offline setup, review risks, and maintain the product after its first release. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Release evidence:
+- acceptance checks pass
+- migration and rollback tested
+- offline install documented
+- known limits published
+- next improvement prioritized
+```
+
+#### Capstone delivery and maintenance: guided investigation (60 min; Create)
+
+ID: `reactnative-m16-l1`
+
+Objective: Design and deliver an original extension using capstone delivery and maintenance with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Deliver a course-specific capstone increment with requirements, architecture decision, implementation evidence, tests, usability review, migration or rollback plan, and a short demonstration. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Capstone delivery and maintenance: independent studio (90 min; Evaluate)
+
+ID: `reactnative-m16-l2`
+
+Objective: Judge two approaches to capstone delivery and maintenance against correctness, maintainability, and offline operation.
+
+Activity: Deliver a course-specific capstone increment with requirements, architecture decision, implementation evidence, tests, usability review, migration or rollback plan, and a short demonstration. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
 ### Project: Campus directory (6 hours)
 
 Browse fictional campus contacts and places.
@@ -3363,6 +7359,8 @@ Prerequisites: javascript
 Offline tools: Provision a Node.js runtime. The examples and initial projects use built-in modules; run node filename.mjs and node --test. Bind demonstration services to 127.0.0.1. No external network calls are required.
 
 ### Start here: first guided lesson
+
+This is the true starting point for this course. No vocabulary from this course is assumed. You will first learn what the example is for, the meaning of its four key terms, and how to follow it one step at a time. Read the prerequisite course shown in the catalog first when one is required.
 
 Complete JavaScript first. On a computer with Node.js installed, save hello.mjs. Open a terminal in its folder and run node hello.mjs. A browser and internet connection are not required.
 
@@ -3579,6 +7577,337 @@ Activity: a standard-library-only release with bounded inputs, local backup, and
 
 Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
 
+### Streams, workers, and backpressure
+
+This Node.js module teaches you to process large inputs with bounded memory, worker isolation, cancellation, and explicit error propagation. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+import { pipeline } from "node:stream/promises";
+await pipeline(source, transform, destination);
+```
+
+#### Streams, workers, and backpressure: guided investigation (60 min; Create)
+
+ID: `nodejs-m7-l1`
+
+Objective: Design and deliver an original extension using streams, workers, and backpressure with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Build a bounded CSV pipeline and prove backpressure, cleanup, cancellation, and malformed-record handling. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Streams, workers, and backpressure: independent studio (90 min; Evaluate)
+
+ID: `nodejs-m7-l2`
+
+Objective: Judge two approaches to streams, workers, and backpressure against correctness, maintainability, and offline operation.
+
+Activity: Build a bounded CSV pipeline and prove backpressure, cleanup, cancellation, and malformed-record handling. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Diagnostics, security, and production operations
+
+This Node.js module teaches you to measure event-loop delay, trace requests, constrain privileges, and operate graceful startup and shutdown. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+process.on("SIGTERM", async () => {
+  await server.close();
+  process.exitCode = 0;
+});
+```
+
+#### Diagnostics, security, and production operations: guided investigation (60 min; Create)
+
+ID: `nodejs-m8-l1`
+
+Objective: Design and deliver an original extension using diagnostics, security, and production operations with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Package a loopback service with structured diagnostics, resource limits, threat model, graceful shutdown, and recovery test. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Diagnostics, security, and production operations: independent studio (90 min; Evaluate)
+
+ID: `nodejs-m8-l2`
+
+Objective: Judge two approaches to diagnostics, security, and production operations against correctness, maintainability, and offline operation.
+
+Activity: Package a loopback service with structured diagnostics, resource limits, threat model, graceful shutdown, and recovery test. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Requirements and domain discovery
+
+This Node.js module teaches you to turn a learner or client problem into user stories, a shared vocabulary, scope boundaries, and testable acceptance examples. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+User: a learner with an older device
+Need: finish work without internet
+Acceptance: saved work survives restart
+Out of scope: cloud accounts
+```
+
+#### Requirements and domain discovery: guided investigation (60 min; Create)
+
+ID: `nodejs-m9-l1`
+
+Objective: Design and deliver an original extension using requirements and domain discovery with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Interview a fictional learner, write three user stories and acceptance examples, then reject one attractive feature that violates the offline scope. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Requirements and domain discovery: independent studio (90 min; Evaluate)
+
+ID: `nodejs-m9-l2`
+
+Objective: Judge two approaches to requirements and domain discovery against correctness, maintainability, and offline operation.
+
+Activity: Interview a fictional learner, write three user stories and acceptance examples, then reject one attractive feature that violates the offline scope. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Models, interfaces, and contracts
+
+This Node.js module teaches you to model domain rules separately from screens and frameworks, define small interfaces, and state preconditions, results, and errors. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Input contract: non-empty learner_id
+Rule: progress can only move forward
+Result: saved progress or a specific error
+Adapter: local file or database
+```
+
+#### Models, interfaces, and contracts: guided investigation (60 min; Create)
+
+ID: `nodejs-m10-l1`
+
+Objective: Design and deliver an original extension using models, interfaces, and contracts with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Draw the domain, application, storage, and interface boundaries for a small attendance feature; define one contract at every boundary. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Models, interfaces, and contracts: independent studio (90 min; Evaluate)
+
+ID: `nodejs-m10-l2`
+
+Objective: Judge two approaches to models, interfaces, and contracts against correctness, maintainability, and offline operation.
+
+Activity: Draw the domain, application, storage, and interface boundaries for a small attendance feature; define one contract at every boundary. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Validation and failure recovery
+
+This Node.js module teaches you to validate at trust boundaries, preserve the last valid state, use atomic changes, and design recovery users can understand. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+normal: 3 valid records -> save
+edge: empty list -> valid empty result
+invalid: negative score -> reject
+interruption: old data remains readable
+```
+
+#### Validation and failure recovery: guided investigation (60 min; Create)
+
+ID: `nodejs-m11-l1`
+
+Objective: Design and deliver an original extension using validation and failure recovery with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Build a validation table for normal, empty, boundary, malformed, duplicate, and interrupted operations, then implement or simulate safe recovery. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Validation and failure recovery: independent studio (90 min; Evaluate)
+
+ID: `nodejs-m11-l2`
+
+Objective: Judge two approaches to validation and failure recovery against correctness, maintainability, and offline operation.
+
+Activity: Build a validation table for normal, empty, boundary, malformed, duplicate, and interrupted operations, then implement or simulate safe recovery. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Testing strategy and quality gates
+
+This Node.js module teaches you to combine focused unit tests, boundary tests, integration checks, and user-visible acceptance evidence without mirroring the implementation. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Given saved progress at lesson 2
+When the app restarts offline
+Then lesson 2 remains complete
+And lesson 3 is the next available step
+```
+
+#### Testing strategy and quality gates: guided investigation (60 min; Create)
+
+ID: `nodejs-m12-l1`
+
+Objective: Design and deliver an original extension using testing strategy and quality gates with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Create a test pyramid for one real feature, write at least five meaningful cases, and explain which failure each test would catch. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Testing strategy and quality gates: independent studio (90 min; Evaluate)
+
+ID: `nodejs-m12-l2`
+
+Objective: Judge two approaches to testing strategy and quality gates against correctness, maintainability, and offline operation.
+
+Activity: Create a test pyramid for one real feature, write at least five meaningful cases, and explain which failure each test would catch. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Architecture and dependency boundaries
+
+This Node.js module teaches you to apply separation of concerns, dependency inversion, cohesive modules, and architecture decision records to keep change affordable. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+presentation -> application -> domain
+data implements domain ports
+platform code stays behind adapters
+Decision: local storage is the source of truth
+```
+
+#### Architecture and dependency boundaries: guided investigation (60 min; Create)
+
+ID: `nodejs-m13-l1`
+
+Objective: Design and deliver an original extension using architecture and dependency boundaries with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Refactor or redesign one feature so its business rule can be tested without its UI, database, framework, or network. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Architecture and dependency boundaries: independent studio (90 min; Evaluate)
+
+ID: `nodejs-m13-l2`
+
+Objective: Judge two approaches to architecture and dependency boundaries against correctness, maintainability, and offline operation.
+
+Activity: Refactor or redesign one feature so its business rule can be tested without its UI, database, framework, or network. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Security, privacy, and inclusive access
+
+This Node.js module teaches you to threat-model assets and trust boundaries, minimize data and permissions, and include keyboard, screen-reader, contrast, language, and large-text needs. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Asset: learner progress
+Threat: unintended disclosure
+Control: local minimum data
+Access check: keyboard + 200% text
+Recovery: explicit local backup
+```
+
+#### Security, privacy, and inclusive access: guided investigation (60 min; Create)
+
+ID: `nodejs-m14-l1`
+
+Objective: Design and deliver an original extension using security, privacy, and inclusive access with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Produce a compact threat and accessibility review, repair the two highest-impact findings, and record evidence with fictional data. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Security, privacy, and inclusive access: independent studio (90 min; Evaluate)
+
+ID: `nodejs-m14-l2`
+
+Objective: Judge two approaches to security, privacy, and inclusive access against correctness, maintainability, and offline operation.
+
+Activity: Produce a compact threat and accessibility review, repair the two highest-impact findings, and record evidence with fictional data. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Performance and resource budgets
+
+This Node.js module teaches you to measure startup, responsiveness, memory, storage, and expensive operations before optimizing for realistic low-resource devices. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+startup budget: 2 seconds
+interaction budget: 100 ms
+storage budget: 50 MB
+offline check: airplane mode from first launch
+```
+
+#### Performance and resource budgets: guided investigation (60 min; Create)
+
+ID: `nodejs-m15-l1`
+
+Objective: Design and deliver an original extension using performance and resource budgets with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Choose three measurable budgets, capture a baseline, improve one proven bottleneck, and verify that behavior and accessibility still pass. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Performance and resource budgets: independent studio (90 min; Evaluate)
+
+ID: `nodejs-m15-l2`
+
+Objective: Judge two approaches to performance and resource budgets against correctness, maintainability, and offline operation.
+
+Activity: Choose three measurable budgets, capture a baseline, improve one proven bottleneck, and verify that behavior and accessibility still pass. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Capstone delivery and maintenance
+
+This Node.js module teaches you to plan incremental delivery, version data safely, document offline setup, review risks, and maintain the product after its first release. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Release evidence:
+- acceptance checks pass
+- migration and rollback tested
+- offline install documented
+- known limits published
+- next improvement prioritized
+```
+
+#### Capstone delivery and maintenance: guided investigation (60 min; Create)
+
+ID: `nodejs-m16-l1`
+
+Objective: Design and deliver an original extension using capstone delivery and maintenance with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Deliver a course-specific capstone increment with requirements, architecture decision, implementation evidence, tests, usability review, migration or rollback plan, and a short demonstration. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Capstone delivery and maintenance: independent studio (90 min; Evaluate)
+
+ID: `nodejs-m16-l2`
+
+Objective: Judge two approaches to capstone delivery and maintenance against correctness, maintainability, and offline operation.
+
+Activity: Deliver a course-specific capstone increment with requirements, architecture decision, implementation evidence, tests, usability review, migration or rollback plan, and a short demonstration. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
 ### Project: CSV report CLI (6 hours)
 
 Summarize fictional attendance data.
@@ -3640,6 +7969,8 @@ Prerequisites: nodejs
 Offline tools: Provision Node.js and a pinned Express installation plus any testing dependencies. Use a local package cache and a lockfile. Bind to loopback and use fictional data; no cloud database or hosted API is required.
 
 ### Start here: first guided lesson
+
+This is the true starting point for this course. No vocabulary from this course is assumed. You will first learn what the example is for, the meaning of its four key terms, and how to follow it one step at a time. Read the prerequisite course shown in the catalog first when one is required.
 
 Complete NodeJs first. Use a provisioned project with Express installed and an ES-module entry file named app.mjs. Run node app.mjs, then open http://127.0.0.1:3000/ in a browser on the same computer. This local address does not require internet.
 
@@ -3853,6 +8184,336 @@ Activity: a release package with controlled startup, shutdown, and an offline sm
 
 Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
 
+### Service architecture and resilient workflows
+
+This Express module teaches you to separate HTTP, application, and persistence concerns while applying idempotency and transaction boundaries. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+app.post("/loans", validate, asyncHandler(async (req, res) => {
+  res.status(201).json(await service.create(req.body));
+}));
+```
+
+#### Service architecture and resilient workflows: guided investigation (60 min; Create)
+
+ID: `expressjs-m7-l1`
+
+Objective: Design and deliver an original extension using service architecture and resilient workflows with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Implement an idempotent transactional workflow with stable errors and contract tests through real HTTP. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Service architecture and resilient workflows: independent studio (90 min; Evaluate)
+
+ID: `expressjs-m7-l2`
+
+Objective: Judge two approaches to service architecture and resilient workflows against correctness, maintainability, and offline operation.
+
+Activity: Implement an idempotent transactional workflow with stable errors and contract tests through real HTTP. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### API security, observability, and operations
+
+This Express module teaches you to apply authentication boundaries, authorization policy, rate and size limits, redacted logs, and graceful operation. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+app.use(express.json({ limit: "16kb" }));
+app.use((err, req, res, next) => res.status(500).json({code:"INTERNAL"}));
+```
+
+#### API security, observability, and operations: guided investigation (60 min; Create)
+
+ID: `expressjs-m8-l1`
+
+Objective: Design and deliver an original extension using api security, observability, and operations with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Threat-model and harden a local API, then verify limits, policy failures, redaction, health, and clean shutdown. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### API security, observability, and operations: independent studio (90 min; Evaluate)
+
+ID: `expressjs-m8-l2`
+
+Objective: Judge two approaches to api security, observability, and operations against correctness, maintainability, and offline operation.
+
+Activity: Threat-model and harden a local API, then verify limits, policy failures, redaction, health, and clean shutdown. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Requirements and domain discovery
+
+This Express module teaches you to turn a learner or client problem into user stories, a shared vocabulary, scope boundaries, and testable acceptance examples. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+User: a learner with an older device
+Need: finish work without internet
+Acceptance: saved work survives restart
+Out of scope: cloud accounts
+```
+
+#### Requirements and domain discovery: guided investigation (60 min; Create)
+
+ID: `expressjs-m9-l1`
+
+Objective: Design and deliver an original extension using requirements and domain discovery with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Interview a fictional learner, write three user stories and acceptance examples, then reject one attractive feature that violates the offline scope. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Requirements and domain discovery: independent studio (90 min; Evaluate)
+
+ID: `expressjs-m9-l2`
+
+Objective: Judge two approaches to requirements and domain discovery against correctness, maintainability, and offline operation.
+
+Activity: Interview a fictional learner, write three user stories and acceptance examples, then reject one attractive feature that violates the offline scope. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Models, interfaces, and contracts
+
+This Express module teaches you to model domain rules separately from screens and frameworks, define small interfaces, and state preconditions, results, and errors. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Input contract: non-empty learner_id
+Rule: progress can only move forward
+Result: saved progress or a specific error
+Adapter: local file or database
+```
+
+#### Models, interfaces, and contracts: guided investigation (60 min; Create)
+
+ID: `expressjs-m10-l1`
+
+Objective: Design and deliver an original extension using models, interfaces, and contracts with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Draw the domain, application, storage, and interface boundaries for a small attendance feature; define one contract at every boundary. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Models, interfaces, and contracts: independent studio (90 min; Evaluate)
+
+ID: `expressjs-m10-l2`
+
+Objective: Judge two approaches to models, interfaces, and contracts against correctness, maintainability, and offline operation.
+
+Activity: Draw the domain, application, storage, and interface boundaries for a small attendance feature; define one contract at every boundary. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Validation and failure recovery
+
+This Express module teaches you to validate at trust boundaries, preserve the last valid state, use atomic changes, and design recovery users can understand. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+normal: 3 valid records -> save
+edge: empty list -> valid empty result
+invalid: negative score -> reject
+interruption: old data remains readable
+```
+
+#### Validation and failure recovery: guided investigation (60 min; Create)
+
+ID: `expressjs-m11-l1`
+
+Objective: Design and deliver an original extension using validation and failure recovery with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Build a validation table for normal, empty, boundary, malformed, duplicate, and interrupted operations, then implement or simulate safe recovery. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Validation and failure recovery: independent studio (90 min; Evaluate)
+
+ID: `expressjs-m11-l2`
+
+Objective: Judge two approaches to validation and failure recovery against correctness, maintainability, and offline operation.
+
+Activity: Build a validation table for normal, empty, boundary, malformed, duplicate, and interrupted operations, then implement or simulate safe recovery. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Testing strategy and quality gates
+
+This Express module teaches you to combine focused unit tests, boundary tests, integration checks, and user-visible acceptance evidence without mirroring the implementation. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Given saved progress at lesson 2
+When the app restarts offline
+Then lesson 2 remains complete
+And lesson 3 is the next available step
+```
+
+#### Testing strategy and quality gates: guided investigation (60 min; Create)
+
+ID: `expressjs-m12-l1`
+
+Objective: Design and deliver an original extension using testing strategy and quality gates with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Create a test pyramid for one real feature, write at least five meaningful cases, and explain which failure each test would catch. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Testing strategy and quality gates: independent studio (90 min; Evaluate)
+
+ID: `expressjs-m12-l2`
+
+Objective: Judge two approaches to testing strategy and quality gates against correctness, maintainability, and offline operation.
+
+Activity: Create a test pyramid for one real feature, write at least five meaningful cases, and explain which failure each test would catch. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Architecture and dependency boundaries
+
+This Express module teaches you to apply separation of concerns, dependency inversion, cohesive modules, and architecture decision records to keep change affordable. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+presentation -> application -> domain
+data implements domain ports
+platform code stays behind adapters
+Decision: local storage is the source of truth
+```
+
+#### Architecture and dependency boundaries: guided investigation (60 min; Create)
+
+ID: `expressjs-m13-l1`
+
+Objective: Design and deliver an original extension using architecture and dependency boundaries with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Refactor or redesign one feature so its business rule can be tested without its UI, database, framework, or network. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Architecture and dependency boundaries: independent studio (90 min; Evaluate)
+
+ID: `expressjs-m13-l2`
+
+Objective: Judge two approaches to architecture and dependency boundaries against correctness, maintainability, and offline operation.
+
+Activity: Refactor or redesign one feature so its business rule can be tested without its UI, database, framework, or network. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Security, privacy, and inclusive access
+
+This Express module teaches you to threat-model assets and trust boundaries, minimize data and permissions, and include keyboard, screen-reader, contrast, language, and large-text needs. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Asset: learner progress
+Threat: unintended disclosure
+Control: local minimum data
+Access check: keyboard + 200% text
+Recovery: explicit local backup
+```
+
+#### Security, privacy, and inclusive access: guided investigation (60 min; Create)
+
+ID: `expressjs-m14-l1`
+
+Objective: Design and deliver an original extension using security, privacy, and inclusive access with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Produce a compact threat and accessibility review, repair the two highest-impact findings, and record evidence with fictional data. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Security, privacy, and inclusive access: independent studio (90 min; Evaluate)
+
+ID: `expressjs-m14-l2`
+
+Objective: Judge two approaches to security, privacy, and inclusive access against correctness, maintainability, and offline operation.
+
+Activity: Produce a compact threat and accessibility review, repair the two highest-impact findings, and record evidence with fictional data. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Performance and resource budgets
+
+This Express module teaches you to measure startup, responsiveness, memory, storage, and expensive operations before optimizing for realistic low-resource devices. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+startup budget: 2 seconds
+interaction budget: 100 ms
+storage budget: 50 MB
+offline check: airplane mode from first launch
+```
+
+#### Performance and resource budgets: guided investigation (60 min; Create)
+
+ID: `expressjs-m15-l1`
+
+Objective: Design and deliver an original extension using performance and resource budgets with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Choose three measurable budgets, capture a baseline, improve one proven bottleneck, and verify that behavior and accessibility still pass. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Performance and resource budgets: independent studio (90 min; Evaluate)
+
+ID: `expressjs-m15-l2`
+
+Objective: Judge two approaches to performance and resource budgets against correctness, maintainability, and offline operation.
+
+Activity: Choose three measurable budgets, capture a baseline, improve one proven bottleneck, and verify that behavior and accessibility still pass. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Capstone delivery and maintenance
+
+This Express module teaches you to plan incremental delivery, version data safely, document offline setup, review risks, and maintain the product after its first release. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Release evidence:
+- acceptance checks pass
+- migration and rollback tested
+- offline install documented
+- known limits published
+- next improvement prioritized
+```
+
+#### Capstone delivery and maintenance: guided investigation (60 min; Create)
+
+ID: `expressjs-m16-l1`
+
+Objective: Design and deliver an original extension using capstone delivery and maintenance with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Deliver a course-specific capstone increment with requirements, architecture decision, implementation evidence, tests, usability review, migration or rollback plan, and a short demonstration. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Capstone delivery and maintenance: independent studio (90 min; Evaluate)
+
+ID: `expressjs-m16-l2`
+
+Objective: Judge two approaches to capstone delivery and maintenance against correctness, maintainability, and offline operation.
+
+Activity: Deliver a course-specific capstone increment with requirements, architecture decision, implementation evidence, tests, usability review, migration or rollback plan, and a short demonstration. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
 ### Project: Course catalog API (6 hours)
 
 Expose a fictional training catalog locally.
@@ -3914,6 +8575,8 @@ Prerequisites: No prior programming required; basic device and file use.
 Offline tools: Provision Flutter/Dart, target SDKs, fonts, and all pub/native dependency caches. Use flutter pub get --offline after provisioning. Android and Windows need their native build tools; iOS builds require macOS/Xcode. The app’s Python sandbox does not execute Dart.
 
 ### Start here: first guided lesson
+
+This is the true starting point for this course. No vocabulary from this course is assumed. You will first learn what the example is for, the meaning of its four key terms, and how to follow it one step at a time. Read the prerequisite course shown in the catalog first when one is required.
 
 No programming experience is required. Start with Dart before widgets. On a computer with Flutter/Dart provisioned, save main.dart and run dart run main.dart. This first lesson uses the console, not a mobile screen.
 
@@ -4133,6 +8796,336 @@ Activity: an offline release candidate with dependency documentation, CI checks,
 
 Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
 
+### Rendering, isolates, and performance engineering
+
+This Flutter and Dart module teaches you to measure frames, rebuilds, memory, startup, and isolate transfer before applying targeted optimizations. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+final result = await Isolate.run(() => expensiveReport(records));
+// Transfer immutable results and enforce a timeout.
+```
+
+#### Rendering, isolates, and performance engineering: guided investigation (60 min; Create)
+
+ID: `flutter-dart-m7-l1`
+
+Objective: Design and deliver an original extension using rendering, isolates, and performance engineering with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Profile a large offline screen, repair one measured bottleneck, and verify responsiveness on a low-resource device. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Rendering, isolates, and performance engineering: independent studio (90 min; Evaluate)
+
+ID: `flutter-dart-m7-l2`
+
+Objective: Judge two approaches to rendering, isolates, and performance engineering against correctness, maintainability, and offline operation.
+
+Activity: Profile a large offline screen, repair one measured bottleneck, and verify responsiveness on a low-resource device. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Platform integration, security, and release automation
+
+This Flutter and Dart module teaches you to design plugin boundaries, migrations, permissions, signing, reproducible builds, and rollback evidence. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+abstract interface class SecureStore {
+  Future<void> write(String key, String value);
+}
+```
+
+#### Platform integration, security, and release automation: guided investigation (60 min; Create)
+
+ID: `flutter-dart-m8-l1`
+
+Objective: Design and deliver an original extension using platform integration, security, and release automation with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Deliver a platform adapter with fakes and integration tests plus signed-build, offline-install, backup, migration, and rollback checks. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Platform integration, security, and release automation: independent studio (90 min; Evaluate)
+
+ID: `flutter-dart-m8-l2`
+
+Objective: Judge two approaches to platform integration, security, and release automation against correctness, maintainability, and offline operation.
+
+Activity: Deliver a platform adapter with fakes and integration tests plus signed-build, offline-install, backup, migration, and rollback checks. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Requirements and domain discovery
+
+This Flutter and Dart module teaches you to turn a learner or client problem into user stories, a shared vocabulary, scope boundaries, and testable acceptance examples. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+User: a learner with an older device
+Need: finish work without internet
+Acceptance: saved work survives restart
+Out of scope: cloud accounts
+```
+
+#### Requirements and domain discovery: guided investigation (60 min; Create)
+
+ID: `flutter-dart-m9-l1`
+
+Objective: Design and deliver an original extension using requirements and domain discovery with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Interview a fictional learner, write three user stories and acceptance examples, then reject one attractive feature that violates the offline scope. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Requirements and domain discovery: independent studio (90 min; Evaluate)
+
+ID: `flutter-dart-m9-l2`
+
+Objective: Judge two approaches to requirements and domain discovery against correctness, maintainability, and offline operation.
+
+Activity: Interview a fictional learner, write three user stories and acceptance examples, then reject one attractive feature that violates the offline scope. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Models, interfaces, and contracts
+
+This Flutter and Dart module teaches you to model domain rules separately from screens and frameworks, define small interfaces, and state preconditions, results, and errors. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Input contract: non-empty learner_id
+Rule: progress can only move forward
+Result: saved progress or a specific error
+Adapter: local file or database
+```
+
+#### Models, interfaces, and contracts: guided investigation (60 min; Create)
+
+ID: `flutter-dart-m10-l1`
+
+Objective: Design and deliver an original extension using models, interfaces, and contracts with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Draw the domain, application, storage, and interface boundaries for a small attendance feature; define one contract at every boundary. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Models, interfaces, and contracts: independent studio (90 min; Evaluate)
+
+ID: `flutter-dart-m10-l2`
+
+Objective: Judge two approaches to models, interfaces, and contracts against correctness, maintainability, and offline operation.
+
+Activity: Draw the domain, application, storage, and interface boundaries for a small attendance feature; define one contract at every boundary. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Validation and failure recovery
+
+This Flutter and Dart module teaches you to validate at trust boundaries, preserve the last valid state, use atomic changes, and design recovery users can understand. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+normal: 3 valid records -> save
+edge: empty list -> valid empty result
+invalid: negative score -> reject
+interruption: old data remains readable
+```
+
+#### Validation and failure recovery: guided investigation (60 min; Create)
+
+ID: `flutter-dart-m11-l1`
+
+Objective: Design and deliver an original extension using validation and failure recovery with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Build a validation table for normal, empty, boundary, malformed, duplicate, and interrupted operations, then implement or simulate safe recovery. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Validation and failure recovery: independent studio (90 min; Evaluate)
+
+ID: `flutter-dart-m11-l2`
+
+Objective: Judge two approaches to validation and failure recovery against correctness, maintainability, and offline operation.
+
+Activity: Build a validation table for normal, empty, boundary, malformed, duplicate, and interrupted operations, then implement or simulate safe recovery. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Testing strategy and quality gates
+
+This Flutter and Dart module teaches you to combine focused unit tests, boundary tests, integration checks, and user-visible acceptance evidence without mirroring the implementation. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Given saved progress at lesson 2
+When the app restarts offline
+Then lesson 2 remains complete
+And lesson 3 is the next available step
+```
+
+#### Testing strategy and quality gates: guided investigation (60 min; Create)
+
+ID: `flutter-dart-m12-l1`
+
+Objective: Design and deliver an original extension using testing strategy and quality gates with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Create a test pyramid for one real feature, write at least five meaningful cases, and explain which failure each test would catch. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Testing strategy and quality gates: independent studio (90 min; Evaluate)
+
+ID: `flutter-dart-m12-l2`
+
+Objective: Judge two approaches to testing strategy and quality gates against correctness, maintainability, and offline operation.
+
+Activity: Create a test pyramid for one real feature, write at least five meaningful cases, and explain which failure each test would catch. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Architecture and dependency boundaries
+
+This Flutter and Dart module teaches you to apply separation of concerns, dependency inversion, cohesive modules, and architecture decision records to keep change affordable. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+presentation -> application -> domain
+data implements domain ports
+platform code stays behind adapters
+Decision: local storage is the source of truth
+```
+
+#### Architecture and dependency boundaries: guided investigation (60 min; Create)
+
+ID: `flutter-dart-m13-l1`
+
+Objective: Design and deliver an original extension using architecture and dependency boundaries with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Refactor or redesign one feature so its business rule can be tested without its UI, database, framework, or network. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Architecture and dependency boundaries: independent studio (90 min; Evaluate)
+
+ID: `flutter-dart-m13-l2`
+
+Objective: Judge two approaches to architecture and dependency boundaries against correctness, maintainability, and offline operation.
+
+Activity: Refactor or redesign one feature so its business rule can be tested without its UI, database, framework, or network. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Security, privacy, and inclusive access
+
+This Flutter and Dart module teaches you to threat-model assets and trust boundaries, minimize data and permissions, and include keyboard, screen-reader, contrast, language, and large-text needs. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Asset: learner progress
+Threat: unintended disclosure
+Control: local minimum data
+Access check: keyboard + 200% text
+Recovery: explicit local backup
+```
+
+#### Security, privacy, and inclusive access: guided investigation (60 min; Create)
+
+ID: `flutter-dart-m14-l1`
+
+Objective: Design and deliver an original extension using security, privacy, and inclusive access with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Produce a compact threat and accessibility review, repair the two highest-impact findings, and record evidence with fictional data. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Security, privacy, and inclusive access: independent studio (90 min; Evaluate)
+
+ID: `flutter-dart-m14-l2`
+
+Objective: Judge two approaches to security, privacy, and inclusive access against correctness, maintainability, and offline operation.
+
+Activity: Produce a compact threat and accessibility review, repair the two highest-impact findings, and record evidence with fictional data. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Performance and resource budgets
+
+This Flutter and Dart module teaches you to measure startup, responsiveness, memory, storage, and expensive operations before optimizing for realistic low-resource devices. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+startup budget: 2 seconds
+interaction budget: 100 ms
+storage budget: 50 MB
+offline check: airplane mode from first launch
+```
+
+#### Performance and resource budgets: guided investigation (60 min; Create)
+
+ID: `flutter-dart-m15-l1`
+
+Objective: Design and deliver an original extension using performance and resource budgets with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Choose three measurable budgets, capture a baseline, improve one proven bottleneck, and verify that behavior and accessibility still pass. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Performance and resource budgets: independent studio (90 min; Evaluate)
+
+ID: `flutter-dart-m15-l2`
+
+Objective: Judge two approaches to performance and resource budgets against correctness, maintainability, and offline operation.
+
+Activity: Choose three measurable budgets, capture a baseline, improve one proven bottleneck, and verify that behavior and accessibility still pass. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Capstone delivery and maintenance
+
+This Flutter and Dart module teaches you to plan incremental delivery, version data safely, document offline setup, review risks, and maintain the product after its first release. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Release evidence:
+- acceptance checks pass
+- migration and rollback tested
+- offline install documented
+- known limits published
+- next improvement prioritized
+```
+
+#### Capstone delivery and maintenance: guided investigation (60 min; Create)
+
+ID: `flutter-dart-m16-l1`
+
+Objective: Design and deliver an original extension using capstone delivery and maintenance with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Deliver a course-specific capstone increment with requirements, architecture decision, implementation evidence, tests, usability review, migration or rollback plan, and a short demonstration. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Capstone delivery and maintenance: independent studio (90 min; Evaluate)
+
+ID: `flutter-dart-m16-l2`
+
+Objective: Judge two approaches to capstone delivery and maintenance against correctness, maintainability, and offline operation.
+
+Activity: Deliver a course-specific capstone increment with requirements, architecture decision, implementation evidence, tests, usability review, migration or rollback plan, and a short demonstration. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
 ### Project: Student timetable (6 hours)
 
 Build a responsive local timetable.
@@ -4178,6 +9171,3081 @@ Acceptance conditions:
 - Separate curriculum, assessment, portfolio, storage, and UI responsibilities.
 - Bundle lessons and track progress without accounts or network calls.
 - Deliver unit, widget, integration tests and a verified target-specific release.
+
+Milestones:
+
+- Discover: write three user stories, scope exclusions, and acceptance examples using fictional data.
+- Design: sketch components and data flow; justify one tradeoff in an architecture decision record.
+- Build: implement the required behaviors in small reviewable changes; record how to reproduce the build offline.
+- Verify: test every acceptance condition, empty/invalid data, and restart behavior; retain results.
+- Review: demonstrate to a peer or conduct a recorded self-review; document feedback, improvements, and limitations.
+
+## Database Foundations
+
+Prerequisites: No prior programming required; basic device and file use.
+
+Offline tools: Use the in-app SQL practice for read-only queries on fictional data. The worked scripts can also be run in a separately prepared SQLite tool. Each example starts with a fresh database; no internet or account is needed.
+
+### Start here: first guided lesson
+
+This is the true starting point for this course. No vocabulary from this course is assumed. You will first learn what the example is for, the meaning of its four key terms, and how to follow it one step at a time. Read the prerequisite course shown in the catalog first when one is required.
+
+A database organizes information so it can be found and checked. Imagine a library register: each book is one row, and title and price are columns. A table describes the fields every record uses. SQL is a language for asking the database to create, read, and change records. Keeping data in a table is different from displaying it on a screen.
+
+Vocabulary:
+
+- Database: organized information that a program can read and change.
+- Record: one stored item, represented by a row or a document.
+- Query: a request describing which information you want.
+- Constraint: a rule that rejects invalid stored data.
+
+```text
+CREATE TABLE books(id INTEGER PRIMARY KEY, title TEXT NOT NULL, price INTEGER NOT NULL CHECK(price >= 0));
+INSERT INTO books VALUES (1,'Python',100),(2,'Databases',150),(3,'Web',100);
+SELECT title, price FROM books ORDER BY id;
+```
+
+- CREATE TABLE defines the structure but adds no books. INSERT adds three rows. SELECT asks for two columns and ORDER BY id fixes the display order. The rows are Python/100, Databases/150, and Web/100. A result table is a view of stored data, not a second saved copy.
+
+Readiness check: What should you do before changing training data?
+
+Answer: Predict the result and identify the target records.
+
+Guided practice: Read only the title column and keep the rows ordered by id.
+
+Hint: Use a fresh fictional fixture. Read the worked trace and change only the requested fields or query.
+
+Reference solution:
+
+```text
+CREATE TABLE books(id INTEGER PRIMARY KEY, title TEXT NOT NULL, price INTEGER NOT NULL CHECK(price >= 0));
+INSERT INTO books VALUES (1,'Python',100),(2,'Databases',150),(3,'Web',100);
+SELECT title FROM books ORDER BY id;
+```
+
+Expected result: Three titles appear in this order: Python, Databases, Web. No price column is returned.
+
+### Tables, rows, and columns
+
+A database organizes information so it can be found and checked. Imagine a library register: each book is one row, and title and price are columns. A table describes the fields every record uses. SQL is a language for asking the database to create, read, and change records. Keeping data in a table is different from displaying it on a screen.
+
+```text
+CREATE TABLE books(id INTEGER PRIMARY KEY, title TEXT NOT NULL, price INTEGER NOT NULL CHECK(price >= 0));
+INSERT INTO books VALUES (1,'Python',100),(2,'Databases',150),(3,'Web',100);
+SELECT title, price FROM books ORDER BY id;
+```
+
+#### Tables, rows, and columns: guided investigation (60 min; Remember)
+
+ID: `database-foundations-m1-l1`
+
+Objective: Identify the key terms and syntax in tables, rows, and columns without consulting the example.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Read only the title column and keep the rows ordered by id. Compare the actual result with your prediction.
+
+Assessment evidence: Submit five correctly defined terms and label their occurrences in the example; correct at least four before continuing.
+
+#### Tables, rows, and columns: independent studio (90 min; Understand)
+
+ID: `database-foundations-m1-l2`
+
+Objective: Explain how tables, rows, and columns changes program behavior using a traced example.
+
+Activity: Read only the title column and keep the rows ordered by id. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a state trace and a causal explanation of two outputs. Explain a changed input without running it first.
+
+### Identity and primary keys
+
+Two students may share a name, so a name is a poor identity. A primary key uniquely identifies a row. Other records can refer to that stable key even after a title changes. Choose identity independently of display order: the first visible row is not necessarily record 1.
+
+```text
+CREATE TABLE books(id INTEGER PRIMARY KEY, title TEXT NOT NULL, price INTEGER NOT NULL CHECK(price >= 0));
+INSERT INTO books VALUES (1,'Python',100),(2,'Databases',150),(3,'Web',100);
+UPDATE books SET title='Python basics' WHERE id=1;
+SELECT id,title FROM books ORDER BY id;
+```
+
+#### Identity and primary keys: guided investigation (60 min; Understand)
+
+ID: `database-foundations-m2-l1`
+
+Objective: Explain how identity and primary keys changes program behavior using a traced example.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Rename book 2 without changing either its id or the other books. Compare the actual result with your prediction.
+
+Assessment evidence: Submit a state trace and a causal explanation of two outputs. Explain a changed input without running it first.
+
+#### Identity and primary keys: independent studio (90 min; Apply)
+
+ID: `database-foundations-m2-l2`
+
+Objective: Implement rename book 2 without changing either its id or the other books.
+
+Activity: Rename book 2 without changing either its id or the other books. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit source and normal, empty, and invalid input results. Each stated acceptance condition must pass.
+
+### Relationships and foreign keys
+
+A loan belongs to a book, so store the book id on the loan instead of copying all book fields. This is a relationship. A foreign key rejects references to missing books when enforcement is enabled. It does not automatically limit a book to one active loan; that is another rule.
+
+```text
+PRAGMA foreign_keys=ON;
+CREATE TABLE books(id INTEGER PRIMARY KEY, title TEXT NOT NULL, price INTEGER NOT NULL CHECK(price >= 0));
+INSERT INTO books VALUES (1,'Python',100),(2,'Databases',150),(3,'Web',100);
+CREATE TABLE loans(id INTEGER PRIMARY KEY, book_id INTEGER NOT NULL REFERENCES books(id));
+INSERT INTO loans VALUES(1,2);
+SELECT b.title FROM loans l JOIN books b ON b.id=l.book_id;
+```
+
+#### Relationships and foreign keys: guided investigation (60 min; Apply)
+
+ID: `database-foundations-m3-l1`
+
+Objective: Implement add a second loan for book 1 and list both referenced titles.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Add a second loan for book 1 and list both referenced titles. Compare the actual result with your prediction.
+
+Assessment evidence: Submit source and normal, empty, and invalid input results. Each stated acceptance condition must pass.
+
+#### Relationships and foreign keys: independent studio (90 min; Analyze)
+
+ID: `database-foundations-m3-l2`
+
+Objective: Locate a failing assumption in relationships and foreign keys and isolate it with a minimal reproduction.
+
+Activity: Add a second loan for book 1 and list both referenced titles. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit the failing case, root cause, minimal fix, and a regression test that fails before the fix and passes after.
+
+### Reducing duplicate facts
+
+Repeating a category name on every book makes renaming error-prone. Put each category in its own row and reference its key. This is one step toward normalization: store one fact in one appropriate place. Separate tables when they represent independent facts, not merely because more tables look advanced.
+
+```text
+CREATE TABLE categories(id INTEGER PRIMARY KEY,name TEXT NOT NULL);
+CREATE TABLE titles(id INTEGER PRIMARY KEY,title TEXT,category_id INTEGER);
+INSERT INTO categories VALUES(1,'Computing');
+INSERT INTO titles VALUES(1,'Python',1),(2,'Web',1);
+SELECT title,name FROM titles JOIN categories ON categories.id=titles.category_id ORDER BY titles.id;
+```
+
+#### Reducing duplicate facts: guided investigation (60 min; Analyze)
+
+ID: `database-foundations-m4-l1`
+
+Objective: Locate a failing assumption in reducing duplicate facts and isolate it with a minimal reproduction.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Rename the shared category once and explain why both result rows change. Compare the actual result with your prediction.
+
+Assessment evidence: Submit the failing case, root cause, minimal fix, and a regression test that fails before the fix and passes after.
+
+#### Reducing duplicate facts: independent studio (90 min; Evaluate)
+
+ID: `database-foundations-m4-l2`
+
+Objective: Judge two approaches to reducing duplicate facts against correctness, maintainability, and offline operation.
+
+Activity: Rename the shared category once and explain why both result rows change. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Constraints and valid records
+
+Validation in a screen can be bypassed by another writer. Database constraints provide a second boundary. NOT NULL rejects missing values and CHECK enforces a stated condition. A non-null title can still be blank, so encode the actual rule rather than assuming the type says everything.
+
+```text
+CREATE TABLE students(id INTEGER PRIMARY KEY,name TEXT NOT NULL CHECK(length(trim(name))>0),age INTEGER NOT NULL CHECK(age>=0));
+INSERT INTO students VALUES(1,'Amina',20);
+SELECT name,age FROM students;
+```
+
+#### Constraints and valid records: guided investigation (60 min; Evaluate)
+
+ID: `database-foundations-m5-l1`
+
+Objective: Judge two approaches to constraints and valid records against correctness, maintainability, and offline operation.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Add a check that rejects a blank book title and test a spaces-only title. Compare the actual result with your prediction.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+#### Constraints and valid records: independent studio (90 min; Create)
+
+ID: `database-foundations-m5-l2`
+
+Objective: Design and deliver an original extension using constraints and valid records with explicit acceptance tests.
+
+Activity: Add a check that rejects a blank book title and test a spaces-only title. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+### Transactions and recovery
+
+Some changes must succeed together. A transaction groups them so a rollback can undo unfinished work. Think of transferring stock between shelves: subtracting without adding loses inventory. COMMIT accepts the changes; ROLLBACK cancels them. A backup is separate: it protects against loss beyond one unfinished transaction.
+
+```text
+CREATE TABLE books(id INTEGER PRIMARY KEY, title TEXT NOT NULL, price INTEGER NOT NULL CHECK(price >= 0));
+INSERT INTO books VALUES (1,'Python',100),(2,'Databases',150),(3,'Web',100);
+BEGIN;
+UPDATE books SET price=0 WHERE id=1;
+ROLLBACK;
+SELECT price FROM books WHERE id=1;
+```
+
+#### Transactions and recovery: guided investigation (60 min; Create)
+
+ID: `database-foundations-m6-l1`
+
+Objective: Design and deliver an original extension using transactions and recovery with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Compare committed and rolled-back price changes and record both final values. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Transactions and recovery: independent studio (90 min; Evaluate)
+
+ID: `database-foundations-m6-l2`
+
+Objective: Judge two approaches to transactions and recovery against correctness, maintainability, and offline operation.
+
+Activity: Compare committed and rolled-back price changes and record both final values. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Distributed data and consistency models
+
+This database foundations module teaches you to compare replication, partitioning, consistency, availability, and conflict resolution using explicit failure scenarios. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Node A: version 4, value 12
+Node B: version 5, value 10
+Policy: reject blind overwrite; reconcile with domain rules.
+```
+
+#### Distributed data and consistency models: guided investigation (60 min; Create)
+
+ID: `database-foundations-m7-l1`
+
+Objective: Design and deliver an original extension using distributed data and consistency models with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Model a partition and recovery scenario, state the chosen consistency guarantee, and test conflict outcomes. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Distributed data and consistency models: independent studio (90 min; Evaluate)
+
+ID: `database-foundations-m7-l2`
+
+Objective: Judge two approaches to distributed data and consistency models against correctness, maintainability, and offline operation.
+
+Activity: Model a partition and recovery scenario, state the chosen consistency guarantee, and test conflict outcomes. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Data governance, security, and lifecycle
+
+This database foundations module teaches you to apply classification, least privilege, auditability, retention, backup, restoration, and responsible deletion. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+classification: internal
+retention_days: 365
+backup_tested: true
+restore_point: 2026-01-15
+```
+
+#### Data governance, security, and lifecycle: guided investigation (60 min; Create)
+
+ID: `database-foundations-m8-l1`
+
+Objective: Design and deliver an original extension using data governance, security, and lifecycle with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Create a governance and disaster-recovery plan with access matrix, retention rules, restore drill, and audit evidence. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Data governance, security, and lifecycle: independent studio (90 min; Evaluate)
+
+ID: `database-foundations-m8-l2`
+
+Objective: Judge two approaches to data governance, security, and lifecycle against correctness, maintainability, and offline operation.
+
+Activity: Create a governance and disaster-recovery plan with access matrix, retention rules, restore drill, and audit evidence. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Requirements and domain discovery
+
+This database foundations module teaches you to turn a learner or client problem into user stories, a shared vocabulary, scope boundaries, and testable acceptance examples. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+User: a learner with an older device
+Need: finish work without internet
+Acceptance: saved work survives restart
+Out of scope: cloud accounts
+```
+
+#### Requirements and domain discovery: guided investigation (60 min; Create)
+
+ID: `database-foundations-m9-l1`
+
+Objective: Design and deliver an original extension using requirements and domain discovery with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Interview a fictional learner, write three user stories and acceptance examples, then reject one attractive feature that violates the offline scope. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Requirements and domain discovery: independent studio (90 min; Evaluate)
+
+ID: `database-foundations-m9-l2`
+
+Objective: Judge two approaches to requirements and domain discovery against correctness, maintainability, and offline operation.
+
+Activity: Interview a fictional learner, write three user stories and acceptance examples, then reject one attractive feature that violates the offline scope. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Models, interfaces, and contracts
+
+This database foundations module teaches you to model domain rules separately from screens and frameworks, define small interfaces, and state preconditions, results, and errors. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Input contract: non-empty learner_id
+Rule: progress can only move forward
+Result: saved progress or a specific error
+Adapter: local file or database
+```
+
+#### Models, interfaces, and contracts: guided investigation (60 min; Create)
+
+ID: `database-foundations-m10-l1`
+
+Objective: Design and deliver an original extension using models, interfaces, and contracts with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Draw the domain, application, storage, and interface boundaries for a small attendance feature; define one contract at every boundary. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Models, interfaces, and contracts: independent studio (90 min; Evaluate)
+
+ID: `database-foundations-m10-l2`
+
+Objective: Judge two approaches to models, interfaces, and contracts against correctness, maintainability, and offline operation.
+
+Activity: Draw the domain, application, storage, and interface boundaries for a small attendance feature; define one contract at every boundary. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Validation and failure recovery
+
+This database foundations module teaches you to validate at trust boundaries, preserve the last valid state, use atomic changes, and design recovery users can understand. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+normal: 3 valid records -> save
+edge: empty list -> valid empty result
+invalid: negative score -> reject
+interruption: old data remains readable
+```
+
+#### Validation and failure recovery: guided investigation (60 min; Create)
+
+ID: `database-foundations-m11-l1`
+
+Objective: Design and deliver an original extension using validation and failure recovery with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Build a validation table for normal, empty, boundary, malformed, duplicate, and interrupted operations, then implement or simulate safe recovery. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Validation and failure recovery: independent studio (90 min; Evaluate)
+
+ID: `database-foundations-m11-l2`
+
+Objective: Judge two approaches to validation and failure recovery against correctness, maintainability, and offline operation.
+
+Activity: Build a validation table for normal, empty, boundary, malformed, duplicate, and interrupted operations, then implement or simulate safe recovery. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Testing strategy and quality gates
+
+This database foundations module teaches you to combine focused unit tests, boundary tests, integration checks, and user-visible acceptance evidence without mirroring the implementation. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Given saved progress at lesson 2
+When the app restarts offline
+Then lesson 2 remains complete
+And lesson 3 is the next available step
+```
+
+#### Testing strategy and quality gates: guided investigation (60 min; Create)
+
+ID: `database-foundations-m12-l1`
+
+Objective: Design and deliver an original extension using testing strategy and quality gates with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Create a test pyramid for one real feature, write at least five meaningful cases, and explain which failure each test would catch. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Testing strategy and quality gates: independent studio (90 min; Evaluate)
+
+ID: `database-foundations-m12-l2`
+
+Objective: Judge two approaches to testing strategy and quality gates against correctness, maintainability, and offline operation.
+
+Activity: Create a test pyramid for one real feature, write at least five meaningful cases, and explain which failure each test would catch. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Architecture and dependency boundaries
+
+This database foundations module teaches you to apply separation of concerns, dependency inversion, cohesive modules, and architecture decision records to keep change affordable. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+presentation -> application -> domain
+data implements domain ports
+platform code stays behind adapters
+Decision: local storage is the source of truth
+```
+
+#### Architecture and dependency boundaries: guided investigation (60 min; Create)
+
+ID: `database-foundations-m13-l1`
+
+Objective: Design and deliver an original extension using architecture and dependency boundaries with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Refactor or redesign one feature so its business rule can be tested without its UI, database, framework, or network. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Architecture and dependency boundaries: independent studio (90 min; Evaluate)
+
+ID: `database-foundations-m13-l2`
+
+Objective: Judge two approaches to architecture and dependency boundaries against correctness, maintainability, and offline operation.
+
+Activity: Refactor or redesign one feature so its business rule can be tested without its UI, database, framework, or network. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Security, privacy, and inclusive access
+
+This database foundations module teaches you to threat-model assets and trust boundaries, minimize data and permissions, and include keyboard, screen-reader, contrast, language, and large-text needs. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Asset: learner progress
+Threat: unintended disclosure
+Control: local minimum data
+Access check: keyboard + 200% text
+Recovery: explicit local backup
+```
+
+#### Security, privacy, and inclusive access: guided investigation (60 min; Create)
+
+ID: `database-foundations-m14-l1`
+
+Objective: Design and deliver an original extension using security, privacy, and inclusive access with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Produce a compact threat and accessibility review, repair the two highest-impact findings, and record evidence with fictional data. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Security, privacy, and inclusive access: independent studio (90 min; Evaluate)
+
+ID: `database-foundations-m14-l2`
+
+Objective: Judge two approaches to security, privacy, and inclusive access against correctness, maintainability, and offline operation.
+
+Activity: Produce a compact threat and accessibility review, repair the two highest-impact findings, and record evidence with fictional data. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Performance and resource budgets
+
+This database foundations module teaches you to measure startup, responsiveness, memory, storage, and expensive operations before optimizing for realistic low-resource devices. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+startup budget: 2 seconds
+interaction budget: 100 ms
+storage budget: 50 MB
+offline check: airplane mode from first launch
+```
+
+#### Performance and resource budgets: guided investigation (60 min; Create)
+
+ID: `database-foundations-m15-l1`
+
+Objective: Design and deliver an original extension using performance and resource budgets with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Choose three measurable budgets, capture a baseline, improve one proven bottleneck, and verify that behavior and accessibility still pass. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Performance and resource budgets: independent studio (90 min; Evaluate)
+
+ID: `database-foundations-m15-l2`
+
+Objective: Judge two approaches to performance and resource budgets against correctness, maintainability, and offline operation.
+
+Activity: Choose three measurable budgets, capture a baseline, improve one proven bottleneck, and verify that behavior and accessibility still pass. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Capstone delivery and maintenance
+
+This database foundations module teaches you to plan incremental delivery, version data safely, document offline setup, review risks, and maintain the product after its first release. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Release evidence:
+- acceptance checks pass
+- migration and rollback tested
+- offline install documented
+- known limits published
+- next improvement prioritized
+```
+
+#### Capstone delivery and maintenance: guided investigation (60 min; Create)
+
+ID: `database-foundations-m16-l1`
+
+Objective: Design and deliver an original extension using capstone delivery and maintenance with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Deliver a course-specific capstone increment with requirements, architecture decision, implementation evidence, tests, usability review, migration or rollback plan, and a short demonstration. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Capstone delivery and maintenance: independent studio (90 min; Evaluate)
+
+ID: `database-foundations-m16-l2`
+
+Objective: Judge two approaches to capstone delivery and maintenance against correctness, maintainability, and offline operation.
+
+Activity: Deliver a course-specific capstone increment with requirements, architecture decision, implementation evidence, tests, usability review, migration or rollback plan, and a short demonstration. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Project: Library data model (6 hours)
+
+Design books, members, and loans for a fictional community library.
+
+Acceptance conditions:
+
+- Use stable keys and enforce references to existing books and members.
+- Demonstrate valid loans and rejected missing references.
+- Explain how returned loans remain as history.
+
+Milestones:
+
+- Discover: write three user stories, scope exclusions, and acceptance examples using fictional data.
+- Design: sketch components and data flow; justify one tradeoff in an architecture decision record.
+- Build: implement the required behaviors in small reviewable changes; record how to reproduce the build offline.
+- Verify: test every acceptance condition, empty/invalid data, and restart behavior; retain results.
+- Review: demonstrate to a peer or conduct a recorded self-review; document feedback, improvements, and limitations.
+
+### Project: Training enrollment model (12 hours)
+
+Model students attending several courses without duplicating student details.
+
+Acceptance conditions:
+
+- Separate students, courses, and enrollments.
+- Prevent the same student enrolling twice in the same course.
+- Test renaming a course without breaking its enrollments.
+
+Milestones:
+
+- Discover: write three user stories, scope exclusions, and acceptance examples using fictional data.
+- Design: sketch components and data flow; justify one tradeoff in an architecture decision record.
+- Build: implement the required behaviors in small reviewable changes; record how to reproduce the build offline.
+- Verify: test every acceptance condition, empty/invalid data, and restart behavior; retain results.
+- Review: demonstrate to a peer or conduct a recorded self-review; document feedback, improvements, and limitations.
+
+### Project: Shop stock transfer (24 hours)
+
+Model stock transfers between two fictional shelves with no lost units.
+
+Acceptance conditions:
+
+- Reject negative stock and invalid shelf references.
+- Group subtraction and addition in one transaction.
+- Force a failure and prove both shelf quantities remain unchanged.
+
+Milestones:
+
+- Discover: write three user stories, scope exclusions, and acceptance examples using fictional data.
+- Design: sketch components and data flow; justify one tradeoff in an architecture decision record.
+- Build: implement the required behaviors in small reviewable changes; record how to reproduce the build offline.
+- Verify: test every acceptance condition, empty/invalid data, and restart behavior; retain results.
+- Review: demonstrate to a peer or conduct a recorded self-review; document feedback, improvements, and limitations.
+
+## SQL from Zero
+
+Prerequisites: database-foundations
+
+Offline tools: Use the in-app SQL practice for read-only queries on fictional data. The worked scripts can also be run in a separately prepared SQLite tool. Each example starts with a fresh database; no internet or account is needed.
+
+### Start here: first guided lesson
+
+This is the true starting point for this course. No vocabulary from this course is assumed. You will first learn what the example is for, the meaning of its four key terms, and how to follow it one step at a time. Read the prerequisite course shown in the catalog first when one is required.
+
+SELECT describes the columns you want; FROM names their table. Start with one table before joining several. Selecting columns does not modify stored rows. ORDER BY makes result order explicit; without it, do not rely on whichever order the database happens to return.
+
+Vocabulary:
+
+- Database: organized information that a program can read and change.
+- Record: one stored item, represented by a row or a document.
+- Query: a request describing which information you want.
+- Constraint: a rule that rejects invalid stored data.
+
+```text
+CREATE TABLE books(id INTEGER PRIMARY KEY, title TEXT NOT NULL, price INTEGER NOT NULL CHECK(price >= 0));
+INSERT INTO books VALUES (1,'Python',100),(2,'Databases',150),(3,'Web',100);
+SELECT title AS book_name FROM books ORDER BY id;
+```
+
+- The alias book_name labels the result column without renaming the stored title field. Three titles appear in id order. SELECT * would request every column, making the output contract depend on later schema changes. Prefer the fields your caller actually uses.
+
+Readiness check: What should you do before changing training data?
+
+Answer: Predict the result and identify the target records.
+
+Guided practice: Return id and title with clear result column names.
+
+Hint: Use a fresh fictional fixture. Read the worked trace and change only the requested fields or query.
+
+Reference solution:
+
+```text
+CREATE TABLE books(id INTEGER PRIMARY KEY, title TEXT NOT NULL, price INTEGER NOT NULL CHECK(price >= 0));
+INSERT INTO books VALUES (1,'Python',100),(2,'Databases',150),(3,'Web',100);
+SELECT id,title AS book_name FROM books ORDER BY id;
+```
+
+Expected result: The columns are id and book_name. The ordered rows are 1/Python, 2/Databases, and 3/Web.
+
+### SELECT and column names
+
+SELECT describes the columns you want; FROM names their table. Start with one table before joining several. Selecting columns does not modify stored rows. ORDER BY makes result order explicit; without it, do not rely on whichever order the database happens to return.
+
+```text
+CREATE TABLE books(id INTEGER PRIMARY KEY, title TEXT NOT NULL, price INTEGER NOT NULL CHECK(price >= 0));
+INSERT INTO books VALUES (1,'Python',100),(2,'Databases',150),(3,'Web',100);
+SELECT title AS book_name FROM books ORDER BY id;
+```
+
+#### SELECT and column names: guided investigation (60 min; Remember)
+
+ID: `sql-m1-l1`
+
+Objective: Identify the key terms and syntax in select and column names without consulting the example.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Return id and title with clear result column names. Compare the actual result with your prediction.
+
+Assessment evidence: Submit five correctly defined terms and label their occurrences in the example; correct at least four before continuing.
+
+#### SELECT and column names: independent studio (90 min; Understand)
+
+ID: `sql-m1-l2`
+
+Objective: Explain how select and column names changes program behavior using a traced example.
+
+Activity: Return id and title with clear result column names. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a state trace and a causal explanation of two outputs. Explain a changed input without running it first.
+
+### Filtering and ordering
+
+WHERE keeps rows whose condition is true. Compare prices as numbers, not text. ORDER BY can sort the filtered rows, and LIMIT can bound a preview. Filtering happens before the final limit, so a preview should state both its condition and its ordering.
+
+```text
+CREATE TABLE books(id INTEGER PRIMARY KEY, title TEXT NOT NULL, price INTEGER NOT NULL CHECK(price >= 0));
+INSERT INTO books VALUES (1,'Python',100),(2,'Databases',150),(3,'Web',100);
+SELECT title,price FROM books WHERE price>=100 ORDER BY price DESC,id LIMIT 2;
+```
+
+#### Filtering and ordering: guided investigation (60 min; Understand)
+
+ID: `sql-m2-l1`
+
+Objective: Explain how filtering and ordering changes program behavior using a traced example.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. List books costing exactly 100, ordered by title. Compare the actual result with your prediction.
+
+Assessment evidence: Submit a state trace and a causal explanation of two outputs. Explain a changed input without running it first.
+
+#### Filtering and ordering: independent studio (90 min; Apply)
+
+ID: `sql-m2-l2`
+
+Objective: Implement list books costing exactly 100, ordered by title.
+
+Activity: List books costing exactly 100, ordered by title. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit source and normal, empty, and invalid input results. Each stated acceptance condition must pass.
+
+### Totals and grouping
+
+COUNT counts records and SUM adds numeric values. GROUP BY computes a result for each group rather than one grand total. WHERE filters individual rows before grouping; HAVING filters groups after aggregation. Decide which question you are asking before choosing either filter.
+
+```text
+CREATE TABLE books(id INTEGER PRIMARY KEY, title TEXT NOT NULL, price INTEGER NOT NULL CHECK(price >= 0));
+INSERT INTO books VALUES (1,'Python',100),(2,'Databases',150),(3,'Web',100);
+SELECT price,COUNT(*) AS copies FROM books GROUP BY price ORDER BY price;
+```
+
+#### Totals and grouping: guided investigation (60 min; Apply)
+
+ID: `sql-m3-l1`
+
+Objective: Implement calculate total price and explain the difference from the book count.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Calculate total price and explain the difference from the book count. Compare the actual result with your prediction.
+
+Assessment evidence: Submit source and normal, empty, and invalid input results. Each stated acceptance condition must pass.
+
+#### Totals and grouping: independent studio (90 min; Analyze)
+
+ID: `sql-m3-l2`
+
+Objective: Locate a failing assumption in totals and grouping and isolate it with a minimal reproduction.
+
+Activity: Calculate total price and explain the difference from the book count. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit the failing case, root cause, minimal fix, and a regression test that fails before the fix and passes after.
+
+### Joining related tables
+
+A join combines rows according to a relationship. INNER JOIN keeps matching pairs; LEFT JOIN also keeps left-side rows without a match. A book with two loans can produce two result rows. That is expected relationship behavior, not automatically a duplicate-data bug.
+
+```text
+CREATE TABLE books(id INTEGER PRIMARY KEY, title TEXT NOT NULL, price INTEGER NOT NULL CHECK(price >= 0));
+INSERT INTO books VALUES (1,'Python',100),(2,'Databases',150),(3,'Web',100);
+CREATE TABLE loans(id INTEGER PRIMARY KEY,book_id INTEGER);
+INSERT INTO loans VALUES(1,1),(2,1);
+SELECT b.title,COUNT(l.id) AS loans FROM books b LEFT JOIN loans l ON l.book_id=b.id GROUP BY b.id,b.title ORDER BY b.id;
+```
+
+#### Joining related tables: guided investigation (60 min; Analyze)
+
+ID: `sql-m4-l1`
+
+Objective: Locate a failing assumption in joining related tables and isolate it with a minimal reproduction.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Return only books with no loans using the left-join result. Compare the actual result with your prediction.
+
+Assessment evidence: Submit the failing case, root cause, minimal fix, and a regression test that fails before the fix and passes after.
+
+#### Joining related tables: independent studio (90 min; Evaluate)
+
+ID: `sql-m4-l2`
+
+Objective: Judge two approaches to joining related tables against correctness, maintainability, and offline operation.
+
+Activity: Return only books with no loans using the left-join result. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### NULL and missing information
+
+NULL represents missing or unknown information; it is not zero or an empty string. Use IS NULL rather than = NULL. Comparisons with unknown values do not behave like ordinary true/false arithmetic. COALESCE can provide a display fallback, but it should not silently replace unknown business facts.
+
+```text
+CREATE TABLE books(id INTEGER PRIMARY KEY, title TEXT NOT NULL, price INTEGER NOT NULL CHECK(price >= 0));
+INSERT INTO books VALUES (1,'Python',100),(2,'Databases',150),(3,'Web',100);
+ALTER TABLE books ADD COLUMN note TEXT;
+SELECT title,COALESCE(note,'No note') AS note FROM books WHERE note IS NULL ORDER BY id;
+```
+
+#### NULL and missing information: guided investigation (60 min; Evaluate)
+
+ID: `sql-m5-l1`
+
+Objective: Judge two approaches to null and missing information against correctness, maintainability, and offline operation.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Compare a NULL note and an empty note without treating them as equal. Compare the actual result with your prediction.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+#### NULL and missing information: independent studio (90 min; Create)
+
+ID: `sql-m5-l2`
+
+Objective: Design and deliver an original extension using null and missing information with explicit acceptance tests.
+
+Activity: Compare a NULL note and an empty note without treating them as equal. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+### Safe changes and parameters
+
+UPDATE changes existing rows and DELETE removes them. A missing WHERE can affect the whole table. Preview the intended rows first and use a transaction for related changes. In application code bind user values as parameters instead of assembling them into SQL command text.
+
+```text
+CREATE TABLE books(id INTEGER PRIMARY KEY, title TEXT NOT NULL, price INTEGER NOT NULL CHECK(price >= 0));
+INSERT INTO books VALUES (1,'Python',100),(2,'Databases',150),(3,'Web',100);
+BEGIN;
+UPDATE books SET price=120 WHERE id=1;
+COMMIT;
+SELECT id,price FROM books ORDER BY id;
+```
+
+#### Safe changes and parameters: guided investigation (60 min; Create)
+
+ID: `sql-m6-l1`
+
+Objective: Design and deliver an original extension using safe changes and parameters with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Preview book 3, change its price in a transaction, and verify other rows. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Safe changes and parameters: independent studio (90 min; Evaluate)
+
+ID: `sql-m6-l2`
+
+Objective: Judge two approaches to safe changes and parameters against correctness, maintainability, and offline operation.
+
+Activity: Preview book 3, change its price in a transaction, and verify other rows. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Window functions and analytical SQL
+
+This SQL module teaches you to use partitions, frames, common table expressions, and execution plans to express auditable analytics. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+SELECT category, amount,
+ SUM(amount) OVER (PARTITION BY category ORDER BY day) AS running_total
+FROM expenses;
+```
+
+#### Window functions and analytical SQL: guided investigation (60 min; Create)
+
+ID: `sql-m7-l1`
+
+Objective: Design and deliver an original extension using window functions and analytical sql with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Write analytical queries using ranking and running totals, then verify ties, nulls, empty groups, and plan cost. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Window functions and analytical SQL: independent studio (90 min; Evaluate)
+
+ID: `sql-m7-l2`
+
+Objective: Judge two approaches to window functions and analytical sql against correctness, maintainability, and offline operation.
+
+Activity: Write analytical queries using ranking and running totals, then verify ties, nulls, empty groups, and plan cost. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Transactions, isolation, and query optimization
+
+This SQL module teaches you to reason about locks, isolation anomalies, indexing, statistics, plans, and safe schema evolution. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+BEGIN;
+UPDATE stock SET quantity = quantity - 1 WHERE id = 7 AND quantity > 0;
+-- require exactly one affected row
+COMMIT;
+```
+
+#### Transactions, isolation, and query optimization: guided investigation (60 min; Create)
+
+ID: `sql-m8-l1`
+
+Objective: Design and deliver an original extension using transactions, isolation, and query optimization with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Design a concurrent sale transaction, reproduce an anomaly, choose isolation and indexes, and justify the resulting plan. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Transactions, isolation, and query optimization: independent studio (90 min; Evaluate)
+
+ID: `sql-m8-l2`
+
+Objective: Judge two approaches to transactions, isolation, and query optimization against correctness, maintainability, and offline operation.
+
+Activity: Design a concurrent sale transaction, reproduce an anomaly, choose isolation and indexes, and justify the resulting plan. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Requirements and domain discovery
+
+This SQL module teaches you to turn a learner or client problem into user stories, a shared vocabulary, scope boundaries, and testable acceptance examples. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+User: a learner with an older device
+Need: finish work without internet
+Acceptance: saved work survives restart
+Out of scope: cloud accounts
+```
+
+#### Requirements and domain discovery: guided investigation (60 min; Create)
+
+ID: `sql-m9-l1`
+
+Objective: Design and deliver an original extension using requirements and domain discovery with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Interview a fictional learner, write three user stories and acceptance examples, then reject one attractive feature that violates the offline scope. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Requirements and domain discovery: independent studio (90 min; Evaluate)
+
+ID: `sql-m9-l2`
+
+Objective: Judge two approaches to requirements and domain discovery against correctness, maintainability, and offline operation.
+
+Activity: Interview a fictional learner, write three user stories and acceptance examples, then reject one attractive feature that violates the offline scope. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Models, interfaces, and contracts
+
+This SQL module teaches you to model domain rules separately from screens and frameworks, define small interfaces, and state preconditions, results, and errors. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Input contract: non-empty learner_id
+Rule: progress can only move forward
+Result: saved progress or a specific error
+Adapter: local file or database
+```
+
+#### Models, interfaces, and contracts: guided investigation (60 min; Create)
+
+ID: `sql-m10-l1`
+
+Objective: Design and deliver an original extension using models, interfaces, and contracts with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Draw the domain, application, storage, and interface boundaries for a small attendance feature; define one contract at every boundary. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Models, interfaces, and contracts: independent studio (90 min; Evaluate)
+
+ID: `sql-m10-l2`
+
+Objective: Judge two approaches to models, interfaces, and contracts against correctness, maintainability, and offline operation.
+
+Activity: Draw the domain, application, storage, and interface boundaries for a small attendance feature; define one contract at every boundary. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Validation and failure recovery
+
+This SQL module teaches you to validate at trust boundaries, preserve the last valid state, use atomic changes, and design recovery users can understand. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+normal: 3 valid records -> save
+edge: empty list -> valid empty result
+invalid: negative score -> reject
+interruption: old data remains readable
+```
+
+#### Validation and failure recovery: guided investigation (60 min; Create)
+
+ID: `sql-m11-l1`
+
+Objective: Design and deliver an original extension using validation and failure recovery with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Build a validation table for normal, empty, boundary, malformed, duplicate, and interrupted operations, then implement or simulate safe recovery. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Validation and failure recovery: independent studio (90 min; Evaluate)
+
+ID: `sql-m11-l2`
+
+Objective: Judge two approaches to validation and failure recovery against correctness, maintainability, and offline operation.
+
+Activity: Build a validation table for normal, empty, boundary, malformed, duplicate, and interrupted operations, then implement or simulate safe recovery. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Testing strategy and quality gates
+
+This SQL module teaches you to combine focused unit tests, boundary tests, integration checks, and user-visible acceptance evidence without mirroring the implementation. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Given saved progress at lesson 2
+When the app restarts offline
+Then lesson 2 remains complete
+And lesson 3 is the next available step
+```
+
+#### Testing strategy and quality gates: guided investigation (60 min; Create)
+
+ID: `sql-m12-l1`
+
+Objective: Design and deliver an original extension using testing strategy and quality gates with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Create a test pyramid for one real feature, write at least five meaningful cases, and explain which failure each test would catch. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Testing strategy and quality gates: independent studio (90 min; Evaluate)
+
+ID: `sql-m12-l2`
+
+Objective: Judge two approaches to testing strategy and quality gates against correctness, maintainability, and offline operation.
+
+Activity: Create a test pyramid for one real feature, write at least five meaningful cases, and explain which failure each test would catch. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Architecture and dependency boundaries
+
+This SQL module teaches you to apply separation of concerns, dependency inversion, cohesive modules, and architecture decision records to keep change affordable. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+presentation -> application -> domain
+data implements domain ports
+platform code stays behind adapters
+Decision: local storage is the source of truth
+```
+
+#### Architecture and dependency boundaries: guided investigation (60 min; Create)
+
+ID: `sql-m13-l1`
+
+Objective: Design and deliver an original extension using architecture and dependency boundaries with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Refactor or redesign one feature so its business rule can be tested without its UI, database, framework, or network. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Architecture and dependency boundaries: independent studio (90 min; Evaluate)
+
+ID: `sql-m13-l2`
+
+Objective: Judge two approaches to architecture and dependency boundaries against correctness, maintainability, and offline operation.
+
+Activity: Refactor or redesign one feature so its business rule can be tested without its UI, database, framework, or network. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Security, privacy, and inclusive access
+
+This SQL module teaches you to threat-model assets and trust boundaries, minimize data and permissions, and include keyboard, screen-reader, contrast, language, and large-text needs. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Asset: learner progress
+Threat: unintended disclosure
+Control: local minimum data
+Access check: keyboard + 200% text
+Recovery: explicit local backup
+```
+
+#### Security, privacy, and inclusive access: guided investigation (60 min; Create)
+
+ID: `sql-m14-l1`
+
+Objective: Design and deliver an original extension using security, privacy, and inclusive access with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Produce a compact threat and accessibility review, repair the two highest-impact findings, and record evidence with fictional data. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Security, privacy, and inclusive access: independent studio (90 min; Evaluate)
+
+ID: `sql-m14-l2`
+
+Objective: Judge two approaches to security, privacy, and inclusive access against correctness, maintainability, and offline operation.
+
+Activity: Produce a compact threat and accessibility review, repair the two highest-impact findings, and record evidence with fictional data. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Performance and resource budgets
+
+This SQL module teaches you to measure startup, responsiveness, memory, storage, and expensive operations before optimizing for realistic low-resource devices. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+startup budget: 2 seconds
+interaction budget: 100 ms
+storage budget: 50 MB
+offline check: airplane mode from first launch
+```
+
+#### Performance and resource budgets: guided investigation (60 min; Create)
+
+ID: `sql-m15-l1`
+
+Objective: Design and deliver an original extension using performance and resource budgets with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Choose three measurable budgets, capture a baseline, improve one proven bottleneck, and verify that behavior and accessibility still pass. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Performance and resource budgets: independent studio (90 min; Evaluate)
+
+ID: `sql-m15-l2`
+
+Objective: Judge two approaches to performance and resource budgets against correctness, maintainability, and offline operation.
+
+Activity: Choose three measurable budgets, capture a baseline, improve one proven bottleneck, and verify that behavior and accessibility still pass. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Capstone delivery and maintenance
+
+This SQL module teaches you to plan incremental delivery, version data safely, document offline setup, review risks, and maintain the product after its first release. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Release evidence:
+- acceptance checks pass
+- migration and rollback tested
+- offline install documented
+- known limits published
+- next improvement prioritized
+```
+
+#### Capstone delivery and maintenance: guided investigation (60 min; Create)
+
+ID: `sql-m16-l1`
+
+Objective: Design and deliver an original extension using capstone delivery and maintenance with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Deliver a course-specific capstone increment with requirements, architecture decision, implementation evidence, tests, usability review, migration or rollback plan, and a short demonstration. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Capstone delivery and maintenance: independent studio (90 min; Evaluate)
+
+ID: `sql-m16-l2`
+
+Objective: Judge two approaches to capstone delivery and maintenance against correctness, maintainability, and offline operation.
+
+Activity: Deliver a course-specific capstone increment with requirements, architecture decision, implementation evidence, tests, usability review, migration or rollback plan, and a short demonstration. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Project: Library query workbook (6 hours)
+
+Produce useful reports from fictional books and loans.
+
+Acceptance conditions:
+
+- Write ordered title and price filters.
+- Include books with zero loans in a loan-count report.
+- Explain every join and test duplicate matching rows.
+
+Milestones:
+
+- Discover: write three user stories, scope exclusions, and acceptance examples using fictional data.
+- Design: sketch components and data flow; justify one tradeoff in an architecture decision record.
+- Build: implement the required behaviors in small reviewable changes; record how to reproduce the build offline.
+- Verify: test every acceptance condition, empty/invalid data, and restart behavior; retain results.
+- Review: demonstrate to a peer or conduct a recorded self-review; document feedback, improvements, and limitations.
+
+### Project: AFN expense reports (12 hours)
+
+Report fictional household spending by category and date.
+
+Acceptance conditions:
+
+- Store amounts as integer AFN and reject negative expenses.
+- Test empty periods and inclusive date boundaries.
+- Reconcile grouped totals with the overall total.
+
+Milestones:
+
+- Discover: write three user stories, scope exclusions, and acceptance examples using fictional data.
+- Design: sketch components and data flow; justify one tradeoff in an architecture decision record.
+- Build: implement the required behaviors in small reviewable changes; record how to reproduce the build offline.
+- Verify: test every acceptance condition, empty/invalid data, and restart behavior; retain results.
+- Review: demonstrate to a peer or conduct a recorded self-review; document feedback, improvements, and limitations.
+
+### Project: Enrollment reporting desk (24 hours)
+
+Answer course enrollment questions without losing courses that have no students.
+
+Acceptance conditions:
+
+- Use a left join to retain empty courses.
+- Count enrollments without counting NULL placeholders.
+- Document query inputs, expected rows, and ordering.
+
+Milestones:
+
+- Discover: write three user stories, scope exclusions, and acceptance examples using fictional data.
+- Design: sketch components and data flow; justify one tradeoff in an architecture decision record.
+- Build: implement the required behaviors in small reviewable changes; record how to reproduce the build offline.
+- Verify: test every acceptance condition, empty/invalid data, and restart behavior; retain results.
+- Review: demonstrate to a peer or conduct a recorded self-review; document feedback, improvements, and limitations.
+
+## SQLite for Offline Apps
+
+Prerequisites: sql
+
+Offline tools: Use the in-app SQL practice for read-only queries on fictional data. The worked scripts can also be run in a separately prepared SQLite tool. Each example starts with a fresh database; no internet or account is needed.
+
+### Start here: first guided lesson
+
+This is the true starting point for this course. No vocabulary from this course is assumed. You will first learn what the example is for, the meaning of its four key terms, and how to follow it one step at a time. Read the prerequisite course shown in the catalog first when one is required.
+
+SQLite runs inside a program rather than requiring a separate database server. A file database can survive restart; an in-memory database disappears when its connection closes. Choose deliberately. Lessons use fresh temporary data so an experiment cannot alter the learner progress database.
+
+Vocabulary:
+
+- Database: organized information that a program can read and change.
+- Record: one stored item, represented by a row or a document.
+- Query: a request describing which information you want.
+- Constraint: a rule that rejects invalid stored data.
+
+```text
+CREATE TABLE books(id INTEGER PRIMARY KEY, title TEXT NOT NULL, price INTEGER NOT NULL CHECK(price >= 0));
+INSERT INTO books VALUES (1,'Python',100),(2,'Databases',150),(3,'Web',100);
+SELECT COUNT(*) AS book_count FROM books;
+```
+
+- The fresh fixture contains three books, so the count is 3. Reopening a memory connection would start empty, while reopening a saved file should retain committed rows. Test those lifetimes separately; seeing data in one open connection is not evidence of restart persistence.
+
+Readiness check: What should you do before changing training data?
+
+Answer: Predict the result and identify the target records.
+
+Guided practice: Count the books in the fresh fixture and explain what closing an in-memory connection does.
+
+Hint: Use a fresh fictional fixture. Read the worked trace and change only the requested fields or query.
+
+Reference solution:
+
+```text
+CREATE TABLE books(id INTEGER PRIMARY KEY, title TEXT NOT NULL, price INTEGER NOT NULL CHECK(price >= 0));
+INSERT INTO books VALUES (1,'Python',100),(2,'Databases',150),(3,'Web',100);
+SELECT COUNT(*) AS book_count FROM books;
+```
+
+Expected result: The fresh fixture contains three books, so the count is 3. Reopening a memory connection would start empty, while reopening a saved file should retain committed rows. Test those lifetimes separately; seeing data in one open connection is not evidence of restart persistence.
+
+### Embedded storage and connections
+
+SQLite runs inside a program rather than requiring a separate database server. A file database can survive restart; an in-memory database disappears when its connection closes. Choose deliberately. Lessons use fresh temporary data so an experiment cannot alter the learner progress database.
+
+```text
+CREATE TABLE books(id INTEGER PRIMARY KEY, title TEXT NOT NULL, price INTEGER NOT NULL CHECK(price >= 0));
+INSERT INTO books VALUES (1,'Python',100),(2,'Databases',150),(3,'Web',100);
+SELECT COUNT(*) AS book_count FROM books;
+```
+
+#### Embedded storage and connections: guided investigation (60 min; Remember)
+
+ID: `sqlite-m1-l1`
+
+Objective: Identify the key terms and syntax in embedded storage and connections without consulting the example.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Compare a temporary database and a file database after closing their connections. Compare the actual result with your prediction.
+
+Assessment evidence: Submit five correctly defined terms and label their occurrences in the example; correct at least four before continuing.
+
+#### Embedded storage and connections: independent studio (90 min; Understand)
+
+ID: `sqlite-m1-l2`
+
+Objective: Explain how embedded storage and connections changes program behavior using a traced example.
+
+Activity: Compare a temporary database and a file database after closing their connections. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a state trace and a causal explanation of two outputs. Explain a changed input without running it first.
+
+### Types and application constraints
+
+SQLite type affinity is flexible; a declared column type is not a complete validation policy. Combine suitable types, NOT NULL, CHECK, and application validation. For integer AFN, reject fractional and negative inputs before storage. A database schema should express the data contract that the app actually needs.
+
+```text
+CREATE TABLE books(id INTEGER PRIMARY KEY, title TEXT NOT NULL, price INTEGER NOT NULL CHECK(price >= 0));
+INSERT INTO books VALUES (1,'Python',100),(2,'Databases',150),(3,'Web',100);
+SELECT title,typeof(price) AS stored_type FROM books ORDER BY id;
+```
+
+#### Types and application constraints: guided investigation (60 min; Understand)
+
+ID: `sqlite-m2-l1`
+
+Objective: Explain how types and application constraints changes program behavior using a traced example.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Require integer nonnegative prices and test text and fractional values. Compare the actual result with your prediction.
+
+Assessment evidence: Submit a state trace and a causal explanation of two outputs. Explain a changed input without running it first.
+
+#### Types and application constraints: independent studio (90 min; Apply)
+
+ID: `sqlite-m2-l2`
+
+Objective: Implement require integer nonnegative prices and test text and fractional values.
+
+Activity: Require integer nonnegative prices and test text and fractional values. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit source and normal, empty, and invalid input results. Each stated acceptance condition must pass.
+
+### Transactions and competing writers
+
+SQLite allows only one writer at a time. Keep transactions short and avoid waiting for user input while holding a write transaction. A conditional update can enforce available stock at the point of change. Check affected rows; a completed command that changed zero rows is not a successful sale.
+
+```text
+CREATE TABLE books(id INTEGER PRIMARY KEY, title TEXT NOT NULL, price INTEGER NOT NULL CHECK(price >= 0));
+INSERT INTO books VALUES (1,'Python',100),(2,'Databases',150),(3,'Web',100);
+BEGIN IMMEDIATE;
+UPDATE books SET price=price-10 WHERE id=1 AND price>=10;
+COMMIT;
+SELECT price FROM books WHERE id=1;
+```
+
+#### Transactions and competing writers: guided investigation (60 min; Apply)
+
+ID: `sqlite-m3-l1`
+
+Objective: Implement test an update whose condition matches no rows and report that outcome accurately.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Test an update whose condition matches no rows and report that outcome accurately. Compare the actual result with your prediction.
+
+Assessment evidence: Submit source and normal, empty, and invalid input results. Each stated acceptance condition must pass.
+
+#### Transactions and competing writers: independent studio (90 min; Analyze)
+
+ID: `sqlite-m3-l2`
+
+Objective: Locate a failing assumption in transactions and competing writers and isolate it with a minimal reproduction.
+
+Activity: Test an update whose condition matches no rows and report that outcome accurately. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit the failing case, root cause, minimal fix, and a regression test that fails before the fix and passes after.
+
+### Indexes and query plans
+
+An index keeps an additional searchable structure. It can speed some reads but costs space and write work. Start from a real query and inspect its plan. A tiny table may be faster to scan; do not force an index merely because indexes sound advanced.
+
+```text
+CREATE TABLE books(id INTEGER PRIMARY KEY, title TEXT NOT NULL, price INTEGER NOT NULL CHECK(price >= 0));
+INSERT INTO books VALUES (1,'Python',100),(2,'Databases',150),(3,'Web',100);
+CREATE INDEX books_price ON books(price);
+EXPLAIN QUERY PLAN SELECT title FROM books WHERE price=100;
+```
+
+#### Indexes and query plans: guided investigation (60 min; Analyze)
+
+ID: `sqlite-m4-l1`
+
+Objective: Locate a failing assumption in indexes and query plans and isolate it with a minimal reproduction.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Compare query plans before and after a price index without changing query results. Compare the actual result with your prediction.
+
+Assessment evidence: Submit the failing case, root cause, minimal fix, and a regression test that fails before the fix and passes after.
+
+#### Indexes and query plans: independent studio (90 min; Evaluate)
+
+ID: `sqlite-m4-l2`
+
+Objective: Judge two approaches to indexes and query plans against correctness, maintainability, and offline operation.
+
+Activity: Compare query plans before and after a price index without changing query results. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Schema migrations
+
+A new app release may need another column while retaining old records. A migration is an ordered transformation of an older schema. Version it and test it on real old fixtures, not only a fresh empty database. Never erase a user database as a shortcut for a failed migration.
+
+```text
+CREATE TABLE books(id INTEGER PRIMARY KEY, title TEXT NOT NULL, price INTEGER NOT NULL CHECK(price >= 0));
+INSERT INTO books VALUES (1,'Python',100),(2,'Databases',150),(3,'Web',100);
+BEGIN;
+ALTER TABLE books ADD COLUMN active INTEGER NOT NULL DEFAULT 1;
+COMMIT;
+SELECT id,active FROM books ORDER BY id;
+```
+
+#### Schema migrations: guided investigation (60 min; Evaluate)
+
+ID: `sqlite-m5-l1`
+
+Objective: Judge two approaches to schema migrations against correctness, maintainability, and offline operation.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Migrate an old fixture and verify all titles, prices, and defaults after reopening. Compare the actual result with your prediction.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+#### Schema migrations: independent studio (90 min; Create)
+
+ID: `sqlite-m5-l2`
+
+Objective: Design and deliver an original extension using schema migrations with explicit acceptance tests.
+
+Activity: Migrate an old fixture and verify all titles, prices, and defaults after reopening. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+### Backup verification and recovery
+
+A backup is useful only if it restores correctly. Use a supported backup mechanism or export from a consistent snapshot. Copying one live database file while a journal or WAL is active may miss data. Validate restored structure and business totals in a separate training copy before replacing anything.
+
+```text
+CREATE TABLE books(id INTEGER PRIMARY KEY, title TEXT NOT NULL, price INTEGER NOT NULL CHECK(price >= 0));
+INSERT INTO books VALUES (1,'Python',100),(2,'Databases',150),(3,'Web',100);
+PRAGMA integrity_check;
+SELECT COUNT(*) AS rows,SUM(price) AS total FROM books;
+```
+
+#### Backup verification and recovery: guided investigation (60 min; Create)
+
+ID: `sqlite-m6-l1`
+
+Objective: Design and deliver an original extension using backup verification and recovery with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Restore a training backup and compare its row count and total with the source. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Backup verification and recovery: independent studio (90 min; Evaluate)
+
+ID: `sqlite-m6-l2`
+
+Objective: Judge two approaches to backup verification and recovery against correctness, maintainability, and offline operation.
+
+Activity: Restore a training backup and compare its row count and total with the source. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Query planning, indexes, and full-text search
+
+This SQLite module teaches you to inspect query plans, design selective indexes, use FTS carefully, and measure write/read tradeoffs. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+EXPLAIN QUERY PLAN
+SELECT * FROM loans WHERE student_id = 7 ORDER BY loaned_at DESC;
+```
+
+#### Query planning, indexes, and full-text search: guided investigation (60 min; Create)
+
+ID: `sqlite-m7-l1`
+
+Objective: Design and deliver an original extension using query planning, indexes, and full-text search with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Optimize a measured search workload with indexes or FTS and retain before-and-after plans and timing evidence. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Query planning, indexes, and full-text search: independent studio (90 min; Evaluate)
+
+ID: `sqlite-m7-l2`
+
+Objective: Judge two approaches to query planning, indexes, and full-text search against correctness, maintainability, and offline operation.
+
+Activity: Optimize a measured search workload with indexes or FTS and retain before-and-after plans and timing evidence. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### WAL, migrations, backup, and recovery
+
+This SQLite module teaches you to configure concurrent readers, execute atomic migrations, verify integrity, and test online backup and corruption recovery. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+PRAGMA journal_mode=WAL;
+PRAGMA integrity_check;
+PRAGMA user_version;
+```
+
+#### WAL, migrations, backup, and recovery: guided investigation (60 min; Create)
+
+ID: `sqlite-m8-l1`
+
+Objective: Design and deliver an original extension using wal, migrations, backup, and recovery with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Build a versioned migration and backup/restore drill that survives interruption without losing the previous valid database. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### WAL, migrations, backup, and recovery: independent studio (90 min; Evaluate)
+
+ID: `sqlite-m8-l2`
+
+Objective: Judge two approaches to wal, migrations, backup, and recovery against correctness, maintainability, and offline operation.
+
+Activity: Build a versioned migration and backup/restore drill that survives interruption without losing the previous valid database. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Requirements and domain discovery
+
+This SQLite module teaches you to turn a learner or client problem into user stories, a shared vocabulary, scope boundaries, and testable acceptance examples. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+User: a learner with an older device
+Need: finish work without internet
+Acceptance: saved work survives restart
+Out of scope: cloud accounts
+```
+
+#### Requirements and domain discovery: guided investigation (60 min; Create)
+
+ID: `sqlite-m9-l1`
+
+Objective: Design and deliver an original extension using requirements and domain discovery with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Interview a fictional learner, write three user stories and acceptance examples, then reject one attractive feature that violates the offline scope. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Requirements and domain discovery: independent studio (90 min; Evaluate)
+
+ID: `sqlite-m9-l2`
+
+Objective: Judge two approaches to requirements and domain discovery against correctness, maintainability, and offline operation.
+
+Activity: Interview a fictional learner, write three user stories and acceptance examples, then reject one attractive feature that violates the offline scope. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Models, interfaces, and contracts
+
+This SQLite module teaches you to model domain rules separately from screens and frameworks, define small interfaces, and state preconditions, results, and errors. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Input contract: non-empty learner_id
+Rule: progress can only move forward
+Result: saved progress or a specific error
+Adapter: local file or database
+```
+
+#### Models, interfaces, and contracts: guided investigation (60 min; Create)
+
+ID: `sqlite-m10-l1`
+
+Objective: Design and deliver an original extension using models, interfaces, and contracts with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Draw the domain, application, storage, and interface boundaries for a small attendance feature; define one contract at every boundary. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Models, interfaces, and contracts: independent studio (90 min; Evaluate)
+
+ID: `sqlite-m10-l2`
+
+Objective: Judge two approaches to models, interfaces, and contracts against correctness, maintainability, and offline operation.
+
+Activity: Draw the domain, application, storage, and interface boundaries for a small attendance feature; define one contract at every boundary. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Validation and failure recovery
+
+This SQLite module teaches you to validate at trust boundaries, preserve the last valid state, use atomic changes, and design recovery users can understand. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+normal: 3 valid records -> save
+edge: empty list -> valid empty result
+invalid: negative score -> reject
+interruption: old data remains readable
+```
+
+#### Validation and failure recovery: guided investigation (60 min; Create)
+
+ID: `sqlite-m11-l1`
+
+Objective: Design and deliver an original extension using validation and failure recovery with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Build a validation table for normal, empty, boundary, malformed, duplicate, and interrupted operations, then implement or simulate safe recovery. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Validation and failure recovery: independent studio (90 min; Evaluate)
+
+ID: `sqlite-m11-l2`
+
+Objective: Judge two approaches to validation and failure recovery against correctness, maintainability, and offline operation.
+
+Activity: Build a validation table for normal, empty, boundary, malformed, duplicate, and interrupted operations, then implement or simulate safe recovery. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Testing strategy and quality gates
+
+This SQLite module teaches you to combine focused unit tests, boundary tests, integration checks, and user-visible acceptance evidence without mirroring the implementation. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Given saved progress at lesson 2
+When the app restarts offline
+Then lesson 2 remains complete
+And lesson 3 is the next available step
+```
+
+#### Testing strategy and quality gates: guided investigation (60 min; Create)
+
+ID: `sqlite-m12-l1`
+
+Objective: Design and deliver an original extension using testing strategy and quality gates with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Create a test pyramid for one real feature, write at least five meaningful cases, and explain which failure each test would catch. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Testing strategy and quality gates: independent studio (90 min; Evaluate)
+
+ID: `sqlite-m12-l2`
+
+Objective: Judge two approaches to testing strategy and quality gates against correctness, maintainability, and offline operation.
+
+Activity: Create a test pyramid for one real feature, write at least five meaningful cases, and explain which failure each test would catch. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Architecture and dependency boundaries
+
+This SQLite module teaches you to apply separation of concerns, dependency inversion, cohesive modules, and architecture decision records to keep change affordable. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+presentation -> application -> domain
+data implements domain ports
+platform code stays behind adapters
+Decision: local storage is the source of truth
+```
+
+#### Architecture and dependency boundaries: guided investigation (60 min; Create)
+
+ID: `sqlite-m13-l1`
+
+Objective: Design and deliver an original extension using architecture and dependency boundaries with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Refactor or redesign one feature so its business rule can be tested without its UI, database, framework, or network. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Architecture and dependency boundaries: independent studio (90 min; Evaluate)
+
+ID: `sqlite-m13-l2`
+
+Objective: Judge two approaches to architecture and dependency boundaries against correctness, maintainability, and offline operation.
+
+Activity: Refactor or redesign one feature so its business rule can be tested without its UI, database, framework, or network. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Security, privacy, and inclusive access
+
+This SQLite module teaches you to threat-model assets and trust boundaries, minimize data and permissions, and include keyboard, screen-reader, contrast, language, and large-text needs. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Asset: learner progress
+Threat: unintended disclosure
+Control: local minimum data
+Access check: keyboard + 200% text
+Recovery: explicit local backup
+```
+
+#### Security, privacy, and inclusive access: guided investigation (60 min; Create)
+
+ID: `sqlite-m14-l1`
+
+Objective: Design and deliver an original extension using security, privacy, and inclusive access with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Produce a compact threat and accessibility review, repair the two highest-impact findings, and record evidence with fictional data. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Security, privacy, and inclusive access: independent studio (90 min; Evaluate)
+
+ID: `sqlite-m14-l2`
+
+Objective: Judge two approaches to security, privacy, and inclusive access against correctness, maintainability, and offline operation.
+
+Activity: Produce a compact threat and accessibility review, repair the two highest-impact findings, and record evidence with fictional data. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Performance and resource budgets
+
+This SQLite module teaches you to measure startup, responsiveness, memory, storage, and expensive operations before optimizing for realistic low-resource devices. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+startup budget: 2 seconds
+interaction budget: 100 ms
+storage budget: 50 MB
+offline check: airplane mode from first launch
+```
+
+#### Performance and resource budgets: guided investigation (60 min; Create)
+
+ID: `sqlite-m15-l1`
+
+Objective: Design and deliver an original extension using performance and resource budgets with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Choose three measurable budgets, capture a baseline, improve one proven bottleneck, and verify that behavior and accessibility still pass. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Performance and resource budgets: independent studio (90 min; Evaluate)
+
+ID: `sqlite-m15-l2`
+
+Objective: Judge two approaches to performance and resource budgets against correctness, maintainability, and offline operation.
+
+Activity: Choose three measurable budgets, capture a baseline, improve one proven bottleneck, and verify that behavior and accessibility still pass. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Capstone delivery and maintenance
+
+This SQLite module teaches you to plan incremental delivery, version data safely, document offline setup, review risks, and maintain the product after its first release. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Release evidence:
+- acceptance checks pass
+- migration and rollback tested
+- offline install documented
+- known limits published
+- next improvement prioritized
+```
+
+#### Capstone delivery and maintenance: guided investigation (60 min; Create)
+
+ID: `sqlite-m16-l1`
+
+Objective: Design and deliver an original extension using capstone delivery and maintenance with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Deliver a course-specific capstone increment with requirements, architecture decision, implementation evidence, tests, usability review, migration or rollback plan, and a short demonstration. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Capstone delivery and maintenance: independent studio (90 min; Evaluate)
+
+ID: `sqlite-m16-l2`
+
+Objective: Judge two approaches to capstone delivery and maintenance against correctness, maintainability, and offline operation.
+
+Activity: Deliver a course-specific capstone increment with requirements, architecture decision, implementation evidence, tests, usability review, migration or rollback plan, and a short demonstration. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Project: Offline notes database (6 hours)
+
+Persist fictional notes and restore them after restarting a local app.
+
+Acceptance conditions:
+
+- Validate titles and use parameterized writes.
+- Test save failure without losing the previous note.
+- Migrate a populated older schema.
+
+Milestones:
+
+- Discover: write three user stories, scope exclusions, and acceptance examples using fictional data.
+- Design: sketch components and data flow; justify one tradeoff in an architecture decision record.
+- Build: implement the required behaviors in small reviewable changes; record how to reproduce the build offline.
+- Verify: test every acceptance condition, empty/invalid data, and restart behavior; retain results.
+- Review: demonstrate to a peer or conduct a recorded self-review; document feedback, improvements, and limitations.
+
+### Project: Transactional stock ledger (12 hours)
+
+Record a sale and stock reduction as one local operation.
+
+Acceptance conditions:
+
+- Prevent overselling with a conditional update.
+- Roll back the stock change if sale insertion fails.
+- Test two competing connections and a repeated request.
+
+Milestones:
+
+- Discover: write three user stories, scope exclusions, and acceptance examples using fictional data.
+- Design: sketch components and data flow; justify one tradeoff in an architecture decision record.
+- Build: implement the required behaviors in small reviewable changes; record how to reproduce the build offline.
+- Verify: test every acceptance condition, empty/invalid data, and restart behavior; retain results.
+- Review: demonstrate to a peer or conduct a recorded self-review; document feedback, improvements, and limitations.
+
+### Project: Migration and restore kit (24 hours)
+
+Deliver fixtures and a repeatable upgrade-and-restore procedure.
+
+Acceptance conditions:
+
+- Keep versioned fixtures for each supported schema.
+- Compare row counts and totals after restore.
+- Document a failed migration without erasing the original.
+
+Milestones:
+
+- Discover: write three user stories, scope exclusions, and acceptance examples using fictional data.
+- Design: sketch components and data flow; justify one tradeoff in an architecture decision record.
+- Build: implement the required behaviors in small reviewable changes; record how to reproduce the build offline.
+- Verify: test every acceptance condition, empty/invalid data, and restart behavior; retain results.
+- Review: demonstrate to a peer or conduct a recorded self-review; document feedback, improvements, and limitations.
+
+## PostgreSQL Development
+
+Prerequisites: sql
+
+Offline tools: Lessons and practice traces are bundled offline. Executing PostgreSQL-specific scripts requires a separately installed local PostgreSQL server and psql. Use a disposable training database and a restricted local user. The in-app SQL practice runs SQLite, not PostgreSQL.
+
+### Start here: first guided lesson
+
+This is the true starting point for this course. No vocabulary from this course is assumed. You will first learn what the example is for, the meaning of its four key terms, and how to follow it one step at a time. Read the prerequisite course shown in the catalog first when one is required.
+
+PostgreSQL is a database server. A client such as psql connects to a particular database as a role. Schemas organize objects inside that database. A local server can work without internet, but it must already be installed and running. A connection failure is not corrected by rewriting a valid SELECT.
+
+Vocabulary:
+
+- Database: organized information that a program can read and change.
+- Record: one stored item, represented by a row or a document.
+- Query: a request describing which information you want.
+- Constraint: a rule that rejects invalid stored data.
+
+```text
+SELECT current_database(),current_user;
+CREATE TEMP TABLE books(id integer PRIMARY KEY,title text NOT NULL);
+INSERT INTO books VALUES(1,'Python');
+SELECT title FROM books;
+```
+
+- The first query identifies the actual connection, so its values depend on your setup. The temporary table belongs to this session. Inserting one book and selecting its title returns Python. Ending the session removes the temporary table; use a deliberate persistent schema for a real application.
+
+Readiness check: What should you do before changing training data?
+
+Answer: Predict the result and identify the target records.
+
+Guided practice: Identify the connected database and create a disposable one-row table.
+
+Hint: Use a fresh fictional fixture. Read the worked trace and change only the requested fields or query.
+
+Reference solution:
+
+```text
+SELECT current_database(),current_user;
+CREATE TEMP TABLE books(id integer PRIMARY KEY,title text NOT NULL);
+INSERT INTO books VALUES(1,'Python');
+SELECT title FROM books;
+```
+
+Expected result: The first query identifies the actual connection, so its values depend on your setup. The temporary table belongs to this session. Inserting one book and selecting its title returns Python. Ending the session removes the temporary table; use a deliberate persistent schema for a real application.
+
+### Server, database, and schema
+
+PostgreSQL is a database server. A client such as psql connects to a particular database as a role. Schemas organize objects inside that database. A local server can work without internet, but it must already be installed and running. A connection failure is not corrected by rewriting a valid SELECT.
+
+```text
+SELECT current_database(),current_user;
+CREATE TEMP TABLE books(id integer PRIMARY KEY,title text NOT NULL);
+INSERT INTO books VALUES(1,'Python');
+SELECT title FROM books;
+```
+
+#### Server, database, and schema: guided investigation (60 min; Remember)
+
+ID: `postgresql-m1-l1`
+
+Objective: Identify the key terms and syntax in server, database, and schema without consulting the example.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Identify the connected database and create a disposable one-row table. Compare the actual result with your prediction.
+
+Assessment evidence: Submit five correctly defined terms and label their occurrences in the example; correct at least four before continuing.
+
+#### Server, database, and schema: independent studio (90 min; Understand)
+
+ID: `postgresql-m1-l2`
+
+Objective: Explain how server, database, and schema changes program behavior using a traced example.
+
+Activity: Identify the connected database and create a disposable one-row table. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a state trace and a causal explanation of two outputs. Explain a changed input without running it first.
+
+### Typed schemas and constraints
+
+Choose column types for meaning, not appearance. Integer quantities and numeric monetary values have different contracts. A generated identity creates identifiers; it does not validate other fields. Put required and nonnegative rules into constraints and handle their failures in the client without losing the draft.
+
+```text
+CREATE TEMP TABLE expenses(id bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,amount numeric(12,2) NOT NULL CHECK(amount>=0));
+INSERT INTO expenses(amount) VALUES(20.50) RETURNING id,amount;
+```
+
+#### Typed schemas and constraints: guided investigation (60 min; Understand)
+
+ID: `postgresql-m2-l1`
+
+Objective: Explain how typed schemas and constraints changes program behavior using a traced example.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Insert a valid expense and demonstrate rejection of a negative one. Compare the actual result with your prediction.
+
+Assessment evidence: Submit a state trace and a causal explanation of two outputs. Explain a changed input without running it first.
+
+#### Typed schemas and constraints: independent studio (90 min; Apply)
+
+ID: `postgresql-m2-l2`
+
+Objective: Implement insert a valid expense and demonstrate rejection of a negative one.
+
+Activity: Insert a valid expense and demonstrate rejection of a negative one. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit source and normal, empty, and invalid input results. Each stated acceptance condition must pass.
+
+### Joins and window calculations
+
+An aggregate can collapse rows into groups. A window calculation instead attaches a result while retaining individual rows. For a running total, specify ordering and the frame so the business meaning is clear. Unique ordering avoids ambiguity when several records share a date.
+
+```text
+SELECT id,amount,SUM(amount) OVER(ORDER BY id ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS running_total FROM (VALUES(1,10),(2,20),(3,5)) AS e(id,amount) ORDER BY id;
+```
+
+#### Joins and window calculations: guided investigation (60 min; Apply)
+
+ID: `postgresql-m3-l1`
+
+Objective: Implement add a fourth amount and predict its running total before execution.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Add a fourth amount and predict its running total before execution. Compare the actual result with your prediction.
+
+Assessment evidence: Submit source and normal, empty, and invalid input results. Each stated acceptance condition must pass.
+
+#### Joins and window calculations: independent studio (90 min; Analyze)
+
+ID: `postgresql-m3-l2`
+
+Objective: Locate a failing assumption in joins and window calculations and isolate it with a minimal reproduction.
+
+Activity: Add a fourth amount and predict its running total before execution. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit the failing case, root cause, minimal fix, and a regression test that fails before the fix and passes after.
+
+### Transactions and row locks
+
+Concurrent clients can read the same old quantity. A row lock can protect a read-then-write operation while its transaction is active. Locks must be released by commit or rollback. Keep the transaction short and plan how to report a conflict or retry; waiting indefinitely is not a usable interface.
+
+```text
+CREATE TEMP TABLE stock(id integer PRIMARY KEY,quantity integer CHECK(quantity>=0));
+INSERT INTO stock VALUES(1,5);
+BEGIN;
+SELECT quantity FROM stock WHERE id=1 FOR UPDATE;
+UPDATE stock SET quantity=quantity-2 WHERE id=1;
+COMMIT;
+SELECT quantity FROM stock;
+```
+
+#### Transactions and row locks: guided investigation (60 min; Analyze)
+
+ID: `postgresql-m4-l1`
+
+Objective: Locate a failing assumption in transactions and row locks and isolate it with a minimal reproduction.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Demonstrate lock waiting with two sessions on a disposable shared table. Compare the actual result with your prediction.
+
+Assessment evidence: Submit the failing case, root cause, minimal fix, and a regression test that fails before the fix and passes after.
+
+#### Transactions and row locks: independent studio (90 min; Evaluate)
+
+ID: `postgresql-m4-l2`
+
+Objective: Judge two approaches to transactions and row locks against correctness, maintainability, and offline operation.
+
+Activity: Demonstrate lock waiting with two sessions on a disposable shared table. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Indexes and EXPLAIN
+
+EXPLAIN describes a planned execution strategy. EXPLAIN ANALYZE actually runs the statement and measures it, so it is not a harmless description for a modifying query. Begin with read-only queries and realistic fixtures. More indexes can slow inserts and updates, so compare both read and write costs.
+
+```text
+CREATE TEMP TABLE products(id integer PRIMARY KEY,price integer);
+INSERT INTO products SELECT n,n%100 FROM generate_series(1,1000) AS n;
+CREATE INDEX ON products(price);
+ANALYZE products;
+EXPLAIN SELECT id FROM products WHERE price=42;
+```
+
+#### Indexes and EXPLAIN: guided investigation (60 min; Evaluate)
+
+ID: `postgresql-m5-l1`
+
+Objective: Judge two approaches to indexes and explain against correctness, maintainability, and offline operation.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Compare a selective query with and without an index on a training fixture. Compare the actual result with your prediction.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+#### Indexes and EXPLAIN: independent studio (90 min; Create)
+
+ID: `postgresql-m5-l2`
+
+Objective: Design and deliver an original extension using indexes and explain with explicit acceptance tests.
+
+Activity: Compare a selective query with and without an index on a training fixture. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+### Roles, backup, and restore
+
+A role controls permissions; an application should not connect with unrestricted administrative power. Backups need a tested restore procedure and protected local storage. Logical export and restore are separate tools, not SQL SELECT statements. Use fictional data and restore into a different training database before trusting the process.
+
+```text
+-- Shell commands, not SQL. Replace names with disposable training databases.
+pg_dump -Fc training_source -f training.dump
+pg_restore --no-owner --dbname=training_restore training.dump
+```
+
+#### Roles, backup, and restore: guided investigation (60 min; Create)
+
+ID: `postgresql-m6-l1`
+
+Objective: Design and deliver an original extension using roles, backup, and restore with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Restore a fictional database to a separate target and test a restricted reader role. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Roles, backup, and restore: independent studio (90 min; Evaluate)
+
+ID: `postgresql-m6-l2`
+
+Objective: Judge two approaches to roles, backup, and restore against correctness, maintainability, and offline operation.
+
+Activity: Restore a fictional database to a separate target and test a restricted reader role. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Advanced indexing, plans, and partitioning
+
+This PostgreSQL module teaches you to interpret EXPLAIN ANALYZE, choose index families, maintain statistics, and partition only for measured needs. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+EXPLAIN (ANALYZE, BUFFERS)
+SELECT * FROM loans WHERE returned_at IS NULL AND student_id = 7;
+```
+
+#### Advanced indexing, plans, and partitioning: guided investigation (60 min; Create)
+
+ID: `postgresql-m7-l1`
+
+Objective: Design and deliver an original extension using advanced indexing, plans, and partitioning with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Tune a representative workload using measured plans and justify indexes, statistics, and any partition boundary. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Advanced indexing, plans, and partitioning: independent studio (90 min; Evaluate)
+
+ID: `postgresql-m7-l2`
+
+Objective: Judge two approaches to advanced indexing, plans, and partitioning against correctness, maintainability, and offline operation.
+
+Activity: Tune a representative workload using measured plans and justify indexes, statistics, and any partition boundary. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Concurrency, replication, and operations
+
+This PostgreSQL module teaches you to apply MVCC isolation, advisory locks, roles, backup, point-in-time recovery, monitoring, and failover reasoning. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+BEGIN ISOLATION LEVEL SERIALIZABLE;
+-- read invariant, apply change, retry serialization failures
+COMMIT;
+```
+
+#### Concurrency, replication, and operations: guided investigation (60 min; Create)
+
+ID: `postgresql-m8-l1`
+
+Objective: Design and deliver an original extension using concurrency, replication, and operations with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Design a retry-safe transaction and complete a role, backup, restore, monitoring, and simulated failover exercise. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Concurrency, replication, and operations: independent studio (90 min; Evaluate)
+
+ID: `postgresql-m8-l2`
+
+Objective: Judge two approaches to concurrency, replication, and operations against correctness, maintainability, and offline operation.
+
+Activity: Design a retry-safe transaction and complete a role, backup, restore, monitoring, and simulated failover exercise. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Requirements and domain discovery
+
+This PostgreSQL module teaches you to turn a learner or client problem into user stories, a shared vocabulary, scope boundaries, and testable acceptance examples. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+User: a learner with an older device
+Need: finish work without internet
+Acceptance: saved work survives restart
+Out of scope: cloud accounts
+```
+
+#### Requirements and domain discovery: guided investigation (60 min; Create)
+
+ID: `postgresql-m9-l1`
+
+Objective: Design and deliver an original extension using requirements and domain discovery with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Interview a fictional learner, write three user stories and acceptance examples, then reject one attractive feature that violates the offline scope. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Requirements and domain discovery: independent studio (90 min; Evaluate)
+
+ID: `postgresql-m9-l2`
+
+Objective: Judge two approaches to requirements and domain discovery against correctness, maintainability, and offline operation.
+
+Activity: Interview a fictional learner, write three user stories and acceptance examples, then reject one attractive feature that violates the offline scope. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Models, interfaces, and contracts
+
+This PostgreSQL module teaches you to model domain rules separately from screens and frameworks, define small interfaces, and state preconditions, results, and errors. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Input contract: non-empty learner_id
+Rule: progress can only move forward
+Result: saved progress or a specific error
+Adapter: local file or database
+```
+
+#### Models, interfaces, and contracts: guided investigation (60 min; Create)
+
+ID: `postgresql-m10-l1`
+
+Objective: Design and deliver an original extension using models, interfaces, and contracts with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Draw the domain, application, storage, and interface boundaries for a small attendance feature; define one contract at every boundary. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Models, interfaces, and contracts: independent studio (90 min; Evaluate)
+
+ID: `postgresql-m10-l2`
+
+Objective: Judge two approaches to models, interfaces, and contracts against correctness, maintainability, and offline operation.
+
+Activity: Draw the domain, application, storage, and interface boundaries for a small attendance feature; define one contract at every boundary. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Validation and failure recovery
+
+This PostgreSQL module teaches you to validate at trust boundaries, preserve the last valid state, use atomic changes, and design recovery users can understand. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+normal: 3 valid records -> save
+edge: empty list -> valid empty result
+invalid: negative score -> reject
+interruption: old data remains readable
+```
+
+#### Validation and failure recovery: guided investigation (60 min; Create)
+
+ID: `postgresql-m11-l1`
+
+Objective: Design and deliver an original extension using validation and failure recovery with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Build a validation table for normal, empty, boundary, malformed, duplicate, and interrupted operations, then implement or simulate safe recovery. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Validation and failure recovery: independent studio (90 min; Evaluate)
+
+ID: `postgresql-m11-l2`
+
+Objective: Judge two approaches to validation and failure recovery against correctness, maintainability, and offline operation.
+
+Activity: Build a validation table for normal, empty, boundary, malformed, duplicate, and interrupted operations, then implement or simulate safe recovery. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Testing strategy and quality gates
+
+This PostgreSQL module teaches you to combine focused unit tests, boundary tests, integration checks, and user-visible acceptance evidence without mirroring the implementation. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Given saved progress at lesson 2
+When the app restarts offline
+Then lesson 2 remains complete
+And lesson 3 is the next available step
+```
+
+#### Testing strategy and quality gates: guided investigation (60 min; Create)
+
+ID: `postgresql-m12-l1`
+
+Objective: Design and deliver an original extension using testing strategy and quality gates with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Create a test pyramid for one real feature, write at least five meaningful cases, and explain which failure each test would catch. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Testing strategy and quality gates: independent studio (90 min; Evaluate)
+
+ID: `postgresql-m12-l2`
+
+Objective: Judge two approaches to testing strategy and quality gates against correctness, maintainability, and offline operation.
+
+Activity: Create a test pyramid for one real feature, write at least five meaningful cases, and explain which failure each test would catch. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Architecture and dependency boundaries
+
+This PostgreSQL module teaches you to apply separation of concerns, dependency inversion, cohesive modules, and architecture decision records to keep change affordable. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+presentation -> application -> domain
+data implements domain ports
+platform code stays behind adapters
+Decision: local storage is the source of truth
+```
+
+#### Architecture and dependency boundaries: guided investigation (60 min; Create)
+
+ID: `postgresql-m13-l1`
+
+Objective: Design and deliver an original extension using architecture and dependency boundaries with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Refactor or redesign one feature so its business rule can be tested without its UI, database, framework, or network. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Architecture and dependency boundaries: independent studio (90 min; Evaluate)
+
+ID: `postgresql-m13-l2`
+
+Objective: Judge two approaches to architecture and dependency boundaries against correctness, maintainability, and offline operation.
+
+Activity: Refactor or redesign one feature so its business rule can be tested without its UI, database, framework, or network. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Security, privacy, and inclusive access
+
+This PostgreSQL module teaches you to threat-model assets and trust boundaries, minimize data and permissions, and include keyboard, screen-reader, contrast, language, and large-text needs. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Asset: learner progress
+Threat: unintended disclosure
+Control: local minimum data
+Access check: keyboard + 200% text
+Recovery: explicit local backup
+```
+
+#### Security, privacy, and inclusive access: guided investigation (60 min; Create)
+
+ID: `postgresql-m14-l1`
+
+Objective: Design and deliver an original extension using security, privacy, and inclusive access with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Produce a compact threat and accessibility review, repair the two highest-impact findings, and record evidence with fictional data. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Security, privacy, and inclusive access: independent studio (90 min; Evaluate)
+
+ID: `postgresql-m14-l2`
+
+Objective: Judge two approaches to security, privacy, and inclusive access against correctness, maintainability, and offline operation.
+
+Activity: Produce a compact threat and accessibility review, repair the two highest-impact findings, and record evidence with fictional data. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Performance and resource budgets
+
+This PostgreSQL module teaches you to measure startup, responsiveness, memory, storage, and expensive operations before optimizing for realistic low-resource devices. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+startup budget: 2 seconds
+interaction budget: 100 ms
+storage budget: 50 MB
+offline check: airplane mode from first launch
+```
+
+#### Performance and resource budgets: guided investigation (60 min; Create)
+
+ID: `postgresql-m15-l1`
+
+Objective: Design and deliver an original extension using performance and resource budgets with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Choose three measurable budgets, capture a baseline, improve one proven bottleneck, and verify that behavior and accessibility still pass. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Performance and resource budgets: independent studio (90 min; Evaluate)
+
+ID: `postgresql-m15-l2`
+
+Objective: Judge two approaches to performance and resource budgets against correctness, maintainability, and offline operation.
+
+Activity: Choose three measurable budgets, capture a baseline, improve one proven bottleneck, and verify that behavior and accessibility still pass. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Capstone delivery and maintenance
+
+This PostgreSQL module teaches you to plan incremental delivery, version data safely, document offline setup, review risks, and maintain the product after its first release. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Release evidence:
+- acceptance checks pass
+- migration and rollback tested
+- offline install documented
+- known limits published
+- next improvement prioritized
+```
+
+#### Capstone delivery and maintenance: guided investigation (60 min; Create)
+
+ID: `postgresql-m16-l1`
+
+Objective: Design and deliver an original extension using capstone delivery and maintenance with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Deliver a course-specific capstone increment with requirements, architecture decision, implementation evidence, tests, usability review, migration or rollback plan, and a short demonstration. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Capstone delivery and maintenance: independent studio (90 min; Evaluate)
+
+ID: `postgresql-m16-l2`
+
+Objective: Judge two approaches to capstone delivery and maintenance against correctness, maintainability, and offline operation.
+
+Activity: Deliver a course-specific capstone increment with requirements, architecture decision, implementation evidence, tests, usability review, migration or rollback plan, and a short demonstration. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Project: Local enrollment service database (6 hours)
+
+Enforce course capacity with two competing local clients.
+
+Acceptance conditions:
+
+- Use stable enrollment keys and constraints.
+- Test the last available seat with two sessions.
+- Explain rollback and retry behavior.
+
+Milestones:
+
+- Discover: write three user stories, scope exclusions, and acceptance examples using fictional data.
+- Design: sketch components and data flow; justify one tradeoff in an architecture decision record.
+- Build: implement the required behaviors in small reviewable changes; record how to reproduce the build offline.
+- Verify: test every acceptance condition, empty/invalid data, and restart behavior; retain results.
+- Review: demonstrate to a peer or conduct a recorded self-review; document feedback, improvements, and limitations.
+
+### Project: Expense reporting database (12 hours)
+
+Produce grouped and running totals for fictional expenses.
+
+Acceptance conditions:
+
+- Use an exact numeric amount contract.
+- Use deterministic window ordering.
+- Compare query plans without changing totals.
+
+Milestones:
+
+- Discover: write three user stories, scope exclusions, and acceptance examples using fictional data.
+- Design: sketch components and data flow; justify one tradeoff in an architecture decision record.
+- Build: implement the required behaviors in small reviewable changes; record how to reproduce the build offline.
+- Verify: test every acceptance condition, empty/invalid data, and restart behavior; retain results.
+- Review: demonstrate to a peer or conduct a recorded self-review; document feedback, improvements, and limitations.
+
+### Project: Restore rehearsal (24 hours)
+
+Deliver a local dump and verified restoration using restricted roles.
+
+Acceptance conditions:
+
+- Restore into a separate training database.
+- Verify constraints and report totals after restore.
+- Show that the reader cannot modify records.
+
+Milestones:
+
+- Discover: write three user stories, scope exclusions, and acceptance examples using fictional data.
+- Design: sketch components and data flow; justify one tradeoff in an architecture decision record.
+- Build: implement the required behaviors in small reviewable changes; record how to reproduce the build offline.
+- Verify: test every acceptance condition, empty/invalid data, and restart behavior; retain results.
+- Review: demonstrate to a peer or conduct a recorded self-review; document feedback, improvements, and limitations.
+
+## MongoDB and Document Databases
+
+Prerequisites: database-foundations
+
+Offline tools: Lessons and document traces work offline. Executing these commands requires a separately provisioned local MongoDB server and mongosh. No Atlas account or cloud service is required. Use a disposable training database; the in-app SQLite editor cannot execute MongoDB commands.
+
+### Start here: first guided lesson
+
+This is the true starting point for this course. No vocabulary from this course is assumed. You will first learn what the example is for, the meaning of its four key terms, and how to follow it one step at a time. Read the prerequisite course shown in the catalog first when one is required.
+
+A document stores named fields together, while a collection groups documents. Think of one library book with a title and a list of tags. MongoDB stores BSON documents; the shell uses JavaScript-like notation to express them. Flexible fields do not mean that a program can safely accept any shape.
+
+Vocabulary:
+
+- Database: organized information that a program can read and change.
+- Record: one stored item, represented by a row or a document.
+- Query: a request describing which information you want.
+- Constraint: a rule that rejects invalid stored data.
+
+```text
+db.books.insertOne({_id:1,title:"Python",tags:["coding","beginner"]});
+db.books.find({_id:1},{_id:0,title:1,tags:1});
+```
+
+- insertOne creates one document with a fixed training id. find matches that id and the projection hides _id while returning title and tags. Repeating the insert unchanged fails on the duplicate id. Use a fresh training collection rather than silently overwriting someone else's data.
+
+Readiness check: What should you do before changing training data?
+
+Answer: Predict the result and identify the target records.
+
+Guided practice: Create a second book with a distinct id and find only its title.
+
+Hint: Use a fresh fictional fixture. Read the worked trace and change only the requested fields or query.
+
+Reference solution:
+
+```text
+db.books.insertOne({_id:2,title:"Databases",tags:["data"]});
+db.books.find({_id:2},{_id:0,title:1});
+```
+
+Expected result: One result document contains title: Databases. The first book is unchanged.
+
+### Documents and collections
+
+A document stores named fields together, while a collection groups documents. Think of one library book with a title and a list of tags. MongoDB stores BSON documents; the shell uses JavaScript-like notation to express them. Flexible fields do not mean that a program can safely accept any shape.
+
+```text
+db.books.insertOne({_id:1,title:"Python",tags:["coding","beginner"]});
+db.books.find({_id:1},{_id:0,title:1,tags:1});
+```
+
+#### Documents and collections: guided investigation (60 min; Remember)
+
+ID: `mongodb-m1-l1`
+
+Objective: Identify the key terms and syntax in documents and collections without consulting the example.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Create a second book with a distinct id and find only its title. Compare the actual result with your prediction.
+
+Assessment evidence: Submit five correctly defined terms and label their occurrences in the example; correct at least four before continuing.
+
+#### Documents and collections: independent studio (90 min; Understand)
+
+ID: `mongodb-m1-l2`
+
+Objective: Explain how documents and collections changes program behavior using a traced example.
+
+Activity: Create a second book with a distinct id and find only its title. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a state trace and a causal explanation of two outputs. Explain a changed input without running it first.
+
+### Filters and targeted updates
+
+A filter describes which documents match. An update operator changes selected fields rather than replacing the whole document. Match by a stable identity when editing one record. Check matched and modified counts; a command that matched nothing is not evidence that the intended book changed.
+
+```text
+db.items.insertOne({_id:1,name:"Notebook",stock:5});
+db.items.updateOne({_id:1,stock:{$gte:2}},{$inc:{stock:-2}});
+db.items.find({_id:1});
+```
+
+#### Filters and targeted updates: guided investigation (60 min; Understand)
+
+ID: `mongodb-m2-l1`
+
+Objective: Explain how filters and targeted updates changes program behavior using a traced example.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Attempt an oversized decrement and verify the stock remains unchanged. Compare the actual result with your prediction.
+
+Assessment evidence: Submit a state trace and a causal explanation of two outputs. Explain a changed input without running it first.
+
+#### Filters and targeted updates: independent studio (90 min; Apply)
+
+ID: `mongodb-m2-l2`
+
+Objective: Implement attempt an oversized decrement and verify the stock remains unchanged.
+
+Activity: Attempt an oversized decrement and verify the stock remains unchanged. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit source and normal, empty, and invalid input results. Each stated acceptance condition must pass.
+
+### Embedding and references
+
+Embed data read together when its size and lifetime fit the parent. Use references for independent or growing records. Copying a student name into every enrollment can make updates inconsistent. There is no universal rule that every relationship should be embedded; start from access patterns and update behavior.
+
+```text
+db.courses.insertOne({_id:1,title:"SQL",lessons:[{title:"Tables"},{title:"Queries"}]});
+db.courses.find({_id:1},{lessons:1,_id:0});
+```
+
+#### Embedding and references: guided investigation (60 min; Apply)
+
+ID: `mongodb-m3-l1`
+
+Objective: Implement compare embedded lesson summaries with referenced full lesson documents.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Compare embedded lesson summaries with referenced full lesson documents. Compare the actual result with your prediction.
+
+Assessment evidence: Submit source and normal, empty, and invalid input results. Each stated acceptance condition must pass.
+
+#### Embedding and references: independent studio (90 min; Analyze)
+
+ID: `mongodb-m3-l2`
+
+Objective: Locate a failing assumption in embedding and references and isolate it with a minimal reproduction.
+
+Activity: Compare embedded lesson summaries with referenced full lesson documents. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit the failing case, root cause, minimal fix, and a regression test that fails before the fix and passes after.
+
+### Aggregation pipelines
+
+A pipeline passes documents through ordered stages. Match narrows the input, group produces summaries, and sort orders the result. Each stage changes what the next stage receives. Write down an intermediate result after each stage instead of guessing from the final pipeline alone.
+
+```text
+db.expenses.insertMany([{category:"books",amount:20},{category:"books",amount:10},{category:"travel",amount:5}]);
+db.expenses.aggregate([{$group:{_id:"$category",total:{$sum:"$amount"}}},{$sort:{_id:1}}]);
+```
+
+#### Aggregation pipelines: guided investigation (60 min; Analyze)
+
+ID: `mongodb-m4-l1`
+
+Objective: Locate a failing assumption in aggregation pipelines and isolate it with a minimal reproduction.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Add a category filter before grouping and trace which records remain. Compare the actual result with your prediction.
+
+Assessment evidence: Submit the failing case, root cause, minimal fix, and a regression test that fails before the fix and passes after.
+
+#### Aggregation pipelines: independent studio (90 min; Evaluate)
+
+ID: `mongodb-m4-l2`
+
+Objective: Judge two approaches to aggregation pipelines against correctness, maintainability, and offline operation.
+
+Activity: Add a category filter before grouping and trace which records remain. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Validation and indexes
+
+Flexible documents still need a contract. Validation can require fields and types. A unique index rejects duplicate key values, while an ordinary index only helps access. Existing invalid or duplicate data can prevent adding a new rule; inspect a training copy before changing a real collection.
+
+```text
+db.members.createIndex({studentId:1},{unique:true});
+db.members.insertOne({studentId:"S1",name:"Amina"});
+db.members.find({studentId:"S1"});
+```
+
+#### Validation and indexes: guided investigation (60 min; Evaluate)
+
+ID: `mongodb-m5-l1`
+
+Objective: Judge two approaches to validation and indexes against correctness, maintainability, and offline operation.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Test duplicate identities and missing required fields as separate failures. Compare the actual result with your prediction.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+#### Validation and indexes: independent studio (90 min; Create)
+
+ID: `mongodb-m5-l2`
+
+Objective: Design and deliver an original extension using validation and indexes with explicit acceptance tests.
+
+Activity: Test duplicate identities and missing required fields as separate failures. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+### Atomicity and local backup
+
+A single-document update is atomic. Changes across several documents need a different design or a supported transaction deployment. A standalone server does not support multi-document transactions; a local replica set can be provisioned for that lesson. Backups still need restore testing, even when individual writes are atomic.
+
+```text
+// Shell commands, not mongosh JavaScript; training databases only.
+mongodump --db training_source --out training_backup
+mongorestore --nsFrom="training_source.*" --nsTo="training_restore.*" training_backup
+```
+
+#### Atomicity and local backup: guided investigation (60 min; Create)
+
+ID: `mongodb-m6-l1`
+
+Objective: Design and deliver an original extension using atomicity and local backup with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Restore fictional documents to a separate database and explain consistency limits. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Atomicity and local backup: independent studio (90 min; Evaluate)
+
+ID: `mongodb-m6-l2`
+
+Objective: Judge two approaches to atomicity and local backup against correctness, maintainability, and offline operation.
+
+Activity: Restore fictional documents to a separate database and explain consistency limits. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Aggregation and schema evolution
+
+This MongoDB module teaches you to design bounded pipelines, indexes, validation, denormalization policy, and compatible document migrations. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+db.loans.aggregate([
+ {$match:{returned:false}},
+ {$group:{_id:"$bookId", total:{$sum:1}}}
+])
+```
+
+#### Aggregation and schema evolution: guided investigation (60 min; Create)
+
+ID: `mongodb-m7-l1`
+
+Objective: Design and deliver an original extension using aggregation and schema evolution with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Build and explain an indexed aggregation, then migrate mixed document versions without breaking old readers. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Aggregation and schema evolution: independent studio (90 min; Evaluate)
+
+ID: `mongodb-m7-l2`
+
+Objective: Judge two approaches to aggregation and schema evolution against correctness, maintainability, and offline operation.
+
+Activity: Build and explain an indexed aggregation, then migrate mixed document versions without breaking old readers. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Transactions, replication, and operations
+
+This MongoDB module teaches you to choose transaction boundaries, read/write concerns, shard keys, backup, restore, and observable failure handling. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+session.withTransaction(async () => {
+  // update loan and inventory with retry-safe identifiers
+});
+```
+
+#### Transactions, replication, and operations: guided investigation (60 min; Create)
+
+ID: `mongodb-m8-l1`
+
+Objective: Design and deliver an original extension using transactions, replication, and operations with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Design a retry-safe multi-document workflow and document replica failure, recovery, backup, restore, and consistency evidence. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Transactions, replication, and operations: independent studio (90 min; Evaluate)
+
+ID: `mongodb-m8-l2`
+
+Objective: Judge two approaches to transactions, replication, and operations against correctness, maintainability, and offline operation.
+
+Activity: Design a retry-safe multi-document workflow and document replica failure, recovery, backup, restore, and consistency evidence. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Requirements and domain discovery
+
+This MongoDB module teaches you to turn a learner or client problem into user stories, a shared vocabulary, scope boundaries, and testable acceptance examples. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+User: a learner with an older device
+Need: finish work without internet
+Acceptance: saved work survives restart
+Out of scope: cloud accounts
+```
+
+#### Requirements and domain discovery: guided investigation (60 min; Create)
+
+ID: `mongodb-m9-l1`
+
+Objective: Design and deliver an original extension using requirements and domain discovery with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Interview a fictional learner, write three user stories and acceptance examples, then reject one attractive feature that violates the offline scope. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Requirements and domain discovery: independent studio (90 min; Evaluate)
+
+ID: `mongodb-m9-l2`
+
+Objective: Judge two approaches to requirements and domain discovery against correctness, maintainability, and offline operation.
+
+Activity: Interview a fictional learner, write three user stories and acceptance examples, then reject one attractive feature that violates the offline scope. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Models, interfaces, and contracts
+
+This MongoDB module teaches you to model domain rules separately from screens and frameworks, define small interfaces, and state preconditions, results, and errors. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Input contract: non-empty learner_id
+Rule: progress can only move forward
+Result: saved progress or a specific error
+Adapter: local file or database
+```
+
+#### Models, interfaces, and contracts: guided investigation (60 min; Create)
+
+ID: `mongodb-m10-l1`
+
+Objective: Design and deliver an original extension using models, interfaces, and contracts with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Draw the domain, application, storage, and interface boundaries for a small attendance feature; define one contract at every boundary. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Models, interfaces, and contracts: independent studio (90 min; Evaluate)
+
+ID: `mongodb-m10-l2`
+
+Objective: Judge two approaches to models, interfaces, and contracts against correctness, maintainability, and offline operation.
+
+Activity: Draw the domain, application, storage, and interface boundaries for a small attendance feature; define one contract at every boundary. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Validation and failure recovery
+
+This MongoDB module teaches you to validate at trust boundaries, preserve the last valid state, use atomic changes, and design recovery users can understand. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+normal: 3 valid records -> save
+edge: empty list -> valid empty result
+invalid: negative score -> reject
+interruption: old data remains readable
+```
+
+#### Validation and failure recovery: guided investigation (60 min; Create)
+
+ID: `mongodb-m11-l1`
+
+Objective: Design and deliver an original extension using validation and failure recovery with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Build a validation table for normal, empty, boundary, malformed, duplicate, and interrupted operations, then implement or simulate safe recovery. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Validation and failure recovery: independent studio (90 min; Evaluate)
+
+ID: `mongodb-m11-l2`
+
+Objective: Judge two approaches to validation and failure recovery against correctness, maintainability, and offline operation.
+
+Activity: Build a validation table for normal, empty, boundary, malformed, duplicate, and interrupted operations, then implement or simulate safe recovery. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Testing strategy and quality gates
+
+This MongoDB module teaches you to combine focused unit tests, boundary tests, integration checks, and user-visible acceptance evidence without mirroring the implementation. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Given saved progress at lesson 2
+When the app restarts offline
+Then lesson 2 remains complete
+And lesson 3 is the next available step
+```
+
+#### Testing strategy and quality gates: guided investigation (60 min; Create)
+
+ID: `mongodb-m12-l1`
+
+Objective: Design and deliver an original extension using testing strategy and quality gates with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Create a test pyramid for one real feature, write at least five meaningful cases, and explain which failure each test would catch. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Testing strategy and quality gates: independent studio (90 min; Evaluate)
+
+ID: `mongodb-m12-l2`
+
+Objective: Judge two approaches to testing strategy and quality gates against correctness, maintainability, and offline operation.
+
+Activity: Create a test pyramid for one real feature, write at least five meaningful cases, and explain which failure each test would catch. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Architecture and dependency boundaries
+
+This MongoDB module teaches you to apply separation of concerns, dependency inversion, cohesive modules, and architecture decision records to keep change affordable. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+presentation -> application -> domain
+data implements domain ports
+platform code stays behind adapters
+Decision: local storage is the source of truth
+```
+
+#### Architecture and dependency boundaries: guided investigation (60 min; Create)
+
+ID: `mongodb-m13-l1`
+
+Objective: Design and deliver an original extension using architecture and dependency boundaries with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Refactor or redesign one feature so its business rule can be tested without its UI, database, framework, or network. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Architecture and dependency boundaries: independent studio (90 min; Evaluate)
+
+ID: `mongodb-m13-l2`
+
+Objective: Judge two approaches to architecture and dependency boundaries against correctness, maintainability, and offline operation.
+
+Activity: Refactor or redesign one feature so its business rule can be tested without its UI, database, framework, or network. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Security, privacy, and inclusive access
+
+This MongoDB module teaches you to threat-model assets and trust boundaries, minimize data and permissions, and include keyboard, screen-reader, contrast, language, and large-text needs. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Asset: learner progress
+Threat: unintended disclosure
+Control: local minimum data
+Access check: keyboard + 200% text
+Recovery: explicit local backup
+```
+
+#### Security, privacy, and inclusive access: guided investigation (60 min; Create)
+
+ID: `mongodb-m14-l1`
+
+Objective: Design and deliver an original extension using security, privacy, and inclusive access with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Produce a compact threat and accessibility review, repair the two highest-impact findings, and record evidence with fictional data. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Security, privacy, and inclusive access: independent studio (90 min; Evaluate)
+
+ID: `mongodb-m14-l2`
+
+Objective: Judge two approaches to security, privacy, and inclusive access against correctness, maintainability, and offline operation.
+
+Activity: Produce a compact threat and accessibility review, repair the two highest-impact findings, and record evidence with fictional data. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Performance and resource budgets
+
+This MongoDB module teaches you to measure startup, responsiveness, memory, storage, and expensive operations before optimizing for realistic low-resource devices. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+startup budget: 2 seconds
+interaction budget: 100 ms
+storage budget: 50 MB
+offline check: airplane mode from first launch
+```
+
+#### Performance and resource budgets: guided investigation (60 min; Create)
+
+ID: `mongodb-m15-l1`
+
+Objective: Design and deliver an original extension using performance and resource budgets with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Choose three measurable budgets, capture a baseline, improve one proven bottleneck, and verify that behavior and accessibility still pass. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Performance and resource budgets: independent studio (90 min; Evaluate)
+
+ID: `mongodb-m15-l2`
+
+Objective: Judge two approaches to performance and resource budgets against correctness, maintainability, and offline operation.
+
+Activity: Choose three measurable budgets, capture a baseline, improve one proven bottleneck, and verify that behavior and accessibility still pass. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Capstone delivery and maintenance
+
+This MongoDB module teaches you to plan incremental delivery, version data safely, document offline setup, review risks, and maintain the product after its first release. Use the idea in the course project or in a small offline records feature. Read the example line by line and identify its input, rule, result, and possible failure. Then test a normal case, an empty or boundary case, and an invalid case. Record the actual results instead of claiming that the design works.
+
+Hint: begin with one input and one expected result. Make that case work, add the failure case, and only then extend the design. Keep the smallest solution you can explain and reproduce.
+
+```text
+Release evidence:
+- acceptance checks pass
+- migration and rollback tested
+- offline install documented
+- known limits published
+- next improvement prioritized
+```
+
+#### Capstone delivery and maintenance: guided investigation (60 min; Create)
+
+ID: `mongodb-m16-l1`
+
+Objective: Design and deliver an original extension using capstone delivery and maintenance with explicit acceptance tests.
+
+Activity: Read the explanation. Trace the worked example on paper, record each state change, then run it using the course toolchain. Deliver a course-specific capstone increment with requirements, architecture decision, implementation evidence, tests, usability review, migration or rollback plan, and a short demonstration. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Compare the actual result with your prediction.
+
+Assessment evidence: Submit your own requirements, design, source, test evidence, and a short demonstration. Explain how your extension differs from the example.
+
+#### Capstone delivery and maintenance: independent studio (90 min; Evaluate)
+
+ID: `mongodb-m16-l2`
+
+Objective: Judge two approaches to capstone delivery and maintenance against correctness, maintainability, and offline operation.
+
+Activity: Deliver a course-specific capstone increment with requirements, architecture decision, implementation evidence, tests, usability review, migration or rollback plan, and a short demonstration. Use fictional data, explain each important step in your own words, test normal and failure paths, and record one improvement you would make after feedback. Change one requirement, implement your own solution, then deliberately introduce an edge-case failure. Diagnose and repair it without copying the worked example.
+
+Assessment evidence: Submit a comparison of two designs, evidence from tests, one limitation of the chosen design, and a reasoned decision.
+
+### Project: Learning resource catalog (6 hours)
+
+Store fictional learning resources with tags and searchable titles.
+
+Acceptance conditions:
+
+- Validate required fields and stable identifiers.
+- Compare embedding and referencing for lesson metadata.
+- Demonstrate tag filters and deterministic result ordering.
+
+Milestones:
+
+- Discover: write three user stories, scope exclusions, and acceptance examples using fictional data.
+- Design: sketch components and data flow; justify one tradeoff in an architecture decision record.
+- Build: implement the required behaviors in small reviewable changes; record how to reproduce the build offline.
+- Verify: test every acceptance condition, empty/invalid data, and restart behavior; retain results.
+- Review: demonstrate to a peer or conduct a recorded self-review; document feedback, improvements, and limitations.
+
+### Project: Document expense reports (12 hours)
+
+Aggregate fictional expenses and keep invalid records out.
+
+Acceptance conditions:
+
+- Validate amount types and nonnegative values.
+- Trace every stage of a grouped report.
+- Test empty categories and repeated fixture setup.
+
+Milestones:
+
+- Discover: write three user stories, scope exclusions, and acceptance examples using fictional data.
+- Design: sketch components and data flow; justify one tradeoff in an architecture decision record.
+- Build: implement the required behaviors in small reviewable changes; record how to reproduce the build offline.
+- Verify: test every acceptance condition, empty/invalid data, and restart behavior; retain results.
+- Review: demonstrate to a peer or conduct a recorded self-review; document feedback, improvements, and limitations.
+
+### Project: Local document recovery lab (24 hours)
+
+Practice consistent local backup and restore with fictional collections.
+
+Acceptance conditions:
+
+- Restore to a separate target namespace.
+- Compare document counts and report totals.
+- Document standalone and replica-set transaction differences.
 
 Milestones:
 

@@ -1,6 +1,30 @@
 # Learn By Marifat Team — learn programming offline
 
-A Flutter application for Afghan computer science students: 15 offline curricula, 180 Bloom-aligned lesson plans, 45 real-world project assignments, and a bounded on-device Python teaching interpreter.
+A Flutter application for Afghan computer science students: 20 offline curricula, 320 detailed modules, 640 Bloom-aligned lesson plans, 60 real-world project assignments, and a bounded on-device Python teaching interpreter.
+
+## Version 3.0: clearer paths and deeper courses
+
+The course catalog now gives beginners one obvious starting action, compact searchable learning-path cards, visible ready/locked/completed states, prerequisite guidance, and responsive one- or two-column layouts. Subtle entrance and lesson-step transitions respect the device's reduced-motion preference. Every course now contains sixteen sequential modules and thirty-two sessions, including applied software-engineering studios with real use cases, testable examples, failure recovery, architecture, security, accessibility, performance, delivery, encouraging hints, and complete English, Afghanistan Dari, and Afghanistan Pashto text.
+
+Version 3.0.1 removes repeated generic introductions from advanced modules and combines three repeated workshop reminders into one actionable checkpoint. Automated curriculum checks cap module explanation length and reject unsupported promises of guaranteed mastery, employment, or accreditation.
+
+## Version 2.9: Marifat identity and support
+
+The settings area now includes an About and Support page with the Marifat Team mission, a clearly voluntary donation option, and the HesabPay number `+93788070101` with one-tap copy. It includes a founder biography based on the supplied résumé and public contact details for email, website, LinkedIn, GitHub, phone, and WhatsApp. The official Code With Safi YouTube channel can be opened externally or copied. The supplied Marifat emblem is now the Android and Windows application icon. All course content remains available offline. See [About and Support](docs/ABOUT_AND_SUPPORT.md).
+
+## Version 2.4: choose your coding language
+
+Code Lab has 19 language/framework choices, separate saved drafts, remembered selection, and save/discard protection when switching. Python and read-only SQLite execute inside the app. Other choices provide offline editing, copy/save, and local tool instructions without a misleading Run button. Graded Python exercises remain Python-only. See [Code Lab behavior and compatibility](docs/LANGUAGE_LAB.md).
+
+## Version 2.3: expanded courses and databases
+
+All 304 non-Python modules include example walkthroughs, concrete practice tasks, encouraging hints, and review criteria in English, Dari, and Pashto. Every course contains sixteen modules; modules seven through sixteen cover course-specific advanced topics and applied software engineering through requirements, contracts, recovery, testing, architecture, security, accessibility, performance, and delivery. Five database courses add foundations, SQL, SQLite, PostgreSQL, and MongoDB. A bounded, read-only SQL practice area runs real SQLite queries on fresh fictional tables, without opening the student progress database. See [scope and validation](docs/COURSE_EXPANSION.md).
+
+The seven Python foundation lessons retain their detailed three-language explanations from version 2.2.
+
+## Version 2.1: offline learning adventure
+
+Course entry now shows a mission map, XP, levels, badges and visible challenge progress. Correct Python foundation answers earn points once; completed lessons earn a bonus. Success feedback celebrates new progress. Other courses use short workshop views, with advanced reference material separate from the main path. See [reward rules and design sources](docs/GAMIFICATION.md) and [the Dari course map](preview/mission-fa.png).
 
 ## Version 2.0: Marifat beginner experience
 
@@ -11,9 +35,10 @@ See [redesign decisions](docs/UX_REDESIGN.md), [Dari home](preview/overview-fa.p
 ## Implemented
 
 - Three complete Python command-line reference projects with 15 regression tests, translated Bloom walkthroughs, and runnable in-app core exercises. Full reference programs require local CPython; they are not run by the teaching interpreter.
-- Fifteen beginner entry lessons with vocabulary, traced examples, prediction questions, hints, and small reference solutions.
-- In-app source/notes workspaces for all 180 lesson plans and 45 projects; Python subset execution where supported.
-- Searchable course catalog with prerequisites, six modules and twelve lesson plans per course.
+- Twenty beginner entry lessons with vocabulary, traced examples, prediction questions, hints, and small reference solutions.
+- In-app source/notes workspaces for all 640 lesson plans and 60 projects; Python subset execution where supported.
+- Searchable course catalog with prerequisites, sixteen modules and thirty-two lesson plans per course.
+- Required zero-knowledge introduction for every non-Python course; completing its readiness check unlocks topic 1 and persists offline.
 - Original explanations, worked code/design fragments, timed activities, measurable objectives, and evidence-based assessment prompts.
 - Three project assignments per course with acceptance conditions, milestones, deliverables, and a five-dimension rubric.
 - Local portfolio reflections, milestone checklists, self-assessment scores, and unsaved-change protection.
@@ -34,7 +59,7 @@ All core content and the runtime ship with the application. No account, activati
 
 The teaching interpreter is **not full CPython**. It implements a documented Python subset with bounded resource use. Imports, packages, input(), classes, files, networking, f-strings, list methods, and full Python semantic compatibility are not available. The in-app language guide explains the limits. Coding tasks grade displayed output, not algorithm structure, and are intended for formative practice.
 
-The other courses, advanced Python examples, and project builds require separately provisioned local development tools. All lesson plans and project instructions are readable offline inside this app; the app does not bundle 15 compilers, SDKs, or all 45 finished project solutions. Three Python reference solutions now ship in projects/python and are readable in the app. Native iOS projects require a compatible Mac with Xcode. Each lesson plan and project now has a local workspace with up to four text files, 12,000 characters each, included in exported backups. Larger external SDK/build folders still need separate backups. Rubric scores are self-assessments, not verified credentials.
+The other courses, advanced Python examples, and project builds require separately provisioned local development tools. All lesson plans and project instructions are readable offline inside this app; the app does not bundle all language compilers, SDKs, or all 60 finished project solutions. Three Python reference solutions now ship in projects/python and are readable in the app. Native iOS projects require a compatible Mac with Xcode. Each lesson plan and project now has a local workspace with up to four text files, 12,000 characters each, included in exported backups. Larger external SDK/build folders still need separate backups. Rubric scores are self-assessments, not verified credentials.
 
 ## Develop and run
 
@@ -59,7 +84,7 @@ flutter build apk --release --no-tree-shake-icons
 
 `--no-tree-shake-icons` is needed on the current host because Application Control blocks Flutter's optional font-subsetting executable. It preserves the full icon font. On an unrestricted build host, icon subsetting can reduce size normally.
 
-Android development requires installed SDK packages, accepted Android SDK licenses, and Gradle dependencies. Build tools may download dependencies; this is separate from offline use by students. Release signing currently uses the generated development key for review builds. Set up an owner-controlled release key before public distribution.
+Android development requires installed SDK packages, accepted Android SDK licenses, and Gradle dependencies. Build tools may download dependencies; this is separate from offline use by students. Google Play builds require the owner-controlled upload key described in `android/key.properties.example`. The store build omits the voluntary HesabPay support card and keeps the learning experience fully offline. Run `tool/build_google_play.ps1 -AllowUnsigned` for a local validation bundle; configure the upload key and run `tool/build_google_play.ps1` for an uploadable signed bundle.
 
 ## Documentation
 
@@ -72,6 +97,13 @@ Android development requires installed SDK packages, accepted Android SDK licens
 - [Quality, threat model, and release procedure](docs/QUALITY_AND_RELEASE.md)
 - [Verification report](docs/VERIFICATION.md)
 - [Rendered desktop preview](preview/dashboard.png)
+- [About, support, and public-information policy](docs/ABOUT_AND_SUPPORT.md)
+- [Privacy policy](docs/PRIVACY_POLICY.md)
+- [Google Play listing](distribution/google-play/STORE_LISTING.md)
+- [Google Play data-safety answers](distribution/google-play/DATA_SAFETY.md)
+- [Google Play release checklist](distribution/google-play/RELEASE_CHECKLIST.md)
+- [Microsoft Store listing](distribution/microsoft-store/STORE_LISTING.md)
+- [Microsoft Store release checklist](distribution/microsoft-store/RELEASE_CHECKLIST.md)
 
 ## Persistence and backup
 
@@ -84,6 +116,8 @@ Curriculum authors edit `tool/build_curriculum.py`, run `python tool/build_curri
 ## Distribution
 
 Distribute the entire Windows release folder together (EXE, DLLs, and `data`); the EXE alone is not sufficient. For Android, transfer a built APK to the device by USB or local sharing, and complete the airplane-mode acceptance procedure in the quality document.
+
+For Microsoft Store submission, reserve the product first and copy its exact Package Identity Name and Publisher from Partner Center. Then run `tool/build_microsoft_store.ps1 -PackageName '<Name>' -Publisher '<Publisher>'`. The script builds the full Windows release and packages it as x64 MSIX. `-AllowPlaceholderIdentity` creates a clearly labelled local validation package that cannot be mistaken for the identity-correct Store upload.
 
 Course updates currently ship in a new app version. No arbitrary content/plugin import is implemented. There is no claim of measured educational effectiveness until a student pilot and comparative evaluation are conducted.
 

@@ -1,6 +1,52 @@
 # Verification report
 
-Date: 12 September 2026. Host: Windows, Flutter 3.47.2, Dart 3.13.2.
+Date: 15 September 2026. Host: Windows, Flutter 3.47.2, Dart 3.13.2.
+
+## Version 3.1 publication candidate
+
+Static analysis reports no issues, the translation audit inventories 420 authored interface/error messages with zero missing Dari or Pashto entries, and the full suite passes 134 tests with the upload-key-dependent store test skipped in the ordinary run. The store-specific run passes separately with `STORE_BUILD=true`, confirming that the direct HesabPay support panel is absent and the in-app privacy statement remains visible. The Windows release build succeeds.
+
+Gradle completes the Android App Bundle for version 3.1.0+19. ZIP integrity passes, the bundle contains ARMv7, ARM64 and x86_64 libraries, and the merged release manifest confirms package `org.afghanlearn.kohi`, minimum SDK 24, target SDK 36, automatic backup disabled, and no INTERNET or ACCESS_NETWORK_STATE permission. The locally validated AAB is intentionally unsigned because the owner upload key is not present. Store copy, screenshots, icon, feature graphic, privacy page, Data safety answers and release checklist are packaged for review. A signed build, public HTTPS privacy URL, Play Console declarations and physical-device closed-track acceptance remain owner actions.
+
+## Version 2.4 selectable Code Lab
+
+123 Flutter unit/widget tests pass. The native Windows integration check passes language selection, Python execution and SQLite execution. Tests cover language-specific draft round trips, old backup compatibility, cancelled switches, failed writes, persisted selection, SQL dispatch and fixed Python exercises. Dari/Pashto selector layouts and actual dropdown selection are checked. Static analysis reports no issues. External language compilers and HTML preview are not included. See LANGUAGE_LAB.md.
+
+## Version 2.3 courses and database learning
+
+117 Flutter unit/widget tests pass and static analysis reports no issues. The
+expanded catalog contains 20 courses, 320 planned sessions and 60 project briefs.
+Guide coverage tests check all 304 non-Python modules and both local-language
+translations. The translation inventory reports zero missing entries.
+
+Two SQLite content test methods execute all 18 relational module scripts with
+expected result checks and additional key, foreign-key and negative-price
+rejection checks. SQL practice tests cover filtering, left joins, aggregation,
+empty results, literal handling, duplicate result columns, fresh fixtures and
+blocked mutations, file access, unbounded functions and recursive queries.
+
+A native Windows integration test passes startup/storage, course navigation,
+Python execution and real SQLite query rendering. Dari/Pashto database lesson
+images were visually inspected after bundling Noto Sans Mono for code text.
+The font is distributed with its original SIL Open Font License. Local server
+courses and external framework fragments were not execution-tested here;
+native-speaker review is still pending. See COURSE_EXPANSION.md for scope.
+
+## Version 2.2 detailed foundation instruction
+
+110 Flutter tests pass and static analysis reports no issues. All seven original
+lesson examples execute in the offline interpreter and match their newly shown
+expected outputs. Each lesson has three detailed teaching sections in English,
+Dari and Pashto; coverage checks reject missing sections or languages. The UI
+translation inventory has zero missing keys. Updated phone lesson images in
+Dari and Pashto were visually inspected. Native-speaker review and novice
+learning evaluation have not been performed. See DETAILED_TEACHING.md for scope.
+
+## Version 2.1 offline gamification
+
+All 108 Flutter unit/widget tests pass and static analysis reports no issues. The final Windows release build succeeds; executable version is 2.1.0+6. A native Windows integration test passes startup/storage, course-map navigation, and real Python execution. New reward tests cover known IDs, lesson bonuses, thresholds, wrong answers, duplicate concurrent submissions, failed writes and reopening persisted progress. Dark Dari/Pashto mission maps were rendered and visually inspected; playable lesson navigation is tested from those maps. Existing phone/desktop visual baselines were updated and then verified in a normal test run.
+
+XP and badges are derived from saved solved IDs with no extra counter or schema migration. Replays cannot add points. Completion of all available foundation missions ends the next-level prompt. Rewards cover graded Python foundation exercises only; workshops and self-reported projects award no automatic XP. See GAMIFICATION.md for rules, sources and limits.
 
 ## Version 2.0 Marifat experience redesign
 
